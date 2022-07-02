@@ -7,6 +7,9 @@ import { useHistory } from 'react-router-dom';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea } from '@mui/material';
+import Box from '@mui/material/Box';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
 //mui toggle
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
@@ -38,22 +41,27 @@ function Wishlist (){
 
     return (
         <>
-            <ToggleButtonGroup>
+            <Box
+                m={1}
+                //margin
+                display="flex"
+                justifyContent="flex-end"
+                alignItems="flex-end"
+            >
+                <ToggleButtonGroup >
+                    <ToggleButton value={!display} onClick={toggleDisplay}>
+                        <ListIcon />
+                    </ToggleButton>
+                
+                    <ToggleButton value={display} onClick={toggleDisplay}>
+                        <GridViewIcon />
+                    </ToggleButton>
+                
+                </ToggleButtonGroup>
+            </Box>
             
-                <ToggleButton value={!display} onClick={toggleDisplay}>
-                    <ListIcon />
-                </ToggleButton>
-            
-                <ToggleButton value={display} onClick={toggleDisplay}>
-                    <GridViewIcon />
-                </ToggleButton>
-            
-            </ToggleButtonGroup>
-
-            <h1>Wishlist</h1>
-
             { display ?
-                <section className="flex-container">
+                <section className="flex-container-grid">
                 {records.map(record => {
                     if (record.owned === false)
                     return (
@@ -84,38 +92,42 @@ function Wishlist (){
                 })}
                 </section>
             :
-            <section className="flex-container">
+            <section className="flex-container-list">
             {records.map(record => {
-                if (record.owned === false)
+                if (record.owned)
                 return (
                     <div className='cards'>
-                    <Card sx={{ 
-                        maxWidth: 600, 
-                        minWidth: 600,  
-                    }}>
-                        <CardActionArea>
+                        <Card sx={{ display: 'flex' }}>
                         <CardMedia
-                            onClick={detailedView}
                             component="img"
-                            image= {record.cover}
-                            alt= {record.title}
-                            sx={{ 
-                                maxWidth: 100, 
-                                minWidth: 100,  
-                                maxHeight: 100, 
-                                minHeight:100 
-                            }}
-                        /> 
+                            sx={{ width: 150 }}
+                            image={record.cover}
+                            alt={record.title}
+                        />
+                        <CardActionArea onClick={detailedView}>
+                        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                            <CardContent sx={{ flex: '1 0 auto' }}>
+                            <Typography component="div" variant="h5">
+                                {record.title}
+                            </Typography>
+                            <Typography variant="subtitle1" color="text.secondary" component="div">
+                            {record.year}
+                            </Typography>
+                            <Typography variant="subtitle1" color="text.secondary" component="div">
+                            {record.genre}
+                            </Typography>
+                            <Typography variant="subtitle1" color="text.secondary" component="div">
+                            {record.style}
+                            </Typography>
+                            </CardContent>
+                        </Box>
                         </CardActionArea>
-                        <p>{record.title}</p>
-                        <p>{record.year}</p>
-                        <p>{record.genre}</p>
-                        <p>{record.style}</p>
-                    </Card>
+
+                        </Card>
                     </div>
                 ) 
             })}
-            </section>  
+            </section>   
             }
         </>
     )

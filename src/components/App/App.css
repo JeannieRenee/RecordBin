@@ -111,11 +111,20 @@ input {
   margin-bottom: 10px;
 }
 
-.flex-container {
+.flex-container-grid {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   gap: 2em;
-  margin: 2em;
+  margin-bottom: 10em;
 }
+
+.flex-container-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2em;
+  margin: 5em;
+}
+

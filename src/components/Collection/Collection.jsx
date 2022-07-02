@@ -6,12 +6,28 @@ import {useHistory} from 'react-router-dom';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea } from '@mui/material';
+import Box from '@mui/material/Box';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+
 //mui toggle
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 // mui icons 
 import ListIcon from '@mui/icons-material/List';
 import GridViewIcon from '@mui/icons-material/GridView';
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'right',
+      '& > *': {
+        margin: theme.spacing(1),
+      },
+    },
+  }));
 
 function Collection (){
     const dispatch = useDispatch();
@@ -36,27 +52,31 @@ function Collection (){
     function detailedView(){
         history.push(`/details`);
     }
-
+    
+    const classes = useStyles();
 
     return (
         <>
-            <ToggleButtonGroup>
+            <Box
+                m={1}
+                //margin
+                display="flex"
+                justifyContent="flex-end"
+                alignItems="flex-end"
+            >
+                <ToggleButtonGroup >
+                    <ToggleButton value={!display} onClick={toggleDisplay}>
+                        <ListIcon />
+                    </ToggleButton>
                 
-                <ToggleButton value={!display} onClick={toggleDisplay}>
-                    <ListIcon />
-                </ToggleButton>
-            
-                <ToggleButton value={display} onClick={toggleDisplay}>
-                    <GridViewIcon />
-                </ToggleButton>
-            
-            </ToggleButtonGroup>
-
-            <h2>Hey, {user.username}!</h2>
-            <h1>Collection</h1>
-
+                    <ToggleButton value={display} onClick={toggleDisplay}>
+                        <GridViewIcon />
+                    </ToggleButton>
+                
+                </ToggleButtonGroup>
+            </Box>
             { display ?
-                <section className="flex-container">
+                <section className="flex-container-grid">
                 {records.map(record => {
                     if (record.owned)
                     return (
@@ -87,34 +107,37 @@ function Collection (){
                 })}
                 </section>
             :
-            <section className="flex-container">
+            <section className="flex-container-list">
             {records.map(record => {
                 if (record.owned)
                 return (
                     <div className='cards'>
-                    <Card sx={{ 
-                        maxWidth: 600, 
-                        minWidth: 600,  
-                    }}>
-                        <CardActionArea>
+                        <Card sx={{ display: 'flex' }}>
                         <CardMedia
-                            onClick={detailedView}
                             component="img"
-                            image= {record.cover}
-                            alt= {record.title}
-                            sx={{ 
-                                maxWidth: 100, 
-                                minWidth: 100,  
-                                maxHeight: 100, 
-                                minHeight:100 
-                            }}
-                        /> 
-                        </CardActionArea>
-                        <p>{record.title}</p>
-                        <p>{record.year}</p>
-                        <p>{record.genre}</p>
-                        <p>{record.style}</p>
-                    </Card>
+                            sx={{ width: 150 }}
+                            image={record.cover}
+                            alt={record.title}
+                        />
+                        <CardActionArea onClick={detailedView}>
+                        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                            <CardContent sx={{ flex: '1 0 auto' }}>
+                            <Typography component="div" variant="h5">
+                                {record.title}
+                            </Typography>
+                            <Typography variant="subtitle1" color="text.secondary" component="div">
+                            {record.year}
+                            </Typography>
+                            <Typography variant="subtitle1" color="text.secondary" component="div">
+                            {record.genre}
+                            </Typography>
+                            <Typography variant="subtitle1" color="text.secondary" component="div">
+                            {record.style}
+                            </Typography>
+                            </CardContent>
+                        </Box>
+                        </CardActionArea >
+                        </Card>
                     </div>
                 ) 
             })}
