@@ -7,16 +7,16 @@ const axios = require('axios');
 /**
  * discogs BASIC GET route
  */
- router.get('/:keyword', (req, res) => {
-  const search = req.params;
-  console.log('the search term is', search)
+ router.get('/:searchterm', (req, res) => {
+  const { searchterm } = req.params;
+  console.log('the search term is', searchterm)
   axios({
     method: 'GET', 
-    url: `https://api.discogs.com/database/search?q=${search}&format=vinyl&key=${process.env.DISCOGS_KEY}&secret=${process.env.DISCOGS_SECRET}`,
+    url: `https://api.discogs.com/database/search?q=${searchterm}&format=vinyl&key=${process.env.DISCOGS_KEY}&secret=${process.env.DISCOGS_SECRET}`,
   }).then((response) => {
-        console.log(response.data)
+        console.log(response.data.results[0].title)
         res.send(response.data);
-  }).catch( err => {
+  }).catch((err) => {
         console.log(err)
         res.sendStatus(500);
   });
