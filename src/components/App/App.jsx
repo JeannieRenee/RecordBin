@@ -14,11 +14,17 @@ import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
-import UserPage from '../UserPage/UserPage';
-import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import Collection from '../Collection/Collection';
+import Wishlist from '../Wishlist/Wishlist';
+import Browse from '../Browse/Browse';
+import Details from '../DetailedView/DetailedView';
+import BrowseResults from '../BrowseResults/BrowseResults';
+
+
+
 
 import './App.css';
 
@@ -52,21 +58,6 @@ function App() {
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
             Even though it seems like they are different pages, the user is always on localhost:3000/user */}
-          <ProtectedRoute
-            // logged in shows UserPage else shows LoginPage
-            exact
-            path="/user"
-          >
-            <UserPage />
-          </ProtectedRoute>
-
-          <ProtectedRoute
-            // logged in shows InfoPage else shows LoginPage
-            exact
-            path="/info"
-          >
-            <InfoPage />
-          </ProtectedRoute>
 
           <Route
             exact
@@ -75,7 +66,7 @@ function App() {
             {user.id ?
               // If the user is already logged in, 
               // redirect to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/collection" />
               :
               // Otherwise, show the login page
               <LoginPage />
@@ -89,7 +80,7 @@ function App() {
             {user.id ?
               // If the user is already logged in, 
               // redirect them to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/collection" />
               :
               // Otherwise, show the registration page
               <RegisterPage />
@@ -103,12 +94,52 @@ function App() {
             {user.id ?
               // If the user is already logged in, 
               // redirect them to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/collection" />
               :
               // Otherwise, show the Landing page
               <LandingPage />
             }
           </Route>
+
+          <ProtectedRoute
+            // logged in shows InfoPage else shows LoginPage
+            exact
+            path="/collection"
+          >
+            <Collection />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows InfoPage else shows LoginPage
+            exact
+            path="/wishlist"
+          >
+            <Wishlist />
+          </ProtectedRoute> 
+
+          <ProtectedRoute
+            // logged in shows InfoPage else shows LoginPage
+            exact
+            path="/browse"
+          >
+            <Browse />
+          </ProtectedRoute>   
+
+          <ProtectedRoute
+            // logged in shows InfoPage else shows LoginPage
+            exact
+            path="/details"
+          >
+            <Details />
+          </ProtectedRoute>  
+
+          <ProtectedRoute
+            // logged in shows InfoPage else shows LoginPage
+            exact
+            path="/results"
+          >
+            <BrowseResults />
+          </ProtectedRoute>   
 
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>
