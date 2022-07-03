@@ -6,7 +6,6 @@ body,
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0px;
 }
 
 img {
@@ -118,15 +117,16 @@ Containers
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: left;
   gap: 2em;
+  margin-left: 25%;
 }
 
 .flex-container-list {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: left;
   gap: 2em;
-  margin: 5em;
+  margin-left: 25%;
 }
 

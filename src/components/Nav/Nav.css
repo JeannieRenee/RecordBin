@@ -4,9 +4,7 @@
   justify-content: space-between;
   align-items: center;
   margin: 0 0 30px;
-  background-color: #b07200;
   overflow: hidden;
-  background-Image: url('./logo.png'); 
   background-repeat: no-repeat;
   background-position: center;
 }
