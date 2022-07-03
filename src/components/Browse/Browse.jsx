@@ -20,6 +20,8 @@ import GridViewIcon from '@mui/icons-material/GridView';
 
 function Browse(){
     const results = useSelector(store => store.browseBasic.results);
+    const pagination = useSelector(store => store.browseBasic.pagination);
+
     const [search, setSearch]= useState('');
     const dispatch = useDispatch();
     const history = useHistory();
@@ -72,58 +74,61 @@ function Browse(){
                     />
                     <Button onClick={sendSearch} variant="contained">search</Button>
                 </Box>
+                { pagination &&
+                <p> {pagination.items} results</p>
+                }
 
-                <Box
+                { results &&
+                <div>
+                    <Box
                     m={1}
                     //margin
                     display="flex"
                     justifyContent="flex-end"
                     alignItems="flex-end"
-                >
+                    >
                     <ToggleButtonGroup >
                         <ToggleButton value={!display} onClick={toggleDisplay}>
                             <ListIcon />
                         </ToggleButton>
-                    
+
                         <ToggleButton value={display} onClick={toggleDisplay}>
                             <GridViewIcon />
                         </ToggleButton>
-                    
+
                     </ToggleButtonGroup>
-                </Box>
-    
-                { results ?
-                <section className="flex-container-grid">
-                {results.map(record => {
-                    return (
-                        <div className='cards'>
-                        <Card sx={{ 
-                            maxWidth: 200, 
-                            minWidth: 200,  
-                            maxHeight: 200, 
-                            minHeight: 200 
-                        }}>
-                            <CardActionArea>
-                            <CardMedia
-                                onClick={detailedView}
-                                component="img"
-                                image= {record.cover_image}
-                                alt= {record.title}
-                                sx={{ 
-                                    maxWidth: 200, 
-                                    minWidth: 200,  
-                                    maxHeight: 200, 
-                                    minHeight:200 
-                                }}
-                            /> 
-                            </CardActionArea>
-                        </Card>
-                        </div>
-                    ) 
-                })}
-                </section>
-                :
-                <p>searh something loser</p>
+                    </Box>
+
+                    <section className="flex-container-grid">
+                    {results.map(record => {
+                        return (
+                            <div className='cards'>
+                            <Card sx={{ 
+                                maxWidth: 200, 
+                                minWidth: 200,  
+                                maxHeight: 200, 
+                                minHeight: 200 
+                            }}>
+                                <CardActionArea>
+                                <CardMedia
+                                    onClick={detailedView}
+                                    component="img"
+                                    image= {record.cover_image}
+                                    alt= {record.title}
+                                    sx={{ 
+                                        maxWidth: 200, 
+                                        minWidth: 200,  
+                                        maxHeight: 200, 
+                                        minHeight:200 
+                                    }}
+                                /> 
+                                </CardActionArea>
+                            </Card>
+                            </div>
+                        ) 
+                    })}
+                    </section>
+                </div>
             }
             </div> 
         </div>
