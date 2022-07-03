@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 
 // mui imports
 import Typography from '@mui/material/Typography';
@@ -25,6 +25,8 @@ function Browse(){
     const [search, setSearch]= useState('');
     const dispatch = useDispatch();
     const history = useHistory();
+    const  {id}  = useParams();
+
 
     const sendSearch = (evt) => {
         evt.preventDefault();
@@ -43,7 +45,7 @@ function Browse(){
  
     // push to detailed page on cover click
     function detailedView(){
-        history.push(`/details`);
+        history.push(`/details/${id}`);
     }
 
     return (

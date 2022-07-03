@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-
+import { useParams, useHistory } from 'react-router-dom';
 
 // mui imports
 import Card from '@mui/material/Card';
@@ -21,6 +20,7 @@ function Wishlist (){
     const dispatch = useDispatch();
     const history = useHistory()
     const records = useSelector(store => store.records);
+    let  { id }  = useParams();
 
     // on page load, run this
     useEffect(() => {
@@ -34,8 +34,13 @@ function Wishlist (){
     }
 
     // push to detailed page on cover click
-    function detailedView(){
-        history.push(`/details`);
+    const detailedView = (evt) => {
+        evt.preventDefault();
+        dispatch({
+            type: "FETCH_DETAILED_RESULTS",
+            payload: { id }
+        });
+        history.push(`/details/${id}`);
     }
 
     return (

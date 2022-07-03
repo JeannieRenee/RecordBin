@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {useHistory} from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 
 // mui imports
 import Card from '@mui/material/Card';
@@ -9,7 +9,6 @@ import { CardActionArea } from '@mui/material';
 import Box from '@mui/material/Box';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-
 //mui toggle
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
@@ -21,6 +20,7 @@ function Collection (){
     const dispatch = useDispatch();
     const history = useHistory()
     const records = useSelector(store => store.records);
+    const  {id}  = useParams();
 
     // on page load, run this
     useEffect(() => {
@@ -38,10 +38,9 @@ function Collection (){
         evt.preventDefault();
         dispatch({
             type: "FETCH_DETAILED_RESULTS",
-            payload: search
+            payload: id
         });
-        setSearch('');
-        history.push(`/results`);
+        history.push(`/details/${id}`);
     }
     
 

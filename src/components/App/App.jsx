@@ -123,8 +123,8 @@ function App() {
 
           <ProtectedRoute
             // logged in shows InfoPage else shows LoginPage
+            path="/details/:id"
             exact
-            path="/details"
           >
             <Details />
           </ProtectedRoute>  
