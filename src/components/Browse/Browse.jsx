@@ -39,7 +39,6 @@ function Browse(){
     const [display, setDisplay] = useState(true);
     const toggleDisplay = () => {
         setDisplay(!display);
-        console.log(display)
     }
  
     // push to detailed page on cover click
@@ -103,7 +102,7 @@ function Browse(){
                 <section className="flex-container-grid">
                     {results.map(record => {
                         return (
-                            <div className='cards'>
+                            <div className='cards'key={record.id}>
                             <Card sx={{ 
                                 maxWidth: 200, 
                                 minWidth: 200,  
@@ -133,7 +132,7 @@ function Browse(){
                 <section className="flex-container-list">
                     {results.map(record => {
                         return (
-                            <div className='cards'>
+                            <div className='cards' key={record.id}>
                                 <Card sx={{ display: 'flex' }}>
                                 <CardMedia
                                     component="img"

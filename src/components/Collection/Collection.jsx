@@ -31,7 +31,6 @@ function Collection (){
     const [display, setDisplay] = useState(true);
     const toggleDisplay = () => {
         setDisplay(!display);
-        console.log(display)
     }
 
     // push to detailed page on cover click
@@ -71,7 +70,7 @@ function Collection (){
                 {records.map(record => {
                     if (record.owned)
                     return (
-                        <div className='cards'>
+                        <div className='cards' key={record.record_id}>
                         <Card sx={{ 
                             maxWidth: 200, 
                             minWidth: 200,  
@@ -102,7 +101,7 @@ function Collection (){
             {records.map(record => {
                 if (record.owned)
                 return (
-                    <div className='cards'>
+                    <div className='cards' key={record.record_id}>
                         <Card sx={{ display: 'flex' }}>
                         <CardMedia
                             component="img"

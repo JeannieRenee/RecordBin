@@ -31,7 +31,6 @@ function Wishlist (){
     const [display, setDisplay] = useState(true);
     const toggleDisplay = () => {
         setDisplay(!display);
-        console.log(display)
     }
 
     // push to detailed page on cover click
@@ -65,7 +64,7 @@ function Wishlist (){
                 {records.map(record => {
                     if (record.owned === false)
                     return (
-                        <div className='cards'>
+                        <div className='cards' key={record.record_id}>
                         <Card sx={{ 
                             maxWidth: 200, 
                             minWidth: 200,  
@@ -96,7 +95,7 @@ function Wishlist (){
             {records.map(record => {
                 if (record.owned === false)
                 return (
-                    <div className='cards'>
+                    <div className='cards' key={record.record_id}>
                         <Card sx={{ display: 'flex' }}>
                         <CardMedia
                             component="img"
