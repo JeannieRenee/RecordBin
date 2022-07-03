@@ -50,7 +50,7 @@ function Browse(){
 
     return (
         <div>
-            <div>
+            <div className='browse-form'>
                 <Typography 
                     component="div" 
                     variant="h4"
@@ -101,7 +101,7 @@ function Browse(){
                     </ToggleButtonGroup>
                 </Box>
                 { display ?
-                <section className="flex-container-grid">
+                <section className="flex-container-grid-browse">
                     {results.map(record => {
                         return (
                             <div className='cards'key={record.id}>
@@ -131,7 +131,7 @@ function Browse(){
                     })}
                 </section>
             :
-                <section className="flex-container-list">
+                <section className="flex-container-list-browse">
                     {results.map(record => {
                         return (
                             <div className='cards' key={record.id}>
