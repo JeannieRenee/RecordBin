@@ -1,4 +1,4 @@
-import { takeEvery, put } from 'redux-saga/effects';
+import { takeLatest, put } from 'redux-saga/effects';
 import axios from 'axios';
 
 // ---------- Component Function ---------- // 
@@ -14,7 +14,7 @@ function* fetchRecords() {
 };
 
 function* recordsSaga() {
-    yield takeEvery('FETCH_RECORDS', fetchRecords);
+    yield takeLatest('FETCH_RECORDS', fetchRecords);
 };
 
 export default recordsSaga;

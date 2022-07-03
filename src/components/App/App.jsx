@@ -21,6 +21,8 @@ import Collection from '../Collection/Collection';
 import Wishlist from '../Wishlist/Wishlist';
 import Browse from '../Browse/Browse';
 import Details from '../DetailedView/DetailedView';
+import BrowseResults from '../BrowseResults/BrowseResults';
+
 
 
 
@@ -129,7 +131,15 @@ function App() {
             path="/details"
           >
             <Details />
-          </ProtectedRoute>     
+          </ProtectedRoute>  
+
+          <ProtectedRoute
+            // logged in shows InfoPage else shows LoginPage
+            exact
+            path="/results"
+          >
+            <BrowseResults />
+          </ProtectedRoute>   
 
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>

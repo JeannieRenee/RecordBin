@@ -94,7 +94,7 @@ function Wishlist (){
             :
             <section className="flex-container-list">
             {records.map(record => {
-                if (record.owned)
+                if (record.owned === false)
                 return (
                     <div className='cards'>
                         <Card sx={{ display: 'flex' }}>

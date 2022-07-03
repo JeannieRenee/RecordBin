@@ -1,37 +1,57 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+
+
+// mui imports
+import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
 
 function Browse(){
-    // const results = useSelector(store => store.browseBasic);
     const [search, setSearch]= useState('');
     const dispatch = useDispatch();
+    const history = useHistory();
 
-    const sendSearch = () => {
+    const sendSearch = (evt) => {
+        evt.preventDefault();
         dispatch({
             type: "FETCH_BASIC_RESULTS",
-            payload: search,
+            payload: search
         });
-        // setSearch('');
+        setSearch('');
+        history.push(`/results`);
     }
 
     return (
         <div>
             <div>
-                <h1>Browse</h1>
-                <h3>What are you looking for?</h3>
+                <Typography 
+                    component="div" 
+                    variant="h4"
+                >
+                    What are you looking for?
+                </Typography>
 
-                <form>
-                    <input 
-                    type="text"
-                    placeholder= "Artist, Album, Genres, Year, Barcode..."
-                    value= {search}
-                    onChange={(evt) => setSearch(evt.target.value)}
+                <Box
+                    component="form"
+                    sx={{
+                        '& > :not(style)': { m: 1, width: '50ch' },
+                    }}
+                    noValidate
+                    autoComplete="off"
+                >
+                    <TextField 
+                        id="outlined-basic" 
+                        label="Artist, Album, Genres, Year, Barcode..." 
+                        variant="outlined" 
+                        value= {search} 
+                        onChange={(evt) => setSearch(evt.target.value)}
                     />
-                    <button onClick={sendSearch}>search</button>
-                </form>
+                    <Button onClick={sendSearch} variant="contained">search</Button>
+                </Box>
             </div> 
-            <div>
-            </div>
         </div>
     )
 }

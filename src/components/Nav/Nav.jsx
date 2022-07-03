@@ -9,7 +9,7 @@ function Nav() {
 
   return (
     <div className="nav">
-        <div className="navLogo">.</div>
+        <div className="navLogo"></div>
       <div>
         {/* If no user is logged in, show these links */}
         {!user.id && (

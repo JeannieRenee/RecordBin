@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import errors from './errors.reducer';
 import user from './user.reducer';
-// import browseBasic from './browse.reducer';
+import browseBasic from './browse.reducer';
 import records from './records.reducer';
 
 
@@ -15,6 +15,7 @@ const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
   user, // will have an id and username if someone is logged in
   records, // records pulled from database for either wishlist or collection
+  browseBasic, // basic api search results
 });
 
 export default rootReducer;
