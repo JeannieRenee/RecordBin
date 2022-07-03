@@ -4,7 +4,7 @@ function scratch () {
         <>
         { results && <div>
 
-            { display ? <div>
+            { display ? <div></div>
                             <section className="flex-container-grid">
                                 {results.map(record => {
                                     return (
@@ -72,7 +72,7 @@ function scratch () {
                                 </div>
                             ) 
                         })}
-                    </section>   
+                    </section>  
                 </div>}
         </>    
     )

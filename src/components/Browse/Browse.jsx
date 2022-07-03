@@ -74,6 +74,7 @@ function Browse(){
                     />
                     <Button onClick={sendSearch} variant="contained">search</Button>
                 </Box>
+
                 { pagination &&
                 <p> {pagination.items} results</p>
                 }
@@ -129,6 +130,7 @@ function Browse(){
                     })}
                     </section>
                 </div>
+                
             }
             </div> 
         </div>
