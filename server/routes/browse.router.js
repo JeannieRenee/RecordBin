@@ -23,24 +23,6 @@ const axios = require('axios');
 })
 
 /**
- * discogs DETAILED GET route
- */
-//  router.get('/', (req, res) => {
-//   const recordID= req.params;
-//   console.log('the records id is', search)
-//   axios({
-//     method: 'GET', 
-//     url: `https://api.discogs.com/releases/${recordID}`,
-//   }).then((response) => {
-//         console.log(response.data)
-//         res.send(response.data);
-//   }).catch( err => {
-//         console.log(err)
-//         res.sendStatus(500);
-//   });
-// })
-
-/**
  * POST route template
  */
 router.post('/', (req, res) => {

@@ -20,7 +20,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import Collection from '../Collection/Collection';
 import Wishlist from '../Wishlist/Wishlist';
 import Browse from '../Browse/Browse';
-import Details from '../DetailedView/DetailedView';
+import Details from '../DetailsView/DetailsView';
 
 import './App.css';
 
