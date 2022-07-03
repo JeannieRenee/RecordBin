@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
@@ -76,12 +76,12 @@ function Browse(){
                 </Box>
 
                 { pagination &&
-                <p> {pagination.items} results</p>
+                <p>{pagination.items} results</p>
                 }
 
-                { results &&
-                <div>
-                    <Box
+{ results && 
+            (<div>
+                <Box
                     m={1}
                     //margin
                     display="flex"
@@ -98,9 +98,9 @@ function Browse(){
                         </ToggleButton>
 
                     </ToggleButtonGroup>
-                    </Box>
-
-                    <section className="flex-container-grid">
+                </Box>
+                { display ?
+                <section className="flex-container-grid">
                     {results.map(record => {
                         return (
                             <div className='cards'>
@@ -128,10 +128,46 @@ function Browse(){
                             </div>
                         ) 
                     })}
-                    </section>
-                </div>
-                
-            }
+                </section>
+            :
+                <section className="flex-container-list">
+                    {results.map(record => {
+                        return (
+                            <div className='cards'>
+                                <Card sx={{ display: 'flex' }}>
+                                <CardMedia
+                                    component="img"
+                                    sx={{ width: 150 }}
+                                    image={record.cover_image}
+                                    alt={record.title}
+                                />
+                                <CardActionArea onClick={detailedView}>
+                                <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                                    <CardContent sx={{ flex: '1 0 auto' }}>
+                                    <Typography component="div" variant="h5">
+                                        {record.title}
+                                    </Typography>
+                                    <Typography variant="subtitle1" color="text.secondary" component="div">
+                                    {record.year}
+                                    </Typography>
+                                    <Typography variant="subtitle1" color="text.secondary" component="div">
+                                    {record.genre}
+                                    </Typography>
+                                    <Typography variant="subtitle1" color="text.secondary" component="div">
+                                    {record.style}
+                                    </Typography>
+                                    </CardContent>
+                                </Box>
+                                </CardActionArea>
+
+                                </Card>
+                            </div>
+                        ) 
+                    })}
+                </section>
+                }
+             </div>)
+        } 
             </div> 
         </div>
     )
