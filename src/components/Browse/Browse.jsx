@@ -23,6 +23,7 @@ function Browse(){
     const pagination = useSelector(store => store.browseBasic.pagination);
 
     const [search, setSearch]= useState('');
+    const [searchTerm, setSearchTerm]= useState('');
     const dispatch = useDispatch();
     const history = useHistory();
     const  {id}  = useParams();
@@ -30,6 +31,7 @@ function Browse(){
 
     const sendSearch = (evt) => {
         evt.preventDefault();
+        setSearchTerm(search);
         dispatch({
             type: "FETCH_BASIC_RESULTS",
             payload: search
@@ -76,7 +78,7 @@ function Browse(){
                 </Box>
 
                 { pagination &&
-                <p>{pagination.items} results</p>
+                <p>{pagination.items} results for {searchTerm}</p>
                 }
 
             { results && 
