@@ -35,11 +35,12 @@ function Wishlist (){
     }
 
     // push to detailed page on cover click
-    const detailedView = (evt) => {
-        evt.preventDefault();
+    const detailedView = event => {
+        const id = event.currentTarget.id;
+        console.log('The id is',id);
         dispatch({
             type: "FETCH_DETAILED_RESULTS",
-            payload: { id }
+            payload: id
         });
         history.push(`/details/${id}`);
     }
@@ -90,6 +91,7 @@ function Wishlist (){
                             <CardMedia
                                 onClick={detailedView}
                                 component="img"
+                                id= {record.record_id}
                                 image= {record.cover}
                                 alt= {record.title}
                                 sx={{ 
@@ -119,7 +121,7 @@ function Wishlist (){
                             image={record.cover}
                             alt={record.title}
                         />
-                        <CardActionArea onClick={detailedView}>
+                        <CardActionArea id={record.record_id} onClick={detailedView}>
                         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                             <CardContent sx={{ flex: '1 0 auto' }}>
                                 <Typography component="div" variant="h6">

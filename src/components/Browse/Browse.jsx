@@ -48,7 +48,13 @@ function Browse(){
     }
  
     // push to detailed page on cover click
-    function detailedView(){
+    const detailedView = event => {
+        const id = event.currentTarget.id;
+        console.log('The id is', id);
+        dispatch({
+            type: "FETCH_DETAILED_RESULTS",
+            payload: id
+        });
         history.push(`/details/${id}`);
     }
 
@@ -121,6 +127,7 @@ function Browse(){
                                 <CardMedia
                                     onClick={detailedView}
                                     component="img"
+                                    id= {record.id}
                                     image= {record.cover_image}
                                     alt= {record.title}
                                     sx={{ 
@@ -149,7 +156,7 @@ function Browse(){
                                     image={record.cover_image}
                                     alt={record.title}
                                 />
-                                <CardActionArea onClick={detailedView}>
+                        <CardActionArea id={record.id} onClick={detailedView}>
                                 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                                     <CardContent sx={{ flex: '1 0 auto' }}>
                                         <Typography component="div" variant="h6">
