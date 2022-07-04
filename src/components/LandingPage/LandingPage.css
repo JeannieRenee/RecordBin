@@ -35,6 +35,7 @@ Grid
 }
 
 .grid-col_4 {
+  margin-top: 8em;
   flex-basis: 33.33333333%;
   max-width: 33.33333333%;
 }
@@ -55,6 +56,7 @@ Grid
 }
 
 .grid-col_8 {
+  margin-top: 10em;
   flex-basis: 66.66666667%;
   max-width: 66.66666667%;
 }
@@ -79,6 +81,12 @@ Grid
   max-width: 100%;
 }
 
+.container {
+  margin-left: 7em;
+  margin-right: 7em;
+  flex-basis: 100%;
+  max-width: 100%;
+}
 
 html {
   background-Image: url('bg.png'); 
