@@ -17,6 +17,8 @@ import Toolbar from '@mui/material/Toolbar';
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import SearchIcon from '@mui/icons-material/Search';
+import LogoutIcon from '@mui/icons-material/Logout';
+import InfoIcon from '@mui/icons-material/Info';
 
 const drawerWidth = 240;
 
@@ -93,7 +95,7 @@ function ResponsiveDrawer(props) {
               <ListItem key='About' disablePadding onClick={about}>
                 <ListItemButton>
                   <ListItemIcon>
-                    <FavoriteIcon /> 
+                    <InfoIcon /> 
                   </ListItemIcon>
                   <ListItemText primary="About" />
                 </ListItemButton>
@@ -102,7 +104,7 @@ function ResponsiveDrawer(props) {
               <ListItem key='LogOut' disablePadding onClick={logout}>
                 <ListItemButton>
                   <ListItemIcon>
-                    <SearchIcon /> 
+                    <LogoutIcon /> 
                   </ListItemIcon>
                   <ListItemText primary="LogOut" />
                 </ListItemButton>

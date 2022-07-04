@@ -68,7 +68,6 @@ function Browse(){
                 >
                     <TextField 
                         id="outlined-basic" 
-                        label="Artist, Album, Genres, Year, Barcode..." 
                         variant="outlined" 
                         value= {search} 
                         onChange={(evt) => setSearch(evt.target.value)}
