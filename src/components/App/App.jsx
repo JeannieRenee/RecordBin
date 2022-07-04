@@ -8,19 +8,17 @@ import {
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import Nav from '../Nav/Nav';
-import Footer from '../Footer/Footer';
+import Drawer from '../Drawer/Drawer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
 import LandingPage from '../LandingPage/LandingPage';
-import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import Collection from '../Collection/Collection';
 import Wishlist from '../Wishlist/Wishlist';
 import Browse from '../Browse/Browse';
-import Details from '../DetailedView/DetailedView';
+import Details from '../DetailsView/DetailsView';
 
 import './App.css';
 
@@ -36,7 +34,6 @@ function App() {
   return (
     <Router>
       <div>
-        <Nav />
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
           <Redirect exact from="/" to="/home" />
@@ -64,8 +61,8 @@ function App() {
               // redirect to the /user page
               <Redirect to="/collection" />
               :
-              // Otherwise, show the login page
-              <LoginPage />
+              // Otherwise, show the landing page
+              <LandingPage />
             }
           </Route>
 
@@ -123,8 +120,8 @@ function App() {
 
           <ProtectedRoute
             // logged in shows InfoPage else shows LoginPage
+            path="/details/:id"
             exact
-            path="/details"
           >
             <Details />
           </ProtectedRoute>  
@@ -135,7 +132,11 @@ function App() {
             <h1>404</h1>
           </Route>
         </Switch>
-        <Footer />
+
+        {/* If the user is logged in, show them the drawer. */}
+        {user.id &&
+          <Drawer />
+        }   
       </div>
     </Router>
   );

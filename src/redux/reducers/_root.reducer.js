@@ -3,6 +3,8 @@ import errors from './errors.reducer';
 import user from './user.reducer';
 import browseBasic from './browse.reducer';
 import records from './records.reducer';
+import details from './details.reducer';
+
 
 
 // rootReducer is the primary reducer for our entire project
@@ -16,6 +18,7 @@ const rootReducer = combineReducers({
   user, // will have an id and username if someone is logged in
   records, // records pulled from database for either wishlist or collection
   browseBasic, // basic api search results
+  details,
 });
 
 export default rootReducer;

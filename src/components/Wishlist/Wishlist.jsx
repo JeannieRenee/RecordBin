@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-
+import { useParams, useHistory } from 'react-router-dom';
 
 // mui imports
 import Card from '@mui/material/Card';
@@ -10,6 +9,8 @@ import { CardActionArea } from '@mui/material';
 import Box from '@mui/material/Box';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
+import CardActions from '@mui/material/CardActions';
+import Button from '@mui/material/Button';
 //mui toggle
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
@@ -34,12 +35,27 @@ function Wishlist (){
     }
 
     // push to detailed page on cover click
-    function detailedView(){
-        history.push(`/details`);
+    const detailedView = event => {
+        const id = event.currentTarget.id;
+        console.log('The id is',id);
+        dispatch({
+            type: "FETCH_DETAILED_RESULTS",
+            payload: id
+        });
+        history.push(`/details/${id}`);
+    }
+
+    function addCollection(){
+        console.log('recordid')
+        dispatch({ 
+            type: 'UPDATE_RECORDS', 
+            // payload: record.id 
+        });
     }
 
     return (
         <>
+        <div className='wishlist-container'>
             <Box
                 m={1}
                 //margin
@@ -59,33 +75,35 @@ function Wishlist (){
                 </ToggleButtonGroup>
             </Box>
             
-            { display ?
+            { !display ?
                 <section className="flex-container-grid">
                 {records.map(record => {
                     if (record.owned === false)
                     return (
-                        <div className='cards' key={record.record_id}>
+                        <div className='cards' key={record.id}>
                         <Card sx={{ 
-                            maxWidth: 200, 
-                            minWidth: 200,  
-                            maxHeight: 200, 
-                            minHeight: 200 
+                            maxWidth: 150, 
+                            minWidth: 150,  
+                            maxHeight: 150, 
+                            minHeight: 150 
                         }}>
                             <CardActionArea>
                             <CardMedia
                                 onClick={detailedView}
                                 component="img"
+                                id= {record.record_id}
                                 image= {record.cover}
                                 alt= {record.title}
                                 sx={{ 
-                                    maxWidth: 200, 
-                                    minWidth: 200,  
-                                    maxHeight: 200, 
-                                    minHeight:200 
+                                    maxWidth: 150, 
+                                    minWidth: 150,  
+                                    maxHeight: 150, 
+                                    minHeight:150 
                                 }}
                             /> 
                             </CardActionArea>
                         </Card>
+                        <div className='record-title'>{record.title}</div>
                         </div>
                     ) 
                 })}
@@ -95,7 +113,7 @@ function Wishlist (){
             {records.map(record => {
                 if (record.owned === false)
                 return (
-                    <div className='cards' key={record.record_id}>
+                    <div className='cards' key={record.id}>
                         <Card sx={{ display: 'flex' }}>
                         <CardMedia
                             component="img"
@@ -103,31 +121,42 @@ function Wishlist (){
                             image={record.cover}
                             alt={record.title}
                         />
-                        <CardActionArea onClick={detailedView}>
+                        <CardActionArea id={record.record_id} onClick={detailedView}>
                         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                             <CardContent sx={{ flex: '1 0 auto' }}>
-                            <Typography component="div" variant="h5">
-                                {record.title}
-                            </Typography>
-                            <Typography variant="subtitle1" color="text.secondary" component="div">
-                            {record.year}
-                            </Typography>
-                            <Typography variant="subtitle1" color="text.secondary" component="div">
-                            {record.genre}
-                            </Typography>
-                            <Typography variant="subtitle1" color="text.secondary" component="div">
-                            {record.style}
-                            </Typography>
-                            </CardContent>
-                        </Box>
-                        </CardActionArea>
-
+                                <Typography component="div" variant="h6">
+                                    {record.title}
+                                </Typography>
+                                <Typography variant="subtitle1" color="text.secondary" component="div">
+                                    {record.year}  {record.country}
+                                </Typography>
+                                <Typography variant="subtitle1" color="text.secondary" component="div">
+                                    {record.genre}
+                                </Typography>
+                                <Typography variant="subtitle1" color="text.secondary" component="div">
+                                    {record.style}
+                                </Typography>
+                                </CardContent>
+                                </Box>
+                                </CardActionArea>
+                                <Box
+                                    m={1}
+                                    //margin
+                                    display="flex"
+                                    justifyContent="flex-end"
+                                    alignItems="flex-end"
+                                >
+                                    <CardActions onClick={addCollection()}>
+                                        <Button size="small">+ collection</Button>
+                                    </CardActions>     
+                                </Box>
                         </Card>
                     </div>
                 ) 
             })}
             </section>   
             }
+        </div>
         </>
     )
 }

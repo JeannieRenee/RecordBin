@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 
 // mui imports
 import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
+import Paper from '@mui/material/Paper';
+import InputBase from '@mui/material/InputBase';
+import IconButton from '@mui/material/IconButton';
+import SearchIcon from '@mui/icons-material/Search';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea } from '@mui/material';
@@ -23,11 +25,15 @@ function Browse(){
     const pagination = useSelector(store => store.browseBasic.pagination);
 
     const [search, setSearch]= useState('');
+    const [searchTerm, setSearchTerm]= useState('');
     const dispatch = useDispatch();
     const history = useHistory();
+    const  {id}  = useParams();
+
 
     const sendSearch = (evt) => {
         evt.preventDefault();
+        setSearchTerm(search);
         dispatch({
             type: "FETCH_BASIC_RESULTS",
             payload: search
@@ -42,43 +48,51 @@ function Browse(){
     }
  
     // push to detailed page on cover click
-    function detailedView(){
-        history.push(`/details`);
+    const detailedView = event => {
+        const id = event.currentTarget.id;
+        console.log('The id is', id);
+        dispatch({
+            type: "FETCH_DETAILED_RESULTS",
+            payload: id
+        });
+        history.push(`/details/${id}`);
     }
 
     return (
         <div>
-            <div>
+            <div className='browse-form'>
                 <Typography 
                     component="div" 
                     variant="h4"
                 >
                     What are you looking for?
                 </Typography>
-
-                <Box
+                    <Paper
                     component="form"
-                    sx={{
-                        '& > :not(style)': { m: 1, width: '50ch' },
-                    }}
-                    noValidate
-                    autoComplete="off"
-                >
-                    <TextField 
-                        id="outlined-basic" 
-                        label="Artist, Album, Genres, Year, Barcode..." 
-                        variant="outlined" 
+                    sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
+                    >
+                    <InputBase
+                        sx={{ ml: 1, flex: 1 }}
+                        placeholder="Search artists, albums and more..."
                         value= {search} 
                         onChange={(evt) => setSearch(evt.target.value)}
                     />
-                    <Button onClick={sendSearch} variant="contained">search</Button>
-                </Box>
+                    <IconButton type="submit" sx={{ p: '10px' }} aria-label="search"onClick={sendSearch}>
+                        <SearchIcon />
+                    </IconButton>
+                    </Paper>
 
                 { pagination &&
-                <p>{pagination.items} results</p>
+                <>
+                    <p>
+                        {pagination.items} results for {searchTerm}
+                        <br/>
+                        Page {pagination.page} of {pagination.pages}
+                    </p>
+                </>
                 }
 
-{ results && 
+            { results && 
             (<div>
                 <Box
                     m={1}
@@ -99,37 +113,39 @@ function Browse(){
                     </ToggleButtonGroup>
                 </Box>
                 { display ?
-                <section className="flex-container-grid">
+                <section className="flex-container-grid-browse">
                     {results.map(record => {
                         return (
                             <div className='cards'key={record.id}>
                             <Card sx={{ 
-                                maxWidth: 200, 
-                                minWidth: 200,  
-                                maxHeight: 200, 
-                                minHeight: 200 
+                                maxWidth: 150, 
+                                minWidth: 150,  
+                                maxHeight: 150, 
+                                minHeight: 150 
                             }}>
                                 <CardActionArea>
                                 <CardMedia
                                     onClick={detailedView}
                                     component="img"
+                                    id= {record.id}
                                     image= {record.cover_image}
                                     alt= {record.title}
                                     sx={{ 
-                                        maxWidth: 200, 
-                                        minWidth: 200,  
-                                        maxHeight: 200, 
-                                        minHeight:200 
+                                        maxWidth: 150, 
+                                        minWidth: 150,  
+                                        maxHeight: 150, 
+                                        minHeight:150 
                                     }}
                                 /> 
                                 </CardActionArea>
                             </Card>
+                            <div className='record-title'>{record.title}</div>
                             </div>
                         ) 
                     })}
                 </section>
             :
-                <section className="flex-container-list">
+                <section className="flex-container-list-browse">
                     {results.map(record => {
                         return (
                             <div className='cards' key={record.id}>
@@ -140,21 +156,21 @@ function Browse(){
                                     image={record.cover_image}
                                     alt={record.title}
                                 />
-                                <CardActionArea onClick={detailedView}>
+                        <CardActionArea id={record.id} onClick={detailedView}>
                                 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                                     <CardContent sx={{ flex: '1 0 auto' }}>
-                                    <Typography component="div" variant="h5">
-                                        {record.title}
-                                    </Typography>
-                                    <Typography variant="subtitle1" color="text.secondary" component="div">
-                                    {record.year}
-                                    </Typography>
-                                    <Typography variant="subtitle1" color="text.secondary" component="div">
-                                    {record.genre}
-                                    </Typography>
-                                    <Typography variant="subtitle1" color="text.secondary" component="div">
-                                    {record.style}
-                                    </Typography>
+                                        <Typography component="div" variant="h6">
+                                            {record.title}
+                                        </Typography>
+                                        <Typography variant="subtitle1" color="text.secondary" component="div">
+                                            {record.year} {record.country}
+                                        </Typography>
+                                        <Typography variant="subtitle1" color="text.secondary" component="div">
+                                            {record.genre}
+                                        </Typography>
+                                        <Typography variant="subtitle1" color="text.secondary" component="div">
+                                            {record.style}
+                                        </Typography>
                                     </CardContent>
                                 </Box>
                                 </CardActionArea>
