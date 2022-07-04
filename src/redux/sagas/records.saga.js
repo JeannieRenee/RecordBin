@@ -15,7 +15,7 @@ function* fetchRecords() {
 function* updateRecords() {
     // update records owned status
     try {
-        const records = yield axios.put(`/api/records/${records.data.id}`);
+        const records = yield axios.put(`/api/records`);
         yield put({ type: 'SET_RECORDS', payload: records.data });
     } catch {
         console.log('update records error');

@@ -20,6 +20,6 @@ export default function* rootSaga() {
     userSaga(),
     records(),
     browseBasicSaga(),
-    detailsSaga(),
+    detailsSaga()
   ]);
 }

@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
   });
 
 // update record owned status in db 
-router.put('/:id', (req, res) => {
+router.put('/', (req, res) => {
   const id = req.params.id;
   console.log('put request for id', id);
   let sqlQuery = `

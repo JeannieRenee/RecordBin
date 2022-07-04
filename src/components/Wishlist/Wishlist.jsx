@@ -45,11 +45,12 @@ function Wishlist (){
         history.push(`/details/${id}`);
     }
 
-    function addCollection(){
-        console.log('recordid')
+    const addCollection = event => {
+        const id = event.currentTarget.id;
+        console.log('id', id)
         dispatch({ 
             type: 'UPDATE_RECORDS', 
-            // payload: record.id 
+            payload: id 
         });
     }
 
@@ -146,7 +147,7 @@ function Wishlist (){
                                     justifyContent="flex-end"
                                     alignItems="flex-end"
                                 >
-                                    <CardActions onClick={addCollection()}>
+                                    <CardActions id= {record.id} onClick={addCollection}>
                                         <Button size="small">+ collection</Button>
                                     </CardActions>     
                                 </Box>
