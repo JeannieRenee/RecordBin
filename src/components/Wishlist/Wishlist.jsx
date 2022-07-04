@@ -45,6 +45,7 @@ function Wishlist (){
 
     return (
         <>
+        <div className='wishlist-container'>
             <Box
                 m={1}
                 //margin
@@ -133,6 +134,7 @@ function Wishlist (){
             })}
             </section>   
             }
+        </div>
         </>
     )
 }

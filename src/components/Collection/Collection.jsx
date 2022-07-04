@@ -48,6 +48,7 @@ function Collection (){
 
     return (
         <>
+        <div className='collection-container'>
             <Box
                 m={1}
                 //margin
@@ -134,6 +135,7 @@ function Collection (){
             })}
             </section>  
             }
+        </div>
         </>
     )
 }

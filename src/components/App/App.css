@@ -108,6 +108,14 @@ input {
 /* --------------------------------------------------------------------------------
 Collection + Wishlist Containers
 -------------------------------------------------------------------------------- */
+.collection-container {
+  padding-top: 10em;
+}
+
+.wishlist-container {
+  padding-top: 10em;
+}
+
 .flex-container-grid {
   display: flex;
   flex-direction: row;
