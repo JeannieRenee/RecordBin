@@ -4,8 +4,10 @@ import { useParams, useHistory } from 'react-router-dom';
 
 // mui imports
 import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
+import Paper from '@mui/material/Paper';
+import InputBase from '@mui/material/InputBase';
+import IconButton from '@mui/material/IconButton';
+import SearchIcon from '@mui/icons-material/Search';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea } from '@mui/material';
@@ -59,23 +61,20 @@ function Browse(){
                 >
                     What are you looking for?
                 </Typography>
-
-                <Box
+                    <Paper
                     component="form"
-                    sx={{
-                        '& > :not(style)': { m: 1, width: '50ch' },
-                    }}
-                    noValidate
-                    autoComplete="off"
-                >
-                    <TextField 
-                        id="outlined-basic" 
-                        variant="outlined" 
+                    sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
+                    >
+                    <InputBase
+                        sx={{ ml: 1, flex: 1 }}
+                        placeholder="Search artists, albums and more..."
                         value= {search} 
                         onChange={(evt) => setSearch(evt.target.value)}
                     />
-                    <Button onClick={sendSearch} variant="contained">search</Button>
-                </Box>
+                    <IconButton type="submit" sx={{ p: '10px' }} aria-label="search"onClick={sendSearch}>
+                        <SearchIcon />
+                    </IconButton>
+                    </Paper>
 
                 { pagination &&
                 <>
@@ -113,10 +112,10 @@ function Browse(){
                         return (
                             <div className='cards'key={record.id}>
                             <Card sx={{ 
-                                maxWidth: 200, 
-                                minWidth: 200,  
-                                maxHeight: 200, 
-                                minHeight: 200 
+                                maxWidth: 150, 
+                                minWidth: 150,  
+                                maxHeight: 150, 
+                                minHeight: 150 
                             }}>
                                 <CardActionArea>
                                 <CardMedia
@@ -125,10 +124,10 @@ function Browse(){
                                     image= {record.cover_image}
                                     alt= {record.title}
                                     sx={{ 
-                                        maxWidth: 200, 
-                                        minWidth: 200,  
-                                        maxHeight: 200, 
-                                        minHeight:200 
+                                        maxWidth: 150, 
+                                        minWidth: 150,  
+                                        maxHeight: 150, 
+                                        minHeight:150 
                                     }}
                                 /> 
                                 </CardActionArea>
@@ -146,14 +145,14 @@ function Browse(){
                                 <Card sx={{ display: 'flex' }}>
                                 <CardMedia
                                     component="img"
-                                    sx={{ width: 200 }}
+                                    sx={{ width: 150 }}
                                     image={record.cover_image}
                                     alt={record.title}
                                 />
                                 <CardActionArea onClick={detailedView}>
                                 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                                     <CardContent sx={{ flex: '1 0 auto' }}>
-                                        <Typography component="div" variant="h5">
+                                        <Typography component="div" variant="h6">
                                             {record.title}
                                         </Typography>
                                         <Typography variant="subtitle1" color="text.secondary" component="div">

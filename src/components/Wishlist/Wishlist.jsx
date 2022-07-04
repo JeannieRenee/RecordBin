@@ -9,6 +9,8 @@ import { CardActionArea } from '@mui/material';
 import Box from '@mui/material/Box';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
+import CardActions from '@mui/material/CardActions';
+import Button from '@mui/material/Button';
 //mui toggle
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
@@ -43,6 +45,14 @@ function Wishlist (){
         history.push(`/details/${id}`);
     }
 
+    function addCollection(){
+        console.log('recordid')
+        dispatch({ 
+            type: 'UPDATE_RECORDS', 
+            // payload: record.id 
+        });
+    }
+
     return (
         <>
         <div className='wishlist-container'>
@@ -72,10 +82,10 @@ function Wishlist (){
                     return (
                         <div className='cards' key={record.id}>
                         <Card sx={{ 
-                            maxWidth: 200, 
-                            minWidth: 200,  
-                            maxHeight: 200, 
-                            minHeight: 200 
+                            maxWidth: 150, 
+                            minWidth: 150,  
+                            maxHeight: 150, 
+                            minHeight: 150 
                         }}>
                             <CardActionArea>
                             <CardMedia
@@ -84,10 +94,10 @@ function Wishlist (){
                                 image= {record.cover}
                                 alt= {record.title}
                                 sx={{ 
-                                    maxWidth: 200, 
-                                    minWidth: 200,  
-                                    maxHeight: 200, 
-                                    minHeight:200 
+                                    maxWidth: 150, 
+                                    minWidth: 150,  
+                                    maxHeight: 150, 
+                                    minHeight:150 
                                 }}
                             /> 
                             </CardActionArea>
@@ -106,29 +116,39 @@ function Wishlist (){
                         <Card sx={{ display: 'flex' }}>
                         <CardMedia
                             component="img"
-                            sx={{ width: 200 }}
+                            sx={{ width: 150 }}
                             image={record.cover}
                             alt={record.title}
                         />
                         <CardActionArea onClick={detailedView}>
                         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                             <CardContent sx={{ flex: '1 0 auto' }}>
-                            <Typography component="div" variant="h5">
-                                {record.title}
-                            </Typography>
-                            <Typography variant="subtitle1" color="text.secondary" component="div">
-                            {record.year}  {record.country}
-                            </Typography>
-                            <Typography variant="subtitle1" color="text.secondary" component="div">
-                            {record.genre}
-                            </Typography>
-                            <Typography variant="subtitle1" color="text.secondary" component="div">
-                            {record.style}
-                            </Typography>
-                            </CardContent>
-                        </Box>
-                        </CardActionArea>
-
+                                <Typography component="div" variant="h6">
+                                    {record.title}
+                                </Typography>
+                                <Typography variant="subtitle1" color="text.secondary" component="div">
+                                    {record.year}  {record.country}
+                                </Typography>
+                                <Typography variant="subtitle1" color="text.secondary" component="div">
+                                    {record.genre}
+                                </Typography>
+                                <Typography variant="subtitle1" color="text.secondary" component="div">
+                                    {record.style}
+                                </Typography>
+                                </CardContent>
+                                </Box>
+                                </CardActionArea>
+                                <Box
+                                    m={1}
+                                    //margin
+                                    display="flex"
+                                    justifyContent="flex-end"
+                                    alignItems="flex-end"
+                                >
+                                    <CardActions onClick={addCollection()}>
+                                        <Button size="small">+ collection</Button>
+                                    </CardActions>     
+                                </Box>
                         </Card>
                     </div>
                 ) 

@@ -72,10 +72,10 @@ function Collection (){
                     return (
                         <div className='cards' key={record.id}>
                         <Card sx={{ 
-                            maxWidth: 200, 
-                            minWidth: 200,  
-                            maxHeight: 200, 
-                            minHeight: 200 
+                            maxWidth: 150, 
+                            minWidth: 150,  
+                            maxHeight: 150, 
+                            minHeight: 150 
                         }}>
                             <CardActionArea>
                             <CardMedia
@@ -84,10 +84,10 @@ function Collection (){
                                 image= {record.cover}
                                 alt= {record.title}
                                 sx={{ 
-                                    maxWidth: 200, 
-                                    minWidth: 200,  
-                                    maxHeight: 200, 
-                                    minHeight:200 
+                                    maxWidth: 150, 
+                                    minWidth: 150,  
+                                    maxHeight: 150, 
+                                    minHeight:150 
                                 }}
                             /> 
                             </CardActionArea>
@@ -106,25 +106,25 @@ function Collection (){
                         <Card sx={{ display: 'flex' }}>
                         <CardMedia
                             component="img"
-                            sx={{ width: 200 }}
+                            sx={{ width: 150 }}
                             image={record.cover}
                             alt={record.title}
                         />
                         <CardActionArea onClick={detailedView}>
                         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                             <CardContent sx={{ flex: '1 0 auto' }}>
-                            <Typography component="div" variant="h5">
-                                {record.title}
-                            </Typography>
-                            <Typography variant="subtitle1" color="text.secondary" component="div">
-                            {record.year} {record.country}
-                            </Typography>
-                            <Typography variant="subtitle1" color="text.secondary" component="div">
-                            {record.genre}
-                            </Typography>
-                            <Typography variant="subtitle1" color="text.secondary" component="div">
-                            {record.style}
-                            </Typography>
+                                <Typography component="div" variant="h6">
+                                    {record.title}
+                                </Typography>
+                                <Typography variant="subtitle1" color="text.secondary" component="div">
+                                    {record.year} {record.country}
+                                </Typography>
+                                <Typography variant="subtitle1" color="text.secondary" component="div">
+                                    {record.genre}
+                                </Typography>
+                                <Typography variant="subtitle1" color="text.secondary" component="div">
+                                    {record.style}
+                                </Typography>
                             </CardContent>
                         </Box>
                         </CardActionArea >
