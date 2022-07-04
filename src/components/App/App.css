@@ -117,7 +117,7 @@ Collection + Wishlist Containers
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: left;
+  justify-content: center;
   gap: 2em;
   margin-left: 25%;
 }
@@ -125,7 +125,7 @@ Collection + Wishlist Containers
 .flex-container-list {
   display: flex;
   flex-direction: column;
-  justify-content: left;
+  justify-content: center;
   gap: 2em;
   margin-left: 25%;
 }

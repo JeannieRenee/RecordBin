@@ -69,7 +69,7 @@ function Wishlist (){
                 {records.map(record => {
                     if (record.owned === false)
                     return (
-                        <div className='cards' key={record.record_id}>
+                        <div className='cards' key={record.id}>
                         <Card sx={{ 
                             maxWidth: 200, 
                             minWidth: 200,  
@@ -100,7 +100,7 @@ function Wishlist (){
             {records.map(record => {
                 if (record.owned === false)
                 return (
-                    <div className='cards' key={record.record_id}>
+                    <div className='cards' key={record.id}>
                         <Card sx={{ display: 'flex' }}>
                         <CardMedia
                             component="img"

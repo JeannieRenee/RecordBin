@@ -80,7 +80,7 @@ function Browse(){
                 <p>{pagination.items} results</p>
                 }
 
-{ results && 
+            { results && 
             (<div>
                 <Box
                     m={1}
