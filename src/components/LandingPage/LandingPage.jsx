@@ -20,7 +20,7 @@ function LandingPage() {
         <div className="grid-col grid-col_8">
         <h1>[RecordBin]</h1>
           <h2>
-            Praesent consectetur orci dui, id elementum eros facilisis id. 
+          An app built around on the Discogs system- giving access to bin diggers on the go.
           </h2>
           <>
             <button className="btn btn_sizeMin" onClick={onCreate}>

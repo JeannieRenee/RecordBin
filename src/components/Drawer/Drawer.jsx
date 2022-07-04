@@ -20,7 +20,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import LogoutIcon from '@mui/icons-material/Logout';
 import InfoIcon from '@mui/icons-material/Info';
 
-const drawerWidth = 240;
+const drawerWidth = 270;
 
 function ResponsiveDrawer(props) {
   const { window } = props;
@@ -58,10 +58,13 @@ function ResponsiveDrawer(props) {
 
     const drawerLoggedIn = (
         <div>
-          <Toolbar />
-          <img src={require('./logo.png')}/>
+          <Toolbar /> 
+          <div className='logo'>
+            <img src={require('./logo.png')}/>
+          </div>
           <Divider />
           <List>
+            <div className='sidebar'>
               <ListItem key='Collection' disablePadding onClick={collection}>
                 <ListItemButton>
                   <ListItemIcon>
@@ -88,10 +91,11 @@ function ResponsiveDrawer(props) {
                   <ListItemText primary="Browse" />
                 </ListItemButton>
               </ListItem>
-
+          </div>
           </List>
           <Divider />
           <List>
+          <div>
               <ListItem key='About' disablePadding onClick={about}>
                 <ListItemButton>
                   <ListItemIcon>
@@ -109,6 +113,7 @@ function ResponsiveDrawer(props) {
                   <ListItemText primary="LogOut" />
                 </ListItemButton>
               </ListItem>
+            </div>
           </List>
         </div>
       );

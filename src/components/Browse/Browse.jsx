@@ -137,7 +137,7 @@ function Browse(){
                                 <Card sx={{ display: 'flex' }}>
                                 <CardMedia
                                     component="img"
-                                    sx={{ width: 150 }}
+                                    sx={{ width: 200 }}
                                     image={record.cover_image}
                                     alt={record.title}
                                 />

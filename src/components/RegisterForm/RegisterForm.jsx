@@ -65,7 +65,7 @@ function RegisterForm() {
             history.push('/home');
           }}
         >
-          Home
+          Back
         </button>
       </center>
     </form>
