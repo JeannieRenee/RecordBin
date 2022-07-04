@@ -22,7 +22,6 @@ function Wishlist (){
     const dispatch = useDispatch();
     const history = useHistory()
     const records = useSelector(store => store.records);
-    let  { id }  = useParams();
 
     // on page load, run this
     useEffect(() => {
@@ -75,7 +74,7 @@ function Wishlist (){
                 </ToggleButtonGroup>
             </Box>
             
-            { display ?
+            { !display ?
                 <section className="flex-container-grid">
                 {records.map(record => {
                     if (record.owned === false)

@@ -14,7 +14,6 @@ const axios = require('axios');
     method: 'GET', 
     url: `https://api.discogs.com/database/search?q=${searchterm}&format=vinyl&key=${process.env.DISCOGS_KEY}&secret=${process.env.DISCOGS_SECRET}`,
   }).then((response) => {
-        console.log(response.data.results[0].title)
         res.send(response.data);
   }).catch((err) => {
         console.log(err)

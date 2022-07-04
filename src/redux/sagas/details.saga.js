@@ -5,7 +5,7 @@ import axios from 'axios';
 function* fetchResults(action) {
     try {
         console.log("the record id is", action.payload);
-        let searchTerm = action.payload;
+        let recordId = action.payload;
         const response = yield axios.get(`/api/details/${recordId}`);
         //sends results to search reducer below
         yield put({ type: "SET_RESULTS_DETAILS", payload: response.data });

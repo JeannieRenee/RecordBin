@@ -65,7 +65,7 @@ function Collection (){
                 
                 </ToggleButtonGroup>
             </Box>
-            { display ?
+            { !display ?
                 <section className="flex-container-grid">
                 {records.map(record => {
                     if (record.owned)
