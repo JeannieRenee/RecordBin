@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
+import './Collection.css';
+
 
 // mui imports
 import Card from '@mui/material/Card';

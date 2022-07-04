@@ -49,8 +49,9 @@ function ResponsiveDrawer(props) {
     }
 
     function logout(){
-        dispatch({ type: 'LOGOUT' });
         history.push(`/home`);
+        dispatch({ type: 'LOGOUT' });
+
     }
 
     const drawerLoggedIn = (

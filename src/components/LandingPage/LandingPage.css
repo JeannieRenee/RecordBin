@@ -83,4 +83,5 @@ Grid
 html {
   background-Image: url('bg.png'); 
   background-size: cover;
+  background-repeat: no-repeat;
 }

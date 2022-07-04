@@ -6,10 +6,7 @@ import './LandingPage.css';
 import RegisterForm from '../RegisterForm/RegisterForm';
 
 function LandingPage() {
-  const [heading, setHeading] = useState('Hey there');
-  const [subHeading, setsubHeading] = useState('Welcome to RecordBin');
-  const [text, setText] = useState(`We're glad you're here`);
-
+  const [heading, setHeading] = useState('[RecordBin]');
 
   const history = useHistory();
 
@@ -20,26 +17,15 @@ function LandingPage() {
   return (
     <div className="container">
       <h1>{heading}</h1>
-      <h3>{subHeading}</h3>
-      <h4>{text}</h4>
+
 
 
       <div className="grid">
         <div className="grid-col grid-col_8">
-          <p>
-            
-          </p>
-
-          <p>
+          <h3>
             Praesent consectetur orci dui, id elementum eros facilisis id. Sed
-            id dolor in augue porttitor faucibus eget sit amet ante. Nunc
-            consectetur placerat pharetra. Aenean gravida ex ut erat commodo, ut
-            finibus metus facilisis. Nullam eget lectus non urna rhoncus
-            accumsan quis id massa. Curabitur sit amet dolor nisl. Proin
-            euismod, augue at condimentum rhoncus, massa lorem semper lacus, sed
-            lobortis augue mi vel felis. Duis ultrices sapien at est convallis
-            congue.
-          </p>
+            id dolor in augue porttitor faucibus eget sit amet ante. 
+          </h3>
 
         </div>
         <div className="grid-col grid-col_4">
