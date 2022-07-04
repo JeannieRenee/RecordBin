@@ -28,6 +28,7 @@ router.put('/', (req, res) => {
     WHERE "id" = $1;
   `;
   const sqlParams = [
+    id
   ];
   pool.query(sqlQuery, sqlParams)
     .then(() => {
