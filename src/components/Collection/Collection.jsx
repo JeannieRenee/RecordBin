@@ -92,6 +92,7 @@ function Collection (){
                             /> 
                             </CardActionArea>
                         </Card>
+                        <div className='record-title'>{record.title}</div>
                         </div>
                     ) 
                 })}
@@ -116,7 +117,7 @@ function Collection (){
                                 {record.title}
                             </Typography>
                             <Typography variant="subtitle1" color="text.secondary" component="div">
-                            {record.year}
+                            {record.year} {record.country}
                             </Typography>
                             <Typography variant="subtitle1" color="text.secondary" component="div">
                             {record.genre}

@@ -78,7 +78,13 @@ function Browse(){
                 </Box>
 
                 { pagination &&
-                <p>{pagination.items} results for {searchTerm}</p>
+                <>
+                    <p>
+                        {pagination.items} results for {searchTerm}
+                        <br/>
+                        Page {pagination.page} of {pagination.pages}
+                    </p>
+                </>
                 }
 
             { results && 
@@ -127,6 +133,7 @@ function Browse(){
                                 /> 
                                 </CardActionArea>
                             </Card>
+                            <div className='record-title'>{record.title}</div>
                             </div>
                         ) 
                     })}
@@ -146,18 +153,18 @@ function Browse(){
                                 <CardActionArea onClick={detailedView}>
                                 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                                     <CardContent sx={{ flex: '1 0 auto' }}>
-                                    <Typography component="div" variant="h5">
-                                        {record.title}
-                                    </Typography>
-                                    <Typography variant="subtitle1" color="text.secondary" component="div">
-                                    {record.year}
-                                    </Typography>
-                                    <Typography variant="subtitle1" color="text.secondary" component="div">
-                                    {record.genre}
-                                    </Typography>
-                                    <Typography variant="subtitle1" color="text.secondary" component="div">
-                                    {record.style}
-                                    </Typography>
+                                        <Typography component="div" variant="h5">
+                                            {record.title}
+                                        </Typography>
+                                        <Typography variant="subtitle1" color="text.secondary" component="div">
+                                            {record.year} {record.country}
+                                        </Typography>
+                                        <Typography variant="subtitle1" color="text.secondary" component="div">
+                                            {record.genre}
+                                        </Typography>
+                                        <Typography variant="subtitle1" color="text.secondary" component="div">
+                                            {record.style}
+                                        </Typography>
                                     </CardContent>
                                 </Box>
                                 </CardActionArea>
