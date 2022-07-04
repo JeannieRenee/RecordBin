@@ -19,8 +19,8 @@ router.get('/', (req, res) => {
   });
 
 // update record owned status in db 
-router.put('/', (req, res) => {
-  const id = req.params.id;
+router.put('/:id', (req, res) => {
+  const  id  = req.params.id;
   console.log('put request for id', id);
   let sqlQuery = `
     UPDATE "records" 
@@ -32,10 +32,8 @@ router.put('/', (req, res) => {
   ];
   pool.query(sqlQuery, sqlParams)
     .then(() => {
-      console.log('record moved to collection');
       res.sendStatus(204);
     }).catch( (error) => {
-      console.log(`Error making database query`, error);
       res.sendStatus(500); 
     })
 })

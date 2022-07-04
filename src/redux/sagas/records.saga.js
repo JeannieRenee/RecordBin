@@ -12,14 +12,13 @@ function* fetchRecords() {
     }    
 };
 
-function* updateRecords() {
+function* updateRecords(action) {
     // update records owned status
     try {
-        const records = yield axios.put(`/api/records`);
-        yield put({ type: 'SET_RECORDS', payload: records.data });
+        yield axios.put(`/api/records/`+ action.payload);
     } catch {
         console.log('update records error');
-    }    
+    } yield put({ type: 'FETCH_RECORDS' })
 };
 
 function* recordsSaga() {
