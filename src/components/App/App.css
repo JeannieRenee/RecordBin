@@ -177,10 +177,15 @@ Browse Containers
   margin-top: 40px;
 }
 
-
 .record-title {
   width: 150px;
   margin: auto;
   text-align: center;
+}
+
+.detailed-view {
+  margin-left: 300px;
+  margin-right: 30px;
+  padding-top: 150px;
 }
 

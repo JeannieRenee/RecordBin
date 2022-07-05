@@ -19,6 +19,8 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 // mui icons 
 import ListIcon from '@mui/icons-material/List';
 import GridViewIcon from '@mui/icons-material/GridView';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 function Browse(){
     const results = useSelector(store => store.browseBasic.results);
@@ -86,7 +88,12 @@ function Browse(){
                 <>
                     <p>
                         {pagination.items} results for {searchTerm}
-                        <br/>
+                    </p>
+                    <div className='page-nav-buttons'>
+                        <IconButton><ArrowBackIosIcon/>Previous</IconButton>
+                        <IconButton>Next<ArrowForwardIosIcon/></IconButton>
+                    </div>
+                    <p>
                         Page {pagination.page} of {pagination.pages}
                     </p>
                 </>
