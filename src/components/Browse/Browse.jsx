@@ -19,6 +19,8 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 // mui icons 
 import ListIcon from '@mui/icons-material/List';
 import GridViewIcon from '@mui/icons-material/GridView';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 function Browse(){
     const results = useSelector(store => store.browseBasic.results);
@@ -77,21 +79,15 @@ function Browse(){
                         value= {search} 
                         onChange={(evt) => setSearch(evt.target.value)}
                     />
-                    <IconButton type="submit" sx={{ p: '10px' }} aria-label="search"onClick={sendSearch}>
+                    <IconButton type="submit" sx={{ p: '10px' }} aria-label="search" onClick={sendSearch}>
                         <SearchIcon />
                     </IconButton>
                     </Paper>
-
-                { pagination &&
-                <>
-                    <p>
-                        {pagination.items} results for {searchTerm}
-                        <br/>
-                        Page {pagination.page} of {pagination.pages}
-                    </p>
-                </>
-                }
-
+                    { pagination &&
+                        <p>
+                            {pagination.items} results for {searchTerm}
+                        </p>
+                    }
             { results && 
             (<div>
                 <Box
@@ -112,7 +108,20 @@ function Browse(){
 
                     </ToggleButtonGroup>
                 </Box>
-                { display ?
+
+                {/* { pagination &&
+                <center>
+                    <div className='page-nav-buttons'>
+                        <IconButton ><ArrowBackIosIcon/>Previous</IconButton>
+                        <IconButton onClick={nextPage}>Next<ArrowForwardIosIcon/></IconButton>
+                    </div>
+                    <p>
+                        Page {pagination.page} of {pagination.pages}
+                    </p>
+                </center>
+                } */}
+
+                { !display ?
                 <section className="flex-container-grid-browse">
                     {results.map(record => {
                         return (
