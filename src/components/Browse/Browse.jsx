@@ -54,11 +54,6 @@ function Browse(){
     // push to detailed page on cover click
     const detailedView = event => {
         const id = event.currentTarget.id;
-        console.log('The id is', id);
-        dispatch({
-            type: "FETCH_DETAILED_RESULTS",
-            payload: id
-        });
         history.push(`/details/${id}`);
     }
 
@@ -247,13 +242,13 @@ function Browse(){
 
                                     <Button 
                                         size="small" 
-                                        id= {record.id} 
-                                        title= {record.title} 
-                                        image={record.cover_image}
-                                        country= {record.country}
+                                        id= {record.id}
+                                        title= {record.title}
+                                        cover_image= {record.cover_image}
+                                        country= {record.country} 
                                         year= {record.year} 
                                         genre= {record.genre} 
-                                        onClick={addCollection}
+                                        onClick= {addWishlist}
                                     >
                                         +collection
                                     </Button>

@@ -6,8 +6,18 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 function DetailsView(){
     const record = useSelector(store => store.details);
-
     const history = useHistory()
+    const dispatch = useDispatch();
+    // grab id from params
+    let  {id}  = useParams();
+
+    // page load get the record data
+    useEffect(() => {
+        dispatch({
+            type: "FETCH_DETAILED_RESULTS",
+            payload: id
+        });
+    }, []);
 
     return (
         <div className='detailed-view'>
@@ -18,7 +28,7 @@ function DetailsView(){
                 Back
             </IconButton>
             { record.title && <p>{record.title} - {record.artists_sort}</p> }
-            { record.country && <p>{record.country} version released in {record.year} </p>}
+            {/* { record.country && <p>{record.country} version released in {record.year} </p>}
             { record.community.want && <p> Want: {record.community.want} </p> } 
             { record.community.have && <p> Have: {record.community.have} </p> } 
             { record.community.rating && 
@@ -30,7 +40,7 @@ function DetailsView(){
             { record.labels.name && <p>Label: {record.labels.name}</p> }
             { record.genres && <p>Genres: {record.genres}</p> }
             { record.styles && <p>Styles: {record.styles}</p> }
-            { record.identifiers[0] && <p>Barcode: {record.identifiers[0].value}</p> }
+            { record.identifiers[0] && <p>Barcode: {record.identifiers[0].value}</p> } */}
             { record.tracklist &&
                 <>
                     <p>Tracks:</p>
