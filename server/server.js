@@ -31,7 +31,6 @@ app.use('/api/records', recordsRouter);
 app.use('/api/browse', browseRouter);
 app.use('/api/details', detailsRouter);
 
-
 // Serve static files
 app.use(express.static('build'));
 

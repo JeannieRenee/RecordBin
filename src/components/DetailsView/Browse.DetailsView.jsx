@@ -2,18 +2,30 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 
+//mui icon
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import IconButton from '@mui/material/IconButton';
+
 function DetailsView(){
     const record = useSelector(store => store.details);
-    const history = useHistory()
 
+    const history = useHistory()
 
     return (
         <div className='detailed-view'>
+            <div className='details-back-button'>
+                <IconButton onClick={history.goBack}><ArrowBackIosIcon/><ArrowBackIosIcon/><ArrowBackIosIcon/>Back</IconButton>
+            </div>
+            <br/>
             { record.title && <p>{record.title} - {record.artists_sort}</p> }
-            { record.country && <p>{record.country} version released in {record.year}.</p>}
-            { record.community.want && <p> Want: {record.community.want} </p> }
-            { record.community.have && <p> Have: {record.community.have}</p> }
-            { record.community.rating && <p>Rating: {record.community.rating.average} out of {record.community.rating.count} votes</p> }
+            { record.country && <p>{record.country} version released in {record.year} </p>}
+            { record.community.want && <p> Want: {record.community.want} </p> } 
+            { record.community.have && <p> Have: {record.community.have} </p> } 
+            { record.community.rating && 
+                <p> Rating: {record.community.rating.average} 
+                    out of {record.community.rating.count} votes 
+                </p>
+            }
             { record.labels.name && <p>Label: {record.labels.name}</p> }
             { record.genres && <p>Genres: {record.genres}</p> }
             { record.styles && <p>Styles: {record.styles}</p> }

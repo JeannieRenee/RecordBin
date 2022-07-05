@@ -60,6 +60,19 @@ function Browse(){
         history.push(`/details/${id}`);
     }
 
+    function nextPage(){
+        dispatch({
+            type: "NEXT_PAGE",
+            payload: pagination.urls.next
+        });
+    }
+
+    // function prevPage(){
+    //     dispatch({
+    //         type: "PREVIOUS_PAGE",
+    //     });
+    // }
+
     return (
         <div>
             <div className='browse-form'>
@@ -79,26 +92,15 @@ function Browse(){
                         value= {search} 
                         onChange={(evt) => setSearch(evt.target.value)}
                     />
-                    <IconButton type="submit" sx={{ p: '10px' }} aria-label="search"onClick={sendSearch}>
+                    <IconButton type="submit" sx={{ p: '10px' }} aria-label="search" onClick={sendSearch}>
                         <SearchIcon />
                     </IconButton>
                     </Paper>
-
-                { pagination &&
-                <>
-                    <p>
-                        {pagination.items} results for {searchTerm}
-                    </p>
-                    <div className='page-nav-buttons'>
-                        <IconButton><ArrowBackIosIcon/>Previous</IconButton>
-                        <IconButton>Next<ArrowForwardIosIcon/></IconButton>
-                    </div>
-                    <p>
-                        Page {pagination.page} of {pagination.pages}
-                    </p>
-                </>
-                }
-
+                    { pagination &&
+                        <p>
+                            {pagination.items} results for {searchTerm}
+                        </p>
+                    }
             { results && 
             (<div>
                 <Box
@@ -119,6 +121,19 @@ function Browse(){
 
                     </ToggleButtonGroup>
                 </Box>
+
+                { pagination &&
+                <center>
+                    <div className='page-nav-buttons'>
+                        <IconButton ><ArrowBackIosIcon/>Previous</IconButton>
+                        <IconButton onClick={nextPage}>Next<ArrowForwardIosIcon/></IconButton>
+                    </div>
+                    <p>
+                        Page {pagination.page} of {pagination.pages}
+                    </p>
+                </center>
+                }
+
                 { !display ?
                 <section className="flex-container-grid-browse">
                     {results.map(record => {
