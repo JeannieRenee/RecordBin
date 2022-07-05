@@ -10,7 +10,7 @@ function DetailsView(){
     const history = useHistory()
 
     return (
-        <div className='detailed-view' key={record.year}>
+        <div className='detailed-view'>
             <IconButton onClick={history.goBack}>
                 <ArrowBackIosIcon />
                 <ArrowBackIosIcon />
@@ -22,7 +22,8 @@ function DetailsView(){
             { record.community.want && <p> Want: {record.community.want} </p> } 
             { record.community.have && <p> Have: {record.community.have} </p> } 
             { record.community.rating && 
-                <p> Rating: {record.community.rating.average} 
+                <p> 
+                    Rating: {record.community.rating.average} 
                     out of {record.community.rating.count} votes 
                 </p>
             }

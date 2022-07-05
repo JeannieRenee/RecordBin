@@ -26,7 +26,7 @@ Button
   border-color: #014041;
   border-width: 1px 1px 3px;
   border-radius: 4px;
-  background-color: #FF7F50;
+  background-color: #d67753;
   color: #f8f8f8;
   font-size: 1.1rem;
   outline: 0;
@@ -49,7 +49,7 @@ Button
 }
 
 .btn:hover {
-  background-color: #ff6933;
+  background-color: #d67753;
   text-decoration: none;
 }
 
@@ -66,8 +66,8 @@ Button
 
 .btn_asLink:hover {
   background-color: transparent;
-  border-color: #008183;
-  color: #008183;
+  border-color: #d67753;
+  color: #d67753;
 }
 
 /* --------------------------------------------------------------------------------
@@ -189,3 +189,6 @@ Browse Containers
   padding-top: 150px;
 }
 
+.sidebar-bottom {
+
+}
