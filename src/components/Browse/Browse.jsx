@@ -119,7 +119,7 @@ function Browse(){
 
                     </ToggleButtonGroup>
                 </Box>
-                { display ?
+                { !display ?
                 <section className="flex-container-grid-browse">
                     {results.map(record => {
                         return (
