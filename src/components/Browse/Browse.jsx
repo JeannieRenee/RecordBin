@@ -13,6 +13,8 @@ import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea } from '@mui/material';
 import Box from '@mui/material/Box';
 import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+
 //mui toggle
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
@@ -58,6 +60,46 @@ function Browse(){
             payload: id
         });
         history.push(`/details/${id}`);
+    }
+
+    const addCollection = event => {
+        const id = event.target.id;
+        const title = event.target.title;
+        const cover_image = event.target.cover_image;
+        const country = event.target.country;
+        const year = event.target.year;
+        const genre = event.target.genre;
+
+        console.log('id:', id)
+        console.log('title:', title)
+        console.log('cover_image:', cover_image)
+        console.log('country:', country)
+        console.log('year:', year)
+        console.log('genre:', genre)
+        // dispatch({ 
+        //     type: 'UPDATE_RECORDS', 
+        //     payload: id 
+        // });
+    }
+
+    const addWishlist = event => {
+        const id = event.target.id;
+        const title = event.target.title;
+        const cover_image = event.target.cover_image;
+        const country = event.target.country;
+        const year = event.target.year;
+        const genre = event.target.genre;
+
+        console.log('id:', id)
+        console.log('title:', title)
+        console.log('cover_image:', cover_image)
+        console.log('country:', country)
+        console.log('year:', year)
+        console.log('genre:', genre)
+        // dispatch({ 
+        //     type: 'UPDATE_RECORDS', 
+        //     payload: id 
+        // });
     }
 
     return (
@@ -165,25 +207,57 @@ function Browse(){
                                     image={record.cover_image}
                                     alt={record.title}
                                 />
-                        <CardActionArea id={record.id} onClick={detailedView}>
-                                <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                                    <CardContent sx={{ flex: '1 0 auto' }}>
-                                        <Typography component="div" variant="h6">
-                                            {record.title}
-                                        </Typography>
-                                        <Typography variant="subtitle1" color="text.secondary" component="div">
-                                            {record.year} {record.country}
-                                        </Typography>
-                                        <Typography variant="subtitle1" color="text.secondary" component="div">
-                                            {record.genre}
-                                        </Typography>
-                                        <Typography variant="subtitle1" color="text.secondary" component="div">
-                                            {record.style}
-                                        </Typography>
-                                    </CardContent>
-                                </Box>
+                                <CardActionArea id={record.id} onClick={detailedView}>
+                                    <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                                        <CardContent sx={{ flex: '1 0 auto' }}>
+                                            <Typography component="div" variant="h6">
+                                                {record.title}
+                                            </Typography>
+                                            <Typography variant="subtitle1" color="text.secondary" component="div">
+                                                {record.year} {record.country}
+                                            </Typography>
+                                            <Typography variant="subtitle1" color="text.secondary" component="div">
+                                                {record.genre}
+                                            </Typography>
+                                            <Typography variant="subtitle1" color="text.secondary" component="div">
+                                                {record.style}
+                                            </Typography>
+                                        </CardContent>
+                                    </Box>
                                 </CardActionArea>
+                                <Box
+                                    m={1}
+                                    margin
+                                    display="flex"
+                                    justifyContent="flex-end"
+                                    alignItems="flex-end"
+                                >
+                                    <Button 
+                                        size="small" 
+                                        id= {record.id}
+                                        title= {record.title}
+                                        cover_image= {record.cover_image}
+                                        country= {record.country} 
+                                        year= {record.year} 
+                                        genre= {record.genre} 
+                                        onClick= {addWishlist}
+                                    >
+                                        +wishlist
+                                    </Button>
 
+                                    <Button 
+                                        size="small" 
+                                        id= {record.id} 
+                                        title= {record.title} 
+                                        image={record.cover_image}
+                                        country= {record.country}
+                                        year= {record.year} 
+                                        genre= {record.genre} 
+                                        onClick={addCollection}
+                                    >
+                                        +collection
+                                    </Button>
+                                </Box>   
                                 </Card>
                             </div>
                         ) 

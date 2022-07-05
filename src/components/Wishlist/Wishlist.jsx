@@ -154,13 +154,9 @@ function Wishlist (){
                             justifyContent="flex-end"
                             alignItems="flex-end"
                         >
-                            <CardActions id= {record.id} onClick={addCollection}>
-                                <Button size="small">+ collection</Button>
-                            </CardActions>     
+                            <Button size="small" id= {record.id} onClick={addCollection}>+collection</Button>
+                            <Button size="small" id= {record.id} onClick={removeRecord}>delete</Button>
 
-                            <CardActions id= {record.id} onClick={removeRecord}>
-                                <Button size="small">delete</Button>
-                            </CardActions>   
                         </Box>
                         </Card>
                     </div>

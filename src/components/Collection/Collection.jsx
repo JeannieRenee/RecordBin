@@ -138,9 +138,15 @@ function Collection (){
                             </CardContent>
                         </Box>
                         </CardActionArea >
-                        <CardActions id= {record.id} onClick={removeRecord}>
-                            <Button size="small">delete</Button>
-                        </CardActions>   
+                        <Box
+                            m={1}
+                            //margin
+                            display="flex"
+                            justifyContent="flex-end"
+                            alignItems="flex-end"
+                        >
+                            <Button size="small" id= {record.id} onClick={removeRecord}>delete</Button>
+                        </Box>   
                         </Card>
                     </div>
                 ) 
