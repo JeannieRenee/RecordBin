@@ -5,6 +5,9 @@ import { useParams, useHistory } from 'react-router-dom';
 // mui imports
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
+import CardActions from '@mui/material/CardActions';
+import Button from '@mui/material/Button';
+
 import { CardActionArea } from '@mui/material';
 import Box from '@mui/material/Box';
 import CardContent from '@mui/material/CardContent';
@@ -15,6 +18,7 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 // mui icons 
 import ListIcon from '@mui/icons-material/List';
 import GridViewIcon from '@mui/icons-material/GridView';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 function Collection (){
     const dispatch = useDispatch();
@@ -41,6 +45,15 @@ function Collection (){
             payload: id
         });
         history.push(`/details/${id}`);
+    }
+
+    const removeRecord = event => {
+        const id = event.currentTarget.id;
+        console.log('id', id)
+        dispatch({ 
+            type: 'DELETE_RECORD', 
+            payload: id 
+        });
     }
 
     return (
@@ -122,12 +135,12 @@ function Collection (){
                                 <Typography variant="subtitle1" color="text.secondary" component="div">
                                     {record.genre}
                                 </Typography>
-                                <Typography variant="subtitle1" color="text.secondary" component="div">
-                                    {record.style}
-                                </Typography>
                             </CardContent>
                         </Box>
                         </CardActionArea >
+                        <CardActions id= {record.id} onClick={removeRecord}>
+                            <Button size="small">delete</Button>
+                        </CardActions>   
                         </Card>
                     </div>
                 ) 

@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
-
-//mui icon
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import IconButton from '@mui/material/IconButton';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 function DetailsView(){
     const record = useSelector(store => store.details);
@@ -12,11 +10,13 @@ function DetailsView(){
     const history = useHistory()
 
     return (
-        <div className='detailed-view'>
-            <div className='details-back-button'>
-                <IconButton onClick={history.goBack}><ArrowBackIosIcon/><ArrowBackIosIcon/><ArrowBackIosIcon/>Back</IconButton>
-            </div>
-            <br/>
+        <div className='detailed-view' key={record.year}>
+            <IconButton onClick={history.goBack}>
+                <ArrowBackIosIcon />
+                <ArrowBackIosIcon />
+                <ArrowBackIosIcon />
+                Back
+            </IconButton>
             { record.title && <p>{record.title} - {record.artists_sort}</p> }
             { record.country && <p>{record.country} version released in {record.year} </p>}
             { record.community.want && <p> Want: {record.community.want} </p> } 

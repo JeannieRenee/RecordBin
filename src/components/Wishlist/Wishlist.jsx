@@ -54,6 +54,15 @@ function Wishlist (){
         });
     }
 
+    const removeRecord = event => {
+        const id = event.currentTarget.id;
+        console.log('id', id)
+        dispatch({ 
+            type: 'DELETE_RECORD', 
+            payload: id 
+        });
+    }
+
     return (
         <>
         <div className='wishlist-container'>
@@ -134,23 +143,25 @@ function Wishlist (){
                                 <Typography variant="subtitle1" color="text.secondary" component="div">
                                     {record.genre}
                                 </Typography>
-                                <Typography variant="subtitle1" color="text.secondary" component="div">
-                                    {record.style}
-                                </Typography>
-                                </CardContent>
-                                </Box>
-                                </CardActionArea>
-                                <Box
-                                    m={1}
-                                    //margin
-                                    display="flex"
-                                    justifyContent="flex-end"
-                                    alignItems="flex-end"
-                                >
-                                    <CardActions id= {record.id} onClick={addCollection}>
-                                        <Button size="small">+ collection</Button>
-                                    </CardActions>     
-                                </Box>
+
+                            </CardContent>
+                        </Box>
+                        </CardActionArea>
+                        <Box
+                            m={1}
+                            //margin
+                            display="flex"
+                            justifyContent="flex-end"
+                            alignItems="flex-end"
+                        >
+                            <CardActions id= {record.id} onClick={addCollection}>
+                                <Button size="small">+ collection</Button>
+                            </CardActions>     
+
+                            <CardActions id= {record.id} onClick={removeRecord}>
+                                <Button size="small">delete</Button>
+                            </CardActions>   
+                        </Box>
                         </Card>
                     </div>
                 ) 

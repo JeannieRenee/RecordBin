@@ -39,25 +39,25 @@ router.put('/:id', (req, res) => {
 })
 
 // delete record from db 
-// router.delete('/:id', (req, res) => {
-//   let recordId = req.params.id;
-//   console.log('Delete request for id', recordId);
-//   let sqlQuery = `
-//     DELETE FROM "records" 
-//     WHERE "id" = $1;
-//   `;
-//   const sqlParams = [
-//     recordId,             
-//   ];
-//   pool.query(sqlQuery, sqlParams)
-//     .then(() => {
-//       console.log('task deleted');
-//       res.sendStatus(204);
-//     }).catch( (error) => {
-//       console.log(`Error making database query`, error);
-//       res.sendStatus(500); 
-//     })
-// })
+router.delete('/:id', (req, res) => {
+  let recordId = req.params.id;
+  console.log('Delete request for id', recordId);
+  let sqlQuery = `
+    DELETE FROM "records" 
+    WHERE "id" = $1;
+  `;
+  const sqlParams = [
+    recordId,             
+  ];
+  pool.query(sqlQuery, sqlParams)
+    .then(() => {
+      console.log('task deleted');
+      res.sendStatus(204);
+    }).catch( (error) => {
+      console.log(`Error making database query`, error);
+      res.sendStatus(500); 
+    })
+})
 
 // Add record to db collection
 // router.post('/:id', (req, res) => {

@@ -21,9 +21,20 @@ function* updateRecords(action) {
     } yield put({ type: 'FETCH_RECORDS' })
 };
 
+function* deleteRecord(action) {
+    // update records owned status
+    try {
+        yield axios.delete(`/api/records/`+ action.payload);
+    } catch {
+        console.log('delete records error');
+    } yield put({ type: 'FETCH_RECORDS' })
+};
+
 function* recordsSaga() {
     yield takeLatest('FETCH_RECORDS', fetchRecords);
     yield takeLatest('UPDATE_RECORDS', updateRecords);
+    yield takeLatest('DELETE_RECORD', deleteRecord);
+
 };
 
 export default recordsSaga;

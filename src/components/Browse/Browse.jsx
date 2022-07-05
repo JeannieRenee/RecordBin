@@ -60,19 +60,6 @@ function Browse(){
         history.push(`/details/${id}`);
     }
 
-    function nextPage(){
-        dispatch({
-            type: "NEXT_PAGE",
-            payload: pagination.urls.next
-        });
-    }
-
-    // function prevPage(){
-    //     dispatch({
-    //         type: "PREVIOUS_PAGE",
-    //     });
-    // }
-
     return (
         <div>
             <div className='browse-form'>
@@ -122,7 +109,7 @@ function Browse(){
                     </ToggleButtonGroup>
                 </Box>
 
-                { pagination &&
+                {/* { pagination &&
                 <center>
                     <div className='page-nav-buttons'>
                         <IconButton ><ArrowBackIosIcon/>Previous</IconButton>
@@ -132,7 +119,7 @@ function Browse(){
                         Page {pagination.page} of {pagination.pages}
                     </p>
                 </center>
-                }
+                } */}
 
                 { !display ?
                 <section className="flex-container-grid-browse">
