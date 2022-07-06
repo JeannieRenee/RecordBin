@@ -28,19 +28,20 @@ function DetailsView(){
                 Back
             </IconButton>
             { record.title && <p>{record.title} - {record.artists_sort}</p> }
-            {/* { record.country && <p>{record.country} version released in {record.year} </p>}
-            { record.community.want && <p> Want: {record.community.want} </p> } 
-            { record.community.have && <p> Have: {record.community.have} </p> } 
-            { record.community.rating && 
-                <p> 
-                    Rating: {record.community.rating.average} 
-                    out of {record.community.rating.count} votes 
-                </p>
+            { record.country && <p>{record.country} version released in {record.year} </p>}
+            { record.community && 
+                <>
+                    <p> Want: {record.community.want} Have: {record.community.have} </p>  
+                    <p> 
+                        Rating: {record.community.rating.average} 
+                        out of {record.community.rating.count} votes 
+                    </p>
+                </>
             }
-            { record.labels.name && <p>Label: {record.labels.name}</p> }
+            { record.labels && <p>Label: {record.labels[0].name}</p> }
             { record.genres && <p>Genres: {record.genres}</p> }
             { record.styles && <p>Styles: {record.styles}</p> }
-            { record.identifiers[0] && <p>Barcode: {record.identifiers[0].value}</p> } */}
+            { record.identifiers && <p>Barcode: {record.identifiers[0].value}</p> }
             { record.tracklist &&
                 <>
                     <p>Tracks:</p>
