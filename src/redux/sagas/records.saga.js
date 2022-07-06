@@ -14,6 +14,7 @@ function* fetchRecords() {
 
 function* updateRecords(action) {
     // update records owned status
+    console.log(action.payload)
     try {
         yield axios.put(`/api/records/`+ action.payload);
     } catch {
@@ -22,7 +23,7 @@ function* updateRecords(action) {
 };
 
 function* deleteRecord(action) {
-    // update records owned status
+    // delete record
     try {
         yield axios.delete(`/api/records/`+ action.payload);
     } catch {
@@ -30,11 +31,21 @@ function* deleteRecord(action) {
     } yield put({ type: 'FETCH_RECORDS' })
 };
 
+function* saveRecord(action) {
+    // save record
+    console.log('in save record', action.payload);
+    yield axios({
+        method: 'POST',
+        url: 'api/records',
+        data:  action.payload 
+    })
+}
+
 function* recordsSaga() {
     yield takeLatest('FETCH_RECORDS', fetchRecords);
     yield takeLatest('UPDATE_RECORDS', updateRecords);
     yield takeLatest('DELETE_RECORD', deleteRecord);
-
+    yield takeLatest('SAVE_RECORD', saveRecord);
 };
 
 export default recordsSaga;

@@ -60,39 +60,47 @@ function Browse(){
     const addWishlist = event => {
         const id = event.target.id;
         const title = event.target.title;
-        const cover_image = event.currentTarget.cover_image;
-        const country = event.target.country;
-        const year = event.target.year;
-        const genre = event.target.genre;
+        const cover_image = event.target.getAttribute('cover_image');
+        const country = event.target.getAttribute('country');
+        const year = event.target.getAttribute('year');
+        const genre = event.target.getAttribute('genre');
+        const owned = event.target.getAttribute('owned');
 
-        console.log('>>>>>>>wishlist')
-        console.log('id:', id)
-        console.log('title:', title)
-        console.log('cover_image:', cover_image)
-        console.log('country:', country)
-        console.log('year:', year)
-        console.log('genre:', genre)
-        // dispatch({ 
-        //     type: 'UPDATE_RECORDS', 
-        //     payload: id 
-        // });
+        dispatch({ 
+            type: 'SAVE_RECORD', 
+            payload: {   
+                id,
+                title,
+                cover_image,
+                country,
+                year,
+                genre,
+                owned
+            }
+        });
     }
 
     const addCollection = event => {
         const id = event.target.id;
         const title = event.target.title;
-        const cover_image = event.target.cover_image;
-        const country = event.target.country;
-        const year = event.target.year;
-        const genre = event.target.genre;
+        const cover_image = event.target.getAttribute('cover_image');
+        const country = event.target.getAttribute('country');
+        const year = event.target.getAttribute('year');
+        const genre = event.target.getAttribute('genre');
+        const owned = event.target.getAttribute('owned');
 
-        console.log('>>>>>>>collection')
-        console.log('id:', id)
-        console.log('title:', title)
-        console.log('cover_image:', cover_image)
-        console.log('country:', country)
-        console.log('year:', year)
-        console.log('genre:', genre)
+        dispatch({ 
+            type: 'SAVE_RECORD', 
+            payload: {   
+                id,
+                title,
+                cover_image,
+                country,
+                year,
+                genre,
+                owned
+            }
+        });
     }
 
     return (
@@ -255,6 +263,7 @@ function Browse(){
                                         country= {record.country} 
                                         year= {record.year} 
                                         genre= {record.genre} 
+                                        owned= "false"
                                         onClick= {addWishlist}
                                     >
                                         +wishlist
@@ -268,6 +277,7 @@ function Browse(){
                                         country= {record.country} 
                                         year= {record.year} 
                                         genre= {record.genre} 
+                                        owned= "true"
                                         onClick= {addCollection}
                                     >
                                         +collection

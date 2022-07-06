@@ -60,47 +60,25 @@ router.delete('/:id', (req, res) => {
 })
 
 // Add record to db collection
-// router.post('/:id', (req, res) => {
-//   let recordId = req.params.id;
-//   console.log('record added to collection', recordId);
-//   let sqlQuery = `
-//   INSERT INTO "records" 
-// 	  ("user_id", "record_id", "cover", "title", "year", "country", "genre", "style", "owned")
-//   VALUES 
-// 		($1, $2, $3, $4, $5, $6, $7, $8, true), 
-//   `;
-//   const sqlParams = [
-//   ];
-//   pool.query(sqlQuery, sqlParams)
-//     .then(() => {
-//       console.log('task deleted');
-//       res.sendStatus(204);
-//     }).catch( (error) => {
-//       console.log(`Error making database query`, error);
-//       res.sendStatus(500); 
-//     })
-// })
-
-// Add record to db wishlist
-// router.post('/:id', (req, res) => {
-//   let recordId = req.params.id;
-//   console.log('record added to wishlist', recordId);
-//   let sqlQuery = `
-//   INSERT INTO "records" 
-// 	  ("user_id", "record_id", "cover", "title", "year", "country", "genre", "style", "owned")
-//   VALUES 
-// 		($1, $2, $3, $4, $5, $6, $7, $8, false), 
-//   `;
-//   const sqlParams = [
-//   ];
-//   pool.query(sqlQuery, sqlParams)
-//     .then(() => {
-//       console.log('task deleted');
-//       res.sendStatus(204);
-//     }).catch( (error) => {
-//       console.log(`Error making database query`, error);
-//       res.sendStatus(500); 
-//     })
-// })
+router.post('/', (req, res) => {
+  console.log('in router.post req.body is', req.body)
+  const album = req.body;
+  let sqlQuery = `
+    INSERT INTO "records" 
+      ("user_id", "record_id", "cover", "title", "year", "country", "genre", "owned")
+    VALUES 
+      ($1, $2, $3, $4, $5, $6, $7, $8)
+  `;
+  const sqlParams = [ 1, album.id, album.cover_image, album.title, album.year, album.country, album.genre, album.owned ];
+  pool.query(sqlQuery, sqlParams)
+    .then((result) => {
+      console.log(`Added album to the database`, album);
+      res.sendStatus(201);
+  })
+  .catch((error) => {
+      console.log(`Error making database query`, error);
+      res.sendStatus(500);
+  })
+})
 
 module.exports = router;
