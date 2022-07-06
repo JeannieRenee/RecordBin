@@ -41,7 +41,19 @@ function DetailsView(){
             { record.labels && <p>Label: {record.labels[0].name}</p> }
             { record.genres && <p>Genres: {record.genres}</p> }
             { record.styles && <p>Styles: {record.styles}</p> }
-            { record.identifiers && <p>Barcode: {record.identifiers[0].value}</p> }
+            { record.identifiers && 
+                <>
+                    <p>Identifiers:</p>
+                    <ul>
+                        {record.identifiers.map(item => {
+                            return (
+                            <li>{item.value}</li>
+                            )
+                        })}
+                    </ul> 
+                </>
+            }
+                
             { record.tracklist &&
                 <>
                     <p>Tracks:</p>
