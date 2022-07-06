@@ -57,7 +57,7 @@ function Browse(){
         history.push(`/details/${id}`);
     }
 
-    const addCollection = event => {
+    const addWishlist = event => {
         const id = event.target.id;
         const title = event.target.title;
         const cover_image = event.target.cover_image;
@@ -77,7 +77,7 @@ function Browse(){
         // });
     }
 
-    const addWishlist = event => {
+    const addCollection = event => {
         const id = event.target.id;
         const title = event.target.title;
         const cover_image = event.target.cover_image;
@@ -91,10 +91,6 @@ function Browse(){
         console.log('country:', country)
         console.log('year:', year)
         console.log('genre:', genre)
-        // dispatch({ 
-        //     type: 'UPDATE_RECORDS', 
-        //     payload: id 
-        // });
     }
 
     return (
@@ -212,10 +208,32 @@ function Browse(){
                                                 {record.year} {record.country}
                                             </Typography>
                                             <Typography variant="subtitle1" color="text.secondary" component="div">
-                                                {record.genre}
+                                                { record.genre && 
+                                                    <>
+                                                        <p>Genres:</p>
+                                                        <ul>
+                                                            {record.genre.map(genre => {
+                                                                return (
+                                                                <li>{genre}</li>
+                                                                )
+                                                            })}
+                                                        </ul> 
+                                                    </>
+                                                }
                                             </Typography>
                                             <Typography variant="subtitle1" color="text.secondary" component="div">
-                                                {record.style}
+                                                { record.style && 
+                                                    <>
+                                                        <p>Styles:</p>
+                                                        <ul>
+                                                            {record.style.map(style => {
+                                                                return (
+                                                                <li>{style}</li>
+                                                                )
+                                                            })}
+                                                        </ul> 
+                                                    </>
+                                                }
                                             </Typography>
                                         </CardContent>
                                     </Box>
@@ -248,7 +266,7 @@ function Browse(){
                                         country= {record.country} 
                                         year= {record.year} 
                                         genre= {record.genre} 
-                                        onClick= {addWishlist}
+                                        onClick= {addCollection}
                                     >
                                         +collection
                                     </Button>

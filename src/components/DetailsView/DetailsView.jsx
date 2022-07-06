@@ -32,15 +32,45 @@ function DetailsView(){
             { record.community && 
                 <>
                     <p> Want: {record.community.want} Have: {record.community.have} </p>  
-                    <p> 
-                        Rating: {record.community.rating.average} 
-                        out of {record.community.rating.count} votes 
-                    </p>
+                    <p> Rating: {record.community.rating.average} out of {record.community.rating.count} votes </p>
                 </>
             }
-            { record.labels && <p>Label: {record.labels[0].name}</p> }
-            { record.genres && <p>Genres: {record.genres}</p> }
-            { record.styles && <p>Styles: {record.styles}</p> }
+            { record.labels && 
+                <>
+                    <p>Labels:</p>
+                    <ul>
+                        {record.labels.map(label => {
+                            return (
+                            <li>{label.name}</li>
+                            )
+                        })}
+                    </ul> 
+                </>
+            }
+            { record.genres && 
+                <>
+                    <p>Genres:</p>
+                    <ul>
+                        {record.genres.map(genre => {
+                            return (
+                            <li>{genre}</li>
+                            )
+                        })}
+                    </ul> 
+                </>
+            }
+            { record.styles && 
+                <>
+                    <p>Styles:</p>
+                    <ul>
+                        {record.styles.map(style => {
+                            return (
+                            <li>{style}</li>
+                            )
+                        })}
+                    </ul> 
+                </>
+            }
             { record.identifiers && 
                 <>
                     <p>Identifiers:</p>
