@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 // mui imports
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
-import CardActions from '@mui/material/CardActions';
 import Button from '@mui/material/Button';
-
 import { CardActionArea } from '@mui/material';
 import Box from '@mui/material/Box';
 import CardContent from '@mui/material/CardContent';
@@ -18,7 +16,6 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 // mui icons 
 import ListIcon from '@mui/icons-material/List';
 import GridViewIcon from '@mui/icons-material/GridView';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 function Collection (){
     const dispatch = useDispatch();
@@ -116,10 +113,19 @@ function Collection (){
                 if (record.owned)
                 return (
                     <div className='cards' key={record.id}>
-                        <Card sx={{ display: 'flex' }}>
+                        <Card sx={{ 
+                            display: 'flex' ,
+                            maxHeight: 150, 
+                            minHeight:150 
+                        }}>
                         <CardMedia
                             component="img"
-                            sx={{ width: 150 }}
+                            sx={{ 
+                                maxWidth: 150, 
+                                minWidth: 150,  
+                                maxHeight: 150, 
+                                minHeight:150 
+                            }}                            
                             image={record.cover}
                             alt={record.title}
                         />
@@ -129,10 +135,10 @@ function Collection (){
                                 <Typography component="div" variant="h6">
                                     {record.title}
                                 </Typography>
-                                <Typography variant="subtitle1" color="text.secondary" component="div">
+                                <Typography variant="text" color="text.secondary" component="div">
                                     {record.year} {record.country}
                                 </Typography>
-                                <Typography variant="subtitle1" color="text.secondary" component="div">
+                                <Typography variant="text" color="text.secondary" component="div">
                                     {record.genre}
                                 </Typography>
                             </CardContent>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 // mui imports
 import Card from '@mui/material/Card';
@@ -9,7 +9,6 @@ import { CardActionArea } from '@mui/material';
 import Box from '@mui/material/Box';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import CardActions from '@mui/material/CardActions';
 import Button from '@mui/material/Button';
 //mui toggle
 import ToggleButton from '@mui/material/ToggleButton';
@@ -124,7 +123,11 @@ function Wishlist (){
                 if (record.owned === false)
                 return (
                     <div className='cards' key={record.id}>
-                        <Card sx={{ display: 'flex' }}>
+                        <Card sx={{ 
+                            display: 'flex' ,
+                            maxHeight: 150, 
+                            minHeight:150 
+                        }}>
                         <CardMedia
                             component="img"
                             sx={{ width: 150 }}
@@ -137,10 +140,10 @@ function Wishlist (){
                                 <Typography component="div" variant="h6">
                                     {record.title}
                                 </Typography>
-                                <Typography variant="subtitle1" color="text.secondary" component="div">
+                                <Typography variant="text" color="text.secondary" component="div">
                                     {record.year}  {record.country}
                                 </Typography>
-                                <Typography variant="subtitle1" color="text.secondary" component="div">
+                                <Typography variant="text" color="text.secondary" component="div">
                                     {record.genre}
                                 </Typography>
 

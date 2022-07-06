@@ -201,10 +201,19 @@ function Browse(){
                     {results.map(record => {
                         return (
                             <div className='cards' key={record.id}>
-                                <Card sx={{ display: 'flex' }}>
+                                <Card sx={{ 
+                                    display: 'flex' ,
+                                    maxHeight: 150, 
+                                    minHeight:150 
+                                }}>
                                 <CardMedia
                                     component="img"
-                                    sx={{ width: 150 }}
+                                    sx={{ 
+                                        maxWidth: 150, 
+                                        minWidth: 150,  
+                                        maxHeight: 150, 
+                                        minHeight:150 
+                                    }}
                                     image={record.cover_image}
                                     alt={record.title}
                                 />
@@ -214,31 +223,16 @@ function Browse(){
                                             <Typography component="div" variant="h6">
                                                 {record.title}
                                             </Typography>
-                                            <Typography variant="subtitle1" color="text.secondary" component="div">
+                                            <Typography variant="text" color="text.secondary" component="div">
                                                 {record.year} {record.country}
                                             </Typography>
-                                            <Typography variant="subtitle1" color="text.secondary" component="div">
+                                            <Typography variant="text" color="text.secondary" component="div">
                                                 { record.genre && 
                                                     <>
-                                                        <p>Genres:</p>
                                                         <ul>
                                                             {record.genre.map(genre => {
                                                                 return (
                                                                 <li>{genre}</li>
-                                                                )
-                                                            })}
-                                                        </ul> 
-                                                    </>
-                                                }
-                                            </Typography>
-                                            <Typography variant="subtitle1" color="text.secondary" component="div">
-                                                { record.style && 
-                                                    <>
-                                                        <p>Styles:</p>
-                                                        <ul>
-                                                            {record.style.map(style => {
-                                                                return (
-                                                                <li>{style}</li>
                                                                 )
                                                             })}
                                                         </ul> 
