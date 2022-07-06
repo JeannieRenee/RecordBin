@@ -60,11 +60,12 @@ function Browse(){
     const addWishlist = event => {
         const id = event.target.id;
         const title = event.target.title;
-        const cover_image = event.target.cover_image;
+        const cover_image = event.currentTarget.cover_image;
         const country = event.target.country;
         const year = event.target.year;
         const genre = event.target.genre;
 
+        console.log('>>>>>>>wishlist')
         console.log('id:', id)
         console.log('title:', title)
         console.log('cover_image:', cover_image)
@@ -85,6 +86,7 @@ function Browse(){
         const year = event.target.year;
         const genre = event.target.genre;
 
+        console.log('>>>>>>>collection')
         console.log('id:', id)
         console.log('title:', title)
         console.log('cover_image:', cover_image)
