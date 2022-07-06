@@ -6,8 +6,18 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 function DetailsView(){
     const record = useSelector(store => store.details);
-
     const history = useHistory()
+    const dispatch = useDispatch();
+    // grab id from params
+    let  {id}  = useParams();
+
+    // page load get the record data
+    useEffect(() => {
+        dispatch({
+            type: "FETCH_DETAILED_RESULTS",
+            payload: id
+        });
+    }, []);
 
     return (
         <div className='detailed-view'>
@@ -19,18 +29,61 @@ function DetailsView(){
             </IconButton>
             { record.title && <p>{record.title} - {record.artists_sort}</p> }
             { record.country && <p>{record.country} version released in {record.year} </p>}
-            { record.community.want && <p> Want: {record.community.want} </p> } 
-            { record.community.have && <p> Have: {record.community.have} </p> } 
-            { record.community.rating && 
-                <p> 
-                    Rating: {record.community.rating.average} 
-                    out of {record.community.rating.count} votes 
-                </p>
+            { record.community && 
+                <>
+                    <p> Want: {record.community.want} Have: {record.community.have} </p>  
+                    <p> Rating: {record.community.rating.average} out of {record.community.rating.count} votes </p>
+                </>
             }
-            { record.labels.name && <p>Label: {record.labels.name}</p> }
-            { record.genres && <p>Genres: {record.genres}</p> }
-            { record.styles && <p>Styles: {record.styles}</p> }
-            { record.identifiers[0] && <p>Barcode: {record.identifiers[0].value}</p> }
+            { record.labels && 
+                <>
+                    <p>Labels:</p>
+                    <ul>
+                        {record.labels.map(label => {
+                            return (
+                            <li>{label.name}</li>
+                            )
+                        })}
+                    </ul> 
+                </>
+            }
+            { record.genres && 
+                <>
+                    <p>Genres:</p>
+                    <ul>
+                        {record.genres.map(genre => {
+                            return (
+                            <li>{genre}</li>
+                            )
+                        })}
+                    </ul> 
+                </>
+            }
+            { record.styles && 
+                <>
+                    <p>Styles:</p>
+                    <ul>
+                        {record.styles.map(style => {
+                            return (
+                            <li>{style}</li>
+                            )
+                        })}
+                    </ul> 
+                </>
+            }
+            { record.identifiers && 
+                <>
+                    <p>Identifiers:</p>
+                    <ul>
+                        {record.identifiers.map(item => {
+                            return (
+                            <li>{item.value}</li>
+                            )
+                        })}
+                    </ul> 
+                </>
+            }
+                
             { record.tracklist &&
                 <>
                     <p>Tracks:</p>
