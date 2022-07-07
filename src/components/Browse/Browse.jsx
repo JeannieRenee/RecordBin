@@ -150,18 +150,6 @@ function Browse(){
                     </ToggleButtonGroup>
                 </Box>
 
-                {/* { pagination &&
-                <center>
-                    <div className='page-nav-buttons'>
-                        <IconButton ><ArrowBackIosIcon/>Previous</IconButton>
-                        <IconButton onClick={nextPage}>Next<ArrowForwardIosIcon/></IconButton>
-                    </div>
-                    <p>
-                        Page {pagination.page} of {pagination.pages}
-                    </p>
-                </center>
-                } */}
-
                 { display ?
                 <section className="flex-container-grid-browse">
                     {results.map(record => {
