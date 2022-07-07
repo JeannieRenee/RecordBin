@@ -225,17 +225,7 @@ function Browse(){
                                                 {record.year} {record.country}
                                             </Typography>
                                             <Typography variant="text" color="text.secondary" component="div">
-                                                { record.genre && 
-                                                    <>
-                                                        <ul>
-                                                            {record.genre.map(genre => {
-                                                                return (
-                                                                <li>{genre}</li>
-                                                                )
-                                                            })}
-                                                        </ul> 
-                                                    </>
-                                                }
+                                                {record.genre}
                                             </Typography>
                                         </CardContent>
                                     </Box>
