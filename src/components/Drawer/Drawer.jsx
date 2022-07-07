@@ -93,11 +93,9 @@ function ResponsiveDrawer(props) {
               </ListItem>
           </div>
           </List>
-          <Divider />
           <List>
           <div className="sidebar-bottom">
-            <Box
-            >
+            <Box>
               <ListItem key='About' disablePadding onClick={about}>
                 <ListItemButton>
                   <ListItemIcon>
