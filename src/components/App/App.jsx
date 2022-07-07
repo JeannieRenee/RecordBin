@@ -19,7 +19,6 @@ import Collection from '../Collection/Collection';
 import Wishlist from '../Wishlist/Wishlist';
 import Browse from '../Browse/Browse';
 import Details from '../DetailsView/DetailsView';
-import Results from '../Results/Results';
 
 import './App.css';
 
@@ -118,14 +117,6 @@ function App() {
           >
             <Browse />
           </ProtectedRoute>   
-
-          <ProtectedRoute
-            // logged in shows InfoPage else shows LoginPage
-            exact
-            path="/results"
-          >
-            <Results />
-          </ProtectedRoute> 
 
           <ProtectedRoute
             // logged in shows InfoPage else shows LoginPage
