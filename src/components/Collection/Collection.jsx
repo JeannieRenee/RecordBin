@@ -73,6 +73,7 @@ function Collection (){
                     </ToggleButton>                
                 </ToggleButtonGroup>
             </Box>
+            </div>
             { display ?
                 <section className="flex-container-grid">
                 {records.map(record => {
@@ -158,7 +159,6 @@ function Collection (){
             })}
             </section>  
             }
-        </div>
         </>
     )
 }

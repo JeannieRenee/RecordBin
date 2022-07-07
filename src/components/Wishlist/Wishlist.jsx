@@ -82,37 +82,37 @@ function Wishlist (){
                     </ToggleButton>                
                 </ToggleButtonGroup>
             </Box>
-            
+            </div>
             { display ?
                 <section className="flex-container-grid">
                 {records.map(record => {
                     if (record.owned === false)
                     return (
                         <div className='cards' key={record.id}>
-                        <Card sx={{ 
-                            maxWidth: 150, 
-                            minWidth: 150,  
-                            maxHeight: 150, 
-                            minHeight: 150 
-                        }}>
-                            <CardActionArea>
-                            <CardMedia
-                                onClick={detailedView}
-                                component="img"
-                                id= {record.record_id}
-                                image= {record.cover}
-                                alt= {record.title}
-                                sx={{ 
-                                    maxWidth: 150, 
-                                    minWidth: 150,  
-                                    maxHeight: 150, 
-                                    minHeight:150 
-                                }}
-                            /> 
-                            </CardActionArea>
-                        </Card>
-                        <div className='record-title'>{record.title}</div>
-                        </div>
+                            <Card sx={{ 
+                                maxWidth: 150, 
+                                minWidth: 150,  
+                                maxHeight: 150, 
+                                minHeight: 150 
+                            }}>
+                                <CardActionArea>
+                                <CardMedia
+                                    onClick={detailedView}
+                                    component="img"
+                                    id= {record.record_id}
+                                    image= {record.cover}
+                                    alt= {record.title}
+                                    sx={{ 
+                                        maxWidth: 150, 
+                                        minWidth: 150,  
+                                        maxHeight: 150, 
+                                        minHeight:150 
+                                    }}
+                                /> 
+                                </CardActionArea>
+                            </Card>
+                            <div className='record-title'>{record.title}</div>
+                            </div>
                     ) 
                 })}
                 </section>
@@ -129,7 +129,12 @@ function Wishlist (){
                         }}>
                         <CardMedia
                             component="img"
-                            sx={{ width: 150 }}
+                            sx={{ 
+                                maxWidth: 150, 
+                                minWidth: 150,  
+                                maxHeight: 150, 
+                                minHeight:150 
+                            }}   
                             image={record.cover}
                             alt={record.title}
                         />
@@ -145,7 +150,6 @@ function Wishlist (){
                                 <Typography variant="text" color="text.secondary" component="div">
                                     {record.genre}
                                 </Typography>
-
                             </CardContent>
                         </Box>
                         </CardActionArea>
@@ -166,7 +170,6 @@ function Wishlist (){
             })}
             </section>   
             }
-        </div>
         </>
     )
 }
