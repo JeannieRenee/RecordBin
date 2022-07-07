@@ -42,7 +42,6 @@ function Browse(){
             type: "FETCH_BASIC_RESULTS",
             payload: search
         });
-        setSearch('');
     }
 
     // to toggle the view
@@ -106,31 +105,34 @@ function Browse(){
     return (
         <div>
             <div className='browse-form'>
+                <center>
                 <Typography 
                     component="div" 
-                    variant="h4"
+                    variant="h3"
                 >
                     What are you looking for?
                 </Typography>
-                    <Paper
+                <br/>
+                <Paper
                     component="form"
                     sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
-                    >
-                    <InputBase
-                        sx={{ ml: 1, flex: 1 }}
-                        placeholder="Search artists, albums and more..."
-                        value= {search} 
-                        onChange={(evt) => setSearch(evt.target.value)}
-                    />
-                    <IconButton type="submit" sx={{ p: '10px' }} aria-label="search" onClick={sendSearch}>
-                        <SearchIcon />
-                    </IconButton>
-                    </Paper>
-                    { pagination &&
-                        <p>
-                            {pagination.items} results for {searchTerm}
-                        </p>
-                    }
+                >
+                <InputBase
+                    sx={{ ml: 1, flex: 1 }}
+                    placeholder="Search artists, albums and more..."
+                    value= {search} 
+                    onChange={(evt) => setSearch(evt.target.value)}
+                />
+                <IconButton type="submit" sx={{ p: '10px' }} aria-label="search" onClick={sendSearch}>
+                    <SearchIcon />
+                </IconButton>
+                </Paper>
+                { pagination &&
+                    <p>
+                        {pagination.items} results for {searchTerm}
+                    </p>
+                }
+                </center>
             { results && 
             (<div>
                 <Box
@@ -140,15 +142,14 @@ function Browse(){
                     justifyContent="flex-end"
                     alignItems="flex-end"
                     >
-                    <ToggleButtonGroup >
-                        <ToggleButton value={!display} onClick={toggleDisplay}>
-                            <ListIcon />
-                        </ToggleButton>
-
+                    <ToggleButtonGroup className='toggle-buttons'>
                         <ToggleButton value={display} onClick={toggleDisplay}>
                             <GridViewIcon />
                         </ToggleButton>
-
+                        
+                        <ToggleButton value={!display} onClick={toggleDisplay}>
+                            <ListIcon />
+                        </ToggleButton>                
                     </ToggleButtonGroup>
                 </Box>
 
@@ -164,7 +165,7 @@ function Browse(){
                 </center>
                 } */}
 
-                { !display ?
+                { display ?
                 <section className="flex-container-grid-browse">
                     {results.map(record => {
                         return (
@@ -191,7 +192,7 @@ function Browse(){
                                 /> 
                                 </CardActionArea>
                             </Card>
-                            <div className='record-title'>{record.title}</div>
+                            <div className='record-title' >{record.title}</div>
                             </div>
                         ) 
                     })}

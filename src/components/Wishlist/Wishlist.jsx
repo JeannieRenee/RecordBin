@@ -72,19 +72,18 @@ function Wishlist (){
                 justifyContent="flex-end"
                 alignItems="flex-end"
             >
-                <ToggleButtonGroup >
-                    <ToggleButton value={!display} onClick={toggleDisplay}>
-                        <ListIcon />
-                    </ToggleButton>
-                
+                <ToggleButtonGroup className='toggle-buttons'>
                     <ToggleButton value={display} onClick={toggleDisplay}>
                         <GridViewIcon />
                     </ToggleButton>
-                
+                    
+                    <ToggleButton value={!display} onClick={toggleDisplay}>
+                        <ListIcon />
+                    </ToggleButton>                
                 </ToggleButtonGroup>
             </Box>
             
-            { !display ?
+            { display ?
                 <section className="flex-container-grid">
                 {records.map(record => {
                     if (record.owned === false)

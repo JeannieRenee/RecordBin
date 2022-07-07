@@ -59,11 +59,11 @@ function ResponsiveDrawer(props) {
     const drawerLoggedIn = (
         <div>
           <Toolbar /> 
-          <div className='logo'>
-            <img src={require('./logo.png')}/>
+            <img src={require('./logo.png')} className='logo' disablePadding/>
+          <div className='divider'>
+            <Divider />
           </div>
-          <Divider />
-          <List>
+          <List >
             <div className='sidebar'>
               <ListItem key='Collection' disablePadding onClick={collection}>
                 <ListItemButton>

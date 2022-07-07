@@ -90,6 +90,6 @@ Grid
 
 html {
   background-Image: url('bg.png'); 
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
 }

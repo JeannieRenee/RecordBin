@@ -109,11 +109,11 @@ input {
 Collection + Wishlist Containers
 -------------------------------------------------------------------------------- */
 .collection-container {
-  padding-top: 10em;
+  margin-right: 30px;
 }
 
 .wishlist-container {
-  padding-top: 10em;
+  margin-right: 30px;
 }
 
 .flex-container-grid {
@@ -169,10 +169,15 @@ Browse Containers
 }
 
 .logo {
-  margin-left: 20px;
+  left: 3%;
+  position: fixed;
+  top: 35px;
+}
+.sidebar {
+  margin-top: 30px;
 }
 
-.sidebar {
+.divider {
   margin-top: 40px;
 }
 
@@ -188,6 +193,6 @@ Browse Containers
   padding-top: 150px;
 }
 
-.sidebar-bottom {
-
+.toggle-buttons {
+  margin: 20px;
 }
