@@ -165,20 +165,21 @@ Browse Containers
   gap: 2em;
   margin-left: 300px;
   margin-right: 30px;
-  padding-top: 150px;
+  padding-top: 20px;
 }
 
 .logo {
-  left: 3%;
+  left: 25px;
   position: fixed;
   top: 35px;
 }
+
 .sidebar {
   margin-top: 30px;
 }
 
 .divider {
-  margin-top: 40px;
+  padding-top: 40px;
 }
 
 .record-title {
@@ -194,15 +195,5 @@ Browse Containers
 }
 
 .toggle-buttons {
-  margin: 20px;
-}
-
-
-.results-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: left;
-  gap: 2em;
-  margin-left: 300px;
-  margin-right: 30px;
+  padding: 20px;
 }

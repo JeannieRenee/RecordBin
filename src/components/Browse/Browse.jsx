@@ -27,15 +27,12 @@ function Browse(){
     const pagination = useSelector(store => store.browseBasic.pagination);
 
     const [search, setSearch]= useState('');
-    const [searchTerm, setSearchTerm]= useState('');
     const dispatch = useDispatch();
     const history = useHistory();
     const  {id}  = useParams();
 
-
     const sendSearch = (evt) => {
         evt.preventDefault();
-        setSearchTerm(search);
         dispatch({
             type: "FETCH_BASIC_RESULTS",
             payload: search
@@ -103,17 +100,19 @@ function Browse(){
     return (
         <div>
             <div className='browse-form'>
-                <center>
-                <Typography 
-                    component="div" 
-                    variant="h3"
-                >
-                    What are you looking for?
-                </Typography>
+                <div>
+                { !results &&
+                    <Typography 
+                        component="div" 
+                        variant="h3"
+                    >
+                        What are you looking for?
+                    </Typography>
+                }
                 <br/>
                 <Paper
                     component="form"
-                    sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
+                    sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 500 }}
                 >
                 <InputBase
                     sx={{ ml: 1, flex: 1 }}
@@ -125,12 +124,10 @@ function Browse(){
                     <SearchIcon />
                 </IconButton>
                 </Paper>
-                { pagination &&
-                    <p>
-                        {pagination.items} results for {searchTerm}
-                    </p>
-                }
-                </center>
+            { results &&
+                <p> {pagination.items} results </p>
+            }
+            </div>
             { results && 
             (<div>
                 <Box
