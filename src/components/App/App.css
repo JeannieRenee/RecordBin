@@ -196,3 +196,13 @@ Browse Containers
 .toggle-buttons {
   margin: 20px;
 }
+
+
+.results-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  gap: 2em;
+  margin-left: 300px;
+  margin-right: 30px;
+}

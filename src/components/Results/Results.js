@@ -22,7 +22,7 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import ListIcon from '@mui/icons-material/List';
 import GridViewIcon from '@mui/icons-material/GridView';
 
-function Browse(){
+function Results(){
     const results = useSelector(store => store.browseBasic.results);
     const pagination = useSelector(store => store.browseBasic.pagination);
 
@@ -102,18 +102,11 @@ function Browse(){
 
     return (
         <div>
-            <div className='browse-form'>
-                <center>
-                <Typography 
-                    component="div" 
-                    variant="h3"
-                >
-                    What are you looking for?
-                </Typography>
+            <div className='results-form'>
                 <br/>
                 <Paper
                     component="form"
-                    sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
+                    sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 500 }}
                 >
                 <InputBase
                     sx={{ ml: 1, flex: 1 }}
@@ -130,7 +123,6 @@ function Browse(){
                         {pagination.items} results for {searchTerm}
                     </p>
                 }
-                </center>
             { results && 
             (<div>
                 <Box
@@ -289,4 +281,4 @@ function Browse(){
     )
 }
 
-export default Browse;
+export default Results;
