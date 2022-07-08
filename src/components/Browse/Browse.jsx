@@ -128,35 +128,23 @@ function Browse(){
                     </div>
                 }
                 { results &&
+                <>
                     <div className='search-secondary'>
+                        <div className='search-secondary-top'>
                         <Paper
                             component="form"
                             sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 500 }}
                         >
-                        <InputBase
-                            sx={{ ml: 1, flex: 1 }}
-                            placeholder="Search artists, albums and more..."
-                            value= {search} 
-                            onChange={(evt) => setSearch(evt.target.value)}
-                        />
-                        <IconButton type="submit" sx={{ p: '10px' }} aria-label="search" onClick={sendSearch}>
-                            <SearchIcon />
-                        </IconButton>
+                            <InputBase
+                                sx={{ ml: 1, flex: 1 }}
+                                placeholder="Search artists, albums and more..."
+                                value= {search} 
+                                onChange={(evt) => setSearch(evt.target.value)}
+                            />
+                            <IconButton type="submit" sx={{ p: '10px' }} aria-label="search" onClick={sendSearch}>
+                                <SearchIcon />
+                            </IconButton>
                         </Paper>
-                        <p> {pagination.items} results </p>
-                    </div>
-                }
-            </div>
-            <div className='browse-results'>
-                { results && 
-                (<div>
-                    <Box
-                        m={1}
-                        //margin
-                        display="flex"
-                        justifyContent="flex-end"
-                        alignItems="flex-end"
-                        >
                         <ToggleButtonGroup className='toggle-buttons'>
                             <ToggleButton value={display} onClick={toggleDisplay}>
                                 <GridViewIcon />
@@ -166,7 +154,17 @@ function Browse(){
                                 <ListIcon />
                             </ToggleButton>                
                         </ToggleButtonGroup>
-                    </Box>
+                        </div>
+                        <div className='pagination-items'>
+                            <p> {pagination.items} results </p>
+                        </div>
+                    </div>
+                </>
+                }
+            </div>
+            <div className='browse-results'>
+                { results && 
+                (<div>
                     { display ?
                     <section className="flex-container-grid-browse">
                         {results.map(record => {

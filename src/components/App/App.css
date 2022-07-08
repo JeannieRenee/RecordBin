@@ -154,7 +154,6 @@ Browse Containers
   align-items: center;
   justify-content: center;
   flex-direction: column;
-
 }
 
 .browse-results {
@@ -222,7 +221,7 @@ Details Page
   padding-top: 150px;
 }
 
-.toggle-buttons {
+.toggle-buttons-collection-wishlist {
   padding: 20px;
 }
 
@@ -232,6 +231,22 @@ Details Page
 }
 
 
+.pagination-items {
+  font-size: small;
+}
+
+
+.search-secondary-top {
+  display: flex;
+  border-radius: 4px;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+}
+
+.toggle-buttons{
+  padding-left: 100px;
+}
 
 
 

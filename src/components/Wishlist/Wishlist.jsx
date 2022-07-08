@@ -72,7 +72,7 @@ function Wishlist (){
                 justifyContent="flex-end"
                 alignItems="flex-end"
             >
-                <ToggleButtonGroup className='toggle-buttons'>
+                <ToggleButtonGroup className='toggle-buttons-collection-wishlist'>
                     <ToggleButton value={display} onClick={toggleDisplay}>
                         <GridViewIcon />
                     </ToggleButton>
