@@ -283,8 +283,17 @@ function Browse(){
                         })}
                     </section>
                     }
+                    { pagination.page === 1 && 
                     <center>
-                        <IconButton >
+                        <IconButton url={pagination.urls.next} onClick={nextPage}>
+                            <ArrowForwardIosIcon />
+                        </IconButton>
+                        <p>Page {pagination.page} out of {pagination.pages}</p>
+                    </center>
+                    }
+                    { pagination.page < pagination.pages && pagination.page > 1 &&
+                    <center>
+                        <IconButton url={pagination.urls.prev} onClick={nextPage}>
                             <ArrowBackIosNewIcon/>
                         </IconButton>
                         <IconButton url={pagination.urls.next} onClick={nextPage}>
@@ -292,6 +301,15 @@ function Browse(){
                         </IconButton>
                         <p>Page {pagination.page} out of {pagination.pages}</p>
                     </center>
+                    }
+                    { pagination.page === pagination.pages && 
+                    <center>
+                        <IconButton url={pagination.urls.prev} onClick={nextPage}>
+                            <ArrowBackIosNewIcon/>
+                        </IconButton>
+                        <p>Page {pagination.page} out of {pagination.pages}</p>
+                    </center>
+                    }
                 </div>)
                 } 
             </div> 
