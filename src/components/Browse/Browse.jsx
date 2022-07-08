@@ -53,6 +53,15 @@ function Browse(){
         history.push(`/details/${id}`);
     }
 
+    // push to detailed page on cover click
+    const nextPage = event => {
+        const url = event.currentTarget.getAttribute('url');
+        dispatch({ 
+            type: 'NEXT_PAGE', 
+            payload: url
+        });
+    }
+
     const addWishlist = event => {
         const id = event.target.id;
         const title = event.target.title;
@@ -276,9 +285,9 @@ function Browse(){
                     }
                     <center>
                         <IconButton >
-                            <ArrowBackIosNewIcon />
+                            <ArrowBackIosNewIcon/>
                         </IconButton>
-                        <IconButton >
+                        <IconButton url={pagination.urls.next} onClick={nextPage}>
                             <ArrowForwardIosIcon />
                         </IconButton>
                         <p>Page {pagination.page} out of {pagination.pages}</p>

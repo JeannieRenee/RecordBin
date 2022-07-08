@@ -22,10 +22,21 @@ const axios = require('axios');
 })
 
 /**
- * POST route template
+ * discogs BASIC GET route
  */
-router.post('/', (req, res) => {
-  // POST route code here
-});
+ router.post('/', (req, res) => {
+  const url = req.body.url;
+  console.log('the url in the router is', req.body.url)
+  axios({
+    method: 'GET', 
+    url: url,
+  }).then((response) => {
+        console.log(response)
+        res.send(response.data);
+  }).catch((err) => {
+        console.log(err)
+        res.sendStatus(500);
+  });
+})
 
 module.exports = router;

@@ -18,9 +18,9 @@ function* fetchResults(action) {
 // saga function for search
 function* nextPage(action) {
     try {
-        console.log("the url is", action.payload);
         let url = action.payload;
-        const response = yield axios.get(`/api/page`);
+        console.log('the url in the saga is', url)
+        const response = yield axios.post(`/api/browse`, {url:`${url}`} );
         //sends results to search reducer below
         yield put({ type: "SET_RESULTS", payload: response.data });
     } catch (err) {
@@ -31,7 +31,7 @@ function* nextPage(action) {
 
 function* browseBasicSaga() {
     yield takeLatest("FETCH_BASIC_RESULTS", fetchResults);
-    yield takeLatest("NEXT_PAGE", fetchResults);
+    yield takeLatest("NEXT_PAGE", nextPage);
 };
   
 export default browseBasicSaga;

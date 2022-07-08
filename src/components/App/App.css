@@ -223,7 +223,8 @@ Details Page
 }
 
 .toggle-buttons-collection-wishlist {
-  padding: 20px;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .record-title{
@@ -233,13 +234,11 @@ Details Page
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;  
   overflow: hidden;
-
 }
 
 .pagination-items {
   font-size: small;
   padding-left: 20px;
-
 }
 
 .search-secondary-top {
@@ -251,11 +250,10 @@ Details Page
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 20px;
-
 }
 
 .toggle-buttons{
-  padding-left: 100px;
+  padding-left: 150px;
 }
 
 
