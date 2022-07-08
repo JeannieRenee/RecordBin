@@ -74,6 +74,7 @@ function Collection (){
                 </ToggleButtonGroup>
             </Box>
             </div>
+
             { display ?
                 <section className="flex-container-grid">
                 {records.map(record => {

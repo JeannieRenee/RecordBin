@@ -138,6 +138,34 @@ Collection + Wishlist Containers
 /* --------------------------------------------------------------------------------
 Browse Containers
 -------------------------------------------------------------------------------- */
+.search-bar{
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  gap: 2em;
+  margin-left: 300px;
+  margin-right: 30px;
+  padding-top: 20px;
+}
+
+.search-primary{
+  padding-top: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+}
+
+.browse-results {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  gap: 2em;
+  margin-left: 300px;
+  margin-right: 30px;
+  padding-top: 20px;
+}
 .flex-container-grid-browse {
   display: flex;
   flex-direction: row;
@@ -148,7 +176,6 @@ Browse Containers
   padding-bottom: 50px;
 }
 
-
 .flex-container-list-browse {
   display: flex;
   flex-direction: column;
@@ -158,15 +185,9 @@ Browse Containers
   padding-bottom: 50px;
 }
 
-.browse-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: left;
-  gap: 2em;
-  margin-left: 300px;
-  margin-right: 30px;
-  padding-top: 20px;
-}
+/* --------------------------------------------------------------------------------
+Sidebar
+-------------------------------------------------------------------------------- */
 
 .logo {
   left: 25px;
@@ -188,6 +209,13 @@ Browse Containers
   text-align: center;
 }
 
+.sidebar-bottom {
+  margin-top: 350px;
+}
+
+/* --------------------------------------------------------------------------------
+Details Page
+-------------------------------------------------------------------------------- */
 .detailed-view {
   margin-left: 300px;
   margin-right: 30px;
@@ -198,7 +226,13 @@ Browse Containers
   padding: 20px;
 }
 
-.sidebar-bottom {
-  margin-top: 350px;
+.record-title{
+  text-align: left;
+  font-size: small;
 }
+
+
+
+
+
 

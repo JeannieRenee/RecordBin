@@ -101,175 +101,192 @@ function Browse(){
 
     return (
         <div>
-            <div className='browse-form'>
-                <div>
+            <div className='search-bar'>
                 { !results &&
-                    <Typography 
-                        component="div" 
-                        variant="h3"
-                    >
-                        What are you looking for?
-                    </Typography>
+                    <div className='search-primary'>
+                        <Typography 
+                            component="div" 
+                            variant="h3"
+                        >
+                            What are you looking for?
+                        </Typography>
+                        <br/>
+                        <Paper
+                            component="form"
+                            sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 500 }}
+                        >
+                        <InputBase
+                            sx={{ ml: 1, flex: 1 }}
+                            placeholder="Search artists, albums and more..."
+                            value= {search} 
+                            onChange={(evt) => setSearch(evt.target.value)}
+                        />
+                        <IconButton type="submit" sx={{ p: '10px' }} aria-label="search" onClick={sendSearch}>
+                            <SearchIcon />
+                        </IconButton>
+                        </Paper>
+                    </div>
                 }
-                <br/>
-                <Paper
-                    component="form"
-                    sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 500 }}
-                >
-                <InputBase
-                    sx={{ ml: 1, flex: 1 }}
-                    placeholder="Search artists, albums and more..."
-                    value= {search} 
-                    onChange={(evt) => setSearch(evt.target.value)}
-                />
-                <IconButton type="submit" sx={{ p: '10px' }} aria-label="search" onClick={sendSearch}>
-                    <SearchIcon />
-                </IconButton>
-                </Paper>
-            { results &&
-                <p> {pagination.items} results </p>
-            }
+                { results &&
+                    <div className='search-secondary'>
+                        <Paper
+                            component="form"
+                            sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 500 }}
+                        >
+                        <InputBase
+                            sx={{ ml: 1, flex: 1 }}
+                            placeholder="Search artists, albums and more..."
+                            value= {search} 
+                            onChange={(evt) => setSearch(evt.target.value)}
+                        />
+                        <IconButton type="submit" sx={{ p: '10px' }} aria-label="search" onClick={sendSearch}>
+                            <SearchIcon />
+                        </IconButton>
+                        </Paper>
+                        <p> {pagination.items} results </p>
+                    </div>
+                }
             </div>
-            { results && 
-            (<div>
-                <Box
-                    m={1}
-                    //margin
-                    display="flex"
-                    justifyContent="flex-end"
-                    alignItems="flex-end"
-                    >
-                    <ToggleButtonGroup className='toggle-buttons'>
-                        <ToggleButton value={display} onClick={toggleDisplay}>
-                            <GridViewIcon />
-                        </ToggleButton>
-                        
-                        <ToggleButton value={!display} onClick={toggleDisplay}>
-                            <ListIcon />
-                        </ToggleButton>                
-                    </ToggleButtonGroup>
-                </Box>
-
-                { display ?
-                <section className="flex-container-grid-browse">
-                    {results.map(record => {
-                        return (
-                            <div className='cards'key={record.id}>
-                            <Card sx={{ 
-                                maxWidth: 150, 
-                                minWidth: 150,  
-                                maxHeight: 150, 
-                                minHeight: 150 
-                            }}>
-                                <CardActionArea>
-                                <CardMedia
-                                    onClick={detailedView}
-                                    component="img"
-                                    id= {record.id}
-                                    image= {record.cover_image}
-                                    alt= {record.title}
-                                    sx={{ 
-                                        maxWidth: 150, 
-                                        minWidth: 150,  
-                                        maxHeight: 150, 
-                                        minHeight:150 
-                                    }}
-                                /> 
-                                </CardActionArea>
-                            </Card>
-                            <div className='record-title' >{record.title}</div>
-                            </div>
-                        ) 
-                    })}
-                </section>
-            :
-                <section className="flex-container-list-browse">
-                    {results.map(record => {
-                        return (
-                            <div className='cards' key={record.id}>
+            <div className='browse-results'>
+                { results && 
+                (<div>
+                    <Box
+                        m={1}
+                        //margin
+                        display="flex"
+                        justifyContent="flex-end"
+                        alignItems="flex-end"
+                        >
+                        <ToggleButtonGroup className='toggle-buttons'>
+                            <ToggleButton value={display} onClick={toggleDisplay}>
+                                <GridViewIcon />
+                            </ToggleButton>
+                            
+                            <ToggleButton value={!display} onClick={toggleDisplay}>
+                                <ListIcon />
+                            </ToggleButton>                
+                        </ToggleButtonGroup>
+                    </Box>
+                    { display ?
+                    <section className="flex-container-grid-browse">
+                        {results.map(record => {
+                            return (
+                                <div className='cards'key={record.id}>
                                 <Card sx={{ 
-                                    display: 'flex' ,
+                                    maxWidth: 150, 
+                                    minWidth: 150,  
                                     maxHeight: 150, 
-                                    minHeight:150 
+                                    minHeight: 150 
                                 }}>
-                                <CardMedia
-                                    component="img"
-                                    sx={{ 
-                                        maxWidth: 150, 
-                                        minWidth: 150,  
+                                    <CardActionArea>
+                                    <CardMedia
+                                        onClick={detailedView}
+                                        component="img"
+                                        id= {record.id}
+                                        image= {record.cover_image}
+                                        alt= {record.title}
+                                        sx={{ 
+                                            maxWidth: 150, 
+                                            minWidth: 150,  
+                                            maxHeight: 150, 
+                                            minHeight:150 
+                                        }}
+                                    /> 
+                                    </CardActionArea>
+                                </Card>
+                                <div className='record-title' >{record.title}</div>
+                                </div>
+                            ) 
+                        })}
+                    </section>
+                    :
+                    <section className="flex-container-list-browse">
+                        {results.map(record => {
+                            return (
+                                <div className='cards' key={record.id}>
+                                    <Card sx={{ 
+                                        display: 'flex' ,
                                         maxHeight: 150, 
                                         minHeight:150 
-                                    }}
-                                    image={record.cover_image}
-                                    alt={record.title}
-                                />
-                                <CardActionArea id={record.id} onClick={detailedView}>
-                                    <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                                        <CardContent sx={{ flex: '1 0 auto' }}>
-                                            <Typography component="div" variant="h6">
-                                                {record.title}
-                                            </Typography>
-                                            <Typography variant="text" color="text.secondary" component="div">
-                                                {record.year} {record.country}
-                                            </Typography>
-                                            <Typography variant="text" color="text.secondary" component="div">
-                                                {record.genre}
-                                            </Typography>
-                                        </CardContent>
-                                    </Box>
-                                </CardActionArea>
-                                <Box
-                                    m={1}
-                                    margin
-                                    display="flex"
-                                    justifyContent="flex-end"
-                                    alignItems="flex-end"
-                                >
-                                    <Button 
-                                        size="small" 
-                                        id= {record.id}
-                                        title= {record.title}
-                                        cover_image= {record.cover_image}
-                                        country= {record.country} 
-                                        year= {record.year} 
-                                        genre= {record.genre} 
-                                        owned= "false"
-                                        onClick= {addWishlist}
+                                    }}>
+                                    <CardMedia
+                                        component="img"
+                                        sx={{ 
+                                            maxWidth: 150, 
+                                            minWidth: 150,  
+                                            maxHeight: 150, 
+                                            minHeight:150 
+                                        }}
+                                        image={record.cover_image}
+                                        alt={record.title}
+                                    />
+                                    <CardActionArea id={record.id} onClick={detailedView}>
+                                        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                                            <CardContent sx={{ flex: '1 0 auto' }}>
+                                                <Typography component="div" variant="h6">
+                                                    {record.title}
+                                                </Typography>
+                                                <Typography variant="text" color="text.secondary" component="div">
+                                                    {record.year} {record.country}
+                                                </Typography>
+                                                <Typography variant="text" color="text.secondary" component="div">
+                                                    {record.genre}
+                                                </Typography>
+                                            </CardContent>
+                                        </Box>
+                                    </CardActionArea>
+                                    <Box
+                                        m={1}
+                                        margin
+                                        display="flex"
+                                        justifyContent="flex-end"
+                                        alignItems="flex-end"
                                     >
-                                        +wishlist
-                                    </Button>
+                                        <Button 
+                                            size="small" 
+                                            id= {record.id}
+                                            title= {record.title}
+                                            cover_image= {record.cover_image}
+                                            country= {record.country} 
+                                            year= {record.year} 
+                                            genre= {record.genre} 
+                                            owned= "false"
+                                            onClick= {addWishlist}
+                                        >
+                                            +wishlist
+                                        </Button>
 
-                                    <Button 
-                                        size="small" 
-                                        id= {record.id}
-                                        title= {record.title}
-                                        cover_image= {record.cover_image}
-                                        country= {record.country} 
-                                        year= {record.year} 
-                                        genre= {record.genre} 
-                                        owned= "true"
-                                        onClick= {addCollection}
-                                    >
-                                        +collection
-                                    </Button>
-                                </Box>   
-                                </Card>
-                            </div>
-                        ) 
-                    })}
-                </section>
-                }
-                <center>
-                    <IconButton >
-                        <ArrowBackIosNewIcon />
-                    </IconButton>
-                    <IconButton >
-                        <ArrowForwardIosIcon />
-                    </IconButton>
-                    <p>Page {pagination.page} out of {pagination.pages}</p>
-                </center>
-             </div>)
-        } 
+                                        <Button 
+                                            size="small" 
+                                            id= {record.id}
+                                            title= {record.title}
+                                            cover_image= {record.cover_image}
+                                            country= {record.country} 
+                                            year= {record.year} 
+                                            genre= {record.genre} 
+                                            owned= "true"
+                                            onClick= {addCollection}
+                                        >
+                                            +collection
+                                        </Button>
+                                    </Box>   
+                                    </Card>
+                                </div>
+                            ) 
+                        })}
+                    </section>
+                    }
+                    <center>
+                        <IconButton >
+                            <ArrowBackIosNewIcon />
+                        </IconButton>
+                        <IconButton >
+                            <ArrowForwardIosIcon />
+                        </IconButton>
+                        <p>Page {pagination.page} out of {pagination.pages}</p>
+                    </center>
+                </div>)
+                } 
             </div> 
         </div>
     )
