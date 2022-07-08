@@ -229,6 +229,11 @@ Details Page
 .record-title{
   text-align: left;
   font-size: small;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+
 }
 
 .pagination-items {
@@ -251,7 +256,6 @@ Details Page
 
 .toggle-buttons{
   padding-left: 100px;
-
 }
 
 
