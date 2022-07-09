@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
-import BarcodeScanner from '../BarcodeScanner/BarcodeScanner';
 import BarcodeScannerComponent from "react-qr-barcode-scanner";
-
 
 // mui imports
 import Typography from '@mui/material/Typography';
@@ -47,15 +45,9 @@ function Browse(){
 
     // to toggle the view
     const [display, setDisplay] = useState(true);
-    const toggleDisplay = () => {
-        setDisplay(!display);
-    }
 
     // to toggle the camera mode
     const [scanner, setScanner]= useState(false);
-    const toggleCamera = () => {
-        setScanner(!scanner);
-    }
  
     // push to detailed page on cover click
     const detailedView = event => {
@@ -140,7 +132,7 @@ function Browse(){
                             value= {search} 
                             onChange={(evt) => setSearch(evt.target.value)}
                         />
-                        <IconButton sx={{ p: '10px' }} aria-label="search" onClick={toggleCamera}>
+                        <IconButton sx={{ p: '10px' }} onClick={() => setScanner(!scanner)}>
                             <PhotoCameraIcon />
                         </IconButton>
                         <IconButton type="submit" sx={{ p: '10px' }} aria-label="search" onClick={sendSearch}>
@@ -172,7 +164,7 @@ function Browse(){
                                 value= {search} 
                                 onChange={(evt) => setSearch(evt.target.value)}
                             />
-                            <IconButton sx={{ p: '10px' }} aria-label="search" onClick={sendSearch}>
+                            <IconButton sx={{ p: '10px' }} onClick={() => setScanner(!scanner)}>
                                 <PhotoCameraIcon />
                             </IconButton>
                             <IconButton type="submit" sx={{ p: '10px' }} aria-label="search" onClick={sendSearch}>
@@ -180,11 +172,11 @@ function Browse(){
                             </IconButton>
                         </Paper>
                         <ToggleButtonGroup className='toggle-buttons'>
-                            <ToggleButton value={display} onClick={toggleDisplay}>
+                            <ToggleButton value={display} onClick={() => setDisplay(true)}>
                                 <GridViewIcon />
                             </ToggleButton>
                             
-                            <ToggleButton value={!display} onClick={toggleDisplay}>
+                            <ToggleButton value={!display} onClick={() => setDisplay(false)}>
                                 <ListIcon />
                             </ToggleButton>                
                         </ToggleButtonGroup>
@@ -192,6 +184,17 @@ function Browse(){
                         <div className='pagination-items'>
                             <p> {pagination.items} results </p>
                         </div>
+                        <center>
+                            { scanner &&
+                                <BarcodeScannerComponent
+                                    width={500}
+                                    height={500}
+                                    onUpdate={(err, result) => {
+                                        if (result) setSearch(result.text);
+                                    }}
+                                />
+                            }
+                        </center>
                     </div>
                 </>
                 }
