@@ -31,7 +31,7 @@ import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 function Browse(){
     const results = useSelector(store => store.browseBasic.results);
     const pagination = useSelector(store => store.browseBasic.pagination);
-
+    
     const [search, setSearch]= useState('');
     const dispatch = useDispatch();
     const history = useHistory();
@@ -49,6 +49,12 @@ function Browse(){
     const [display, setDisplay] = useState(true);
     const toggleDisplay = () => {
         setDisplay(!display);
+    }
+
+    // to toggle the camera mode
+    const [scanner, setScanner]= useState(false);
+    const toggleCamera = () => {
+        setScanner(!scanner);
     }
  
     // push to detailed page on cover click
@@ -134,21 +140,22 @@ function Browse(){
                             value= {search} 
                             onChange={(evt) => setSearch(evt.target.value)}
                         />
-                        <IconButton sx={{ p: '10px' }} aria-label="search" onClick={sendSearch}>
+                        <IconButton sx={{ p: '10px' }} aria-label="search" onClick={toggleCamera}>
                             <PhotoCameraIcon />
                         </IconButton>
                         <IconButton type="submit" sx={{ p: '10px' }} aria-label="search" onClick={sendSearch}>
                             <SearchIcon />
                         </IconButton>
                         </Paper>
-                        <BarcodeScannerComponent
-                            width={500}
-                            height={500}
-                            onUpdate={(err, result) => {
-                            if (result) setSearch(result.text);
-                            else setData("Not Found");
-                            }}
-                        />
+                        { scanner &&
+                            <BarcodeScannerComponent
+                                width={500}
+                                height={500}
+                                onUpdate={(err, result) => {
+                                    if (result) setSearch(result.text);
+                                }}
+                            />
+                        }
                     </div>
                 }
                 { results &&
