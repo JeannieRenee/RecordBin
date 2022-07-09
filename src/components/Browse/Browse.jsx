@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
+import BarcodeScanner from '../BarcodeScanner/BarcodeScanner';
+import BarcodeScannerComponent from "react-qr-barcode-scanner";
+
 
 // mui imports
 import Typography from '@mui/material/Typography';
@@ -23,6 +26,7 @@ import ListIcon from '@mui/icons-material/List';
 import GridViewIcon from '@mui/icons-material/GridView';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 
 function Browse(){
     const results = useSelector(store => store.browseBasic.results);
@@ -130,10 +134,21 @@ function Browse(){
                             value= {search} 
                             onChange={(evt) => setSearch(evt.target.value)}
                         />
+                        <IconButton sx={{ p: '10px' }} aria-label="search" onClick={sendSearch}>
+                            <PhotoCameraIcon />
+                        </IconButton>
                         <IconButton type="submit" sx={{ p: '10px' }} aria-label="search" onClick={sendSearch}>
                             <SearchIcon />
                         </IconButton>
                         </Paper>
+                        <BarcodeScannerComponent
+                            width={500}
+                            height={500}
+                            onUpdate={(err, result) => {
+                            if (result) setSearch(result.text);
+                            else setData("Not Found");
+                            }}
+                        />
                     </div>
                 }
                 { results &&
@@ -150,6 +165,9 @@ function Browse(){
                                 value= {search} 
                                 onChange={(evt) => setSearch(evt.target.value)}
                             />
+                            <IconButton sx={{ p: '10px' }} aria-label="search" onClick={sendSearch}>
+                                <PhotoCameraIcon />
+                            </IconButton>
                             <IconButton type="submit" sx={{ p: '10px' }} aria-label="search" onClick={sendSearch}>
                                 <SearchIcon />
                             </IconButton>
@@ -283,7 +301,12 @@ function Browse(){
                         })}
                     </section>
                     }
-                    { pagination.page === 1 && 
+                    { pagination.page  === 1 && pagination.pages ===1 &&
+                    <center>
+                        <p>Page {pagination.page} out of {pagination.pages}</p>
+                    </center>
+                    }
+                    { pagination.page === 1 && pagination.pages > 1 &&
                     <center>
                         <IconButton url={pagination.urls.next} onClick={nextPage}>
                             <ArrowForwardIosIcon />
@@ -302,7 +325,7 @@ function Browse(){
                         <p>Page {pagination.page} out of {pagination.pages}</p>
                     </center>
                     }
-                    { pagination.page === pagination.pages && 
+                    { pagination.page === pagination.pages && pagination.page != 1 &&
                     <center>
                         <IconButton url={pagination.urls.prev} onClick={nextPage}>
                             <ArrowBackIosNewIcon/>
