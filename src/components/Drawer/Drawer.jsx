@@ -62,7 +62,9 @@ function ResponsiveDrawer(props) {
             <img src={require('./logo.png')} className='logo' />
           <div className='divider'>
             <Divider />
+            {/* <h4>Hey, {user.username}</h4> */}
           </div>
+
           <List >
             <div className='sidebar'>
               <ListItem key='Collection' disablePadding onClick={collection}>
