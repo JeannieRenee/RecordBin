@@ -27,14 +27,22 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 
 function Browse(){
+    // store imports
     const results = useSelector(store => store.browseBasic.results);
     const pagination = useSelector(store => store.browseBasic.pagination);
-    
-    const [search, setSearch]= useState('');
+    // function imports
     const dispatch = useDispatch();
     const history = useHistory();
-    const  {id}  = useParams();
 
+    //local states
+    // to toggle the view
+    const [display, setDisplay] = useState(true);
+    // to set search term
+    const [search, setSearch]= useState('');
+    // to toggle the camera mode
+    const [scanner, setScanner]= useState(false);
+
+    //send search term to api
     const sendSearch = (evt) => {
         evt.preventDefault();
         dispatch({
@@ -43,19 +51,13 @@ function Browse(){
         });
     }
 
-    // to toggle the view
-    const [display, setDisplay] = useState(true);
-
-    // to toggle the camera mode
-    const [scanner, setScanner]= useState(false);
- 
     // push to detailed page on cover click
     const detailedView = event => {
         const id = event.currentTarget.id;
         history.push(`/details/${id}`);
     }
 
-    // push to detailed page on cover click
+    // get next or previous page data on button clicks
     const nextPage = event => {
         const url = event.currentTarget.getAttribute('url');
         dispatch({ 
@@ -64,6 +66,7 @@ function Browse(){
         });
     }
 
+    // add to wishlist dispatch 
     const addWishlist = event => {
         const id = event.target.id;
         const title = event.target.title;
@@ -87,6 +90,7 @@ function Browse(){
         });
     }
 
+    // add to collection dispatch
     const addCollection = event => {
         const id = event.target.id;
         const title = event.target.title;
@@ -108,6 +112,10 @@ function Browse(){
                 owned
             }
         });
+    }
+    // close the barcode scanner upon barcode capture 
+    if(search !== '' && scanner == true){
+        setScanner(false)
     }
 
     return (
@@ -181,9 +189,15 @@ function Browse(){
                             </ToggleButton>                
                         </ToggleButtonGroup>
                         </div>
-                        <div className='pagination-items'>
-                            <p> {pagination.items} results </p>
-                        </div>
+                        { results.length === 1 ?
+                            <div className='pagination-items'>
+                                <p> {results.length} result </p>
+                            </div>
+                        :
+                            <div className='pagination-items'>
+                                <p> {results.length} results </p>
+                            </div>
+                        }
                         <center>
                             { scanner &&
                                 <BarcodeScannerComponent

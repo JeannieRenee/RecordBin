@@ -19,7 +19,6 @@ function* fetchResults(action) {
 function* nextPage(action) {
     try {
         let url = action.payload;
-        console.log('the url in the saga is', url)
         const response = yield axios.post(`/api/browse`, {url:`${url}`} );
         //sends results to search reducer below
         yield put({ type: "SET_RESULTS", payload: response.data });
