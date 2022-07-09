@@ -25,6 +25,7 @@ import GridViewIcon from '@mui/icons-material/GridView';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
+import CropFreeIcon from '@mui/icons-material/CropFree';
 
 function Browse(){
     // store imports
@@ -120,28 +121,28 @@ function Browse(){
 
     return (
         <div>
-            <div className='search-bar'>
+            <div>
                 { !results &&
                     <div className='search-primary'>
                         <Typography 
                             component="div" 
-                            variant="h3"
+                            variant="h4"
                         >
                             What are you looking for?
                         </Typography>
                         <br/>
                         <Paper
                             component="form"
-                            sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 500 }}
+                            sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 300 }}
                         >
                         <InputBase
                             sx={{ ml: 1, flex: 1 }}
-                            placeholder="Search artists, albums and more..."
+                            placeholder="Search artists, albums or scan barcode..."
                             value= {search} 
                             onChange={(evt) => setSearch(evt.target.value)}
                         />
                         <IconButton sx={{ p: '10px' }} onClick={() => setScanner(!scanner)}>
-                            <PhotoCameraIcon />
+                            <CropFreeIcon />
                         </IconButton>
                         <IconButton type="submit" sx={{ p: '10px' }} aria-label="search" onClick={sendSearch}>
                             <SearchIcon />
@@ -162,53 +163,52 @@ function Browse(){
                 <>
                     <div className='search-secondary'>
                         <div className='search-secondary-top'>
-                        <Paper
-                            component="form"
-                            sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 500 }}
-                        >
-                            <InputBase
-                                sx={{ ml: 1, flex: 1 }}
-                                placeholder="Search artists, albums and more..."
-                                value= {search} 
-                                onChange={(evt) => setSearch(evt.target.value)}
-                            />
-                            <IconButton sx={{ p: '10px' }} onClick={() => setScanner(!scanner)}>
-                                <PhotoCameraIcon />
-                            </IconButton>
-                            <IconButton type="submit" sx={{ p: '10px' }} aria-label="search" onClick={sendSearch}>
-                                <SearchIcon />
-                            </IconButton>
-                        </Paper>
-                        { display ? 
-                            <ToggleButtonGroup className='toggle-buttons'>
-                                <ToggleButton value={display} onClick={() => setDisplay(true)} 
-                                    style={{
-                                        backgroundColor: "#f5f5f5",
-                                    }}
-                                >
-                                    <GridViewIcon style={{ color: '#d67753' }}/>
-                                </ToggleButton>
-                                
-                                <ToggleButton value={!display} onClick={() => setDisplay(false)}>
-                                    <ListIcon />
-                                </ToggleButton>                
-                            </ToggleButtonGroup>                        
-                        :
-                            <ToggleButtonGroup className='toggle-buttons'>
-                                <ToggleButton value={display} onClick={() => setDisplay(true)}>
-                                    <GridViewIcon />
-                                </ToggleButton>
-                                
-                                <ToggleButton value={!display} onClick={() => setDisplay(false)}
-                                    style={{
-                                        backgroundColor: "#f5f5f5",
-                                    }}
-                                >
-                                    <ListIcon style={{ color: '#d67753' }}/>
-                                </ToggleButton>                
-                            </ToggleButtonGroup>
-                        }
-
+                            <Paper
+                                component="form"
+                                sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 300 }}
+                            >
+                                <InputBase
+                                    sx={{ ml: 1, flex: 1 }}
+                                    placeholder="Search artists, albums or scan barcode..."
+                                    value= {search} 
+                                    onChange={(evt) => setSearch(evt.target.value)}
+                                />
+                                <IconButton sx={{ p: '10px' }} onClick={() => setScanner(!scanner)}>
+                                    <CropFreeIcon />
+                                </IconButton>
+                                <IconButton type="submit" sx={{ p: '10px' }} aria-label="search" onClick={sendSearch}>
+                                    <SearchIcon />
+                                </IconButton>
+                            </Paper>
+                            { display ? 
+                                <ToggleButtonGroup className='toggle-buttons'>
+                                    <ToggleButton value={display} onClick={() => setDisplay(true)} 
+                                        style={{
+                                            backgroundColor: "#f5f5f5",
+                                        }}
+                                    >
+                                        <GridViewIcon style={{ color: '#d67753' }}/>
+                                    </ToggleButton>
+                                    
+                                    <ToggleButton value={!display} onClick={() => setDisplay(false)}>
+                                        <ListIcon />
+                                    </ToggleButton>                
+                                </ToggleButtonGroup>                        
+                            :
+                                <ToggleButtonGroup className='toggle-buttons'>
+                                    <ToggleButton value={display} onClick={() => setDisplay(true)}>
+                                        <GridViewIcon />
+                                    </ToggleButton>
+                                    
+                                    <ToggleButton value={!display} onClick={() => setDisplay(false)}
+                                        style={{
+                                            backgroundColor: "#f5f5f5",
+                                        }}
+                                    >
+                                        <ListIcon style={{ color: '#d67753' }}/>
+                                    </ToggleButton>                
+                                </ToggleButtonGroup>
+                            }
                         </div>
                         { results.length === 1 ?
                             <div className='pagination-items'>
@@ -238,7 +238,7 @@ function Browse(){
                 { results && 
                 (<div>
                     { display ?
-                    <section className="flex-container-grid-browse">
+                    <section className="flex-container-grid">
                         {results.map(record => {
                             return (
                                 <div className='cards'key={record.id}>
@@ -270,7 +270,7 @@ function Browse(){
                         })}
                     </section>
                     :
-                    <section className="flex-container-list-browse">
+                    <section className="flex-container-list">
                         {results.map(record => {
                             return (
                                 <div className='cards' key={record.id}>
