@@ -32,6 +32,17 @@ const useStyles = makeStyles((theme) => ({
   appBar: {
     zIndex: theme.zIndex.drawer + 1, // add this line to increate appBar z-index
   },
+  title: {
+    flexGrow: 1, 
+    textAlign: "center", 
+    alignItems: "center", 
+    display: 'flex', 
+    justifyContent: "center" 
+  },
+  logo: {
+    maxWidth: 34.57,
+    maxWidth: 190,
+  }
 }));
 
 function ResponsiveDrawer(props) {
@@ -152,16 +163,19 @@ function ResponsiveDrawer(props) {
         style={{ background: '#d67753' }}
       >
           <Toolbar>
+
             <IconButton
               color="inherit"
-              aria-label="open drawer"
               edge="start"
               onClick={handleDrawerToggle}
+              className={classes.open}
               sx={{ mr: 2, display: { sm: 'none' } }}
             >
               <MenuIcon />
             </IconButton>
-            <img src={require('./logo.png')} className='logo' />
+            <div className={classes.title}>
+              <img src={require('./logo.png')} className={classes.logo}/>
+            </div>
           </Toolbar>
       </AppBar>
       <Box
