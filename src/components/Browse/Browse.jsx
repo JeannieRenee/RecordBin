@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
+import BarcodeScannerComponent from "react-qr-barcode-scanner";
 
 // mui imports
 import Typography from '@mui/material/Typography';
@@ -23,16 +24,25 @@ import ListIcon from '@mui/icons-material/List';
 import GridViewIcon from '@mui/icons-material/GridView';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 
 function Browse(){
+    // store imports
     const results = useSelector(store => store.browseBasic.results);
     const pagination = useSelector(store => store.browseBasic.pagination);
-
-    const [search, setSearch]= useState('');
+    // function imports
     const dispatch = useDispatch();
     const history = useHistory();
-    const  {id}  = useParams();
 
+    //local states
+    // to toggle the view
+    const [display, setDisplay] = useState(true);
+    // to set search term
+    const [search, setSearch]= useState('');
+    // to toggle the camera mode
+    const [scanner, setScanner]= useState(false);
+
+    //send search term to api
     const sendSearch = (evt) => {
         evt.preventDefault();
         dispatch({
@@ -41,19 +51,13 @@ function Browse(){
         });
     }
 
-    // to toggle the view
-    const [display, setDisplay] = useState(true);
-    const toggleDisplay = () => {
-        setDisplay(!display);
-    }
- 
     // push to detailed page on cover click
     const detailedView = event => {
         const id = event.currentTarget.id;
         history.push(`/details/${id}`);
     }
 
-    // push to detailed page on cover click
+    // get next or previous page data on button clicks
     const nextPage = event => {
         const url = event.currentTarget.getAttribute('url');
         dispatch({ 
@@ -62,6 +66,7 @@ function Browse(){
         });
     }
 
+    // add to wishlist dispatch 
     const addWishlist = event => {
         const id = event.target.id;
         const title = event.target.title;
@@ -85,6 +90,7 @@ function Browse(){
         });
     }
 
+    // add to collection dispatch
     const addCollection = event => {
         const id = event.target.id;
         const title = event.target.title;
@@ -106,6 +112,10 @@ function Browse(){
                 owned
             }
         });
+    }
+    // close the barcode scanner upon barcode capture 
+    if(search !== '' && scanner == true){
+        setScanner(false)
     }
 
     return (
@@ -130,10 +140,22 @@ function Browse(){
                             value= {search} 
                             onChange={(evt) => setSearch(evt.target.value)}
                         />
+                        <IconButton sx={{ p: '10px' }} onClick={() => setScanner(!scanner)}>
+                            <PhotoCameraIcon />
+                        </IconButton>
                         <IconButton type="submit" sx={{ p: '10px' }} aria-label="search" onClick={sendSearch}>
                             <SearchIcon />
                         </IconButton>
                         </Paper>
+                        { scanner &&
+                            <BarcodeScannerComponent
+                                width={500}
+                                height={500}
+                                onUpdate={(err, result) => {
+                                    if (result) setSearch(result.text);
+                                }}
+                            />
+                        }
                     </div>
                 }
                 { results &&
@@ -150,23 +172,43 @@ function Browse(){
                                 value= {search} 
                                 onChange={(evt) => setSearch(evt.target.value)}
                             />
+                            <IconButton sx={{ p: '10px' }} onClick={() => setScanner(!scanner)}>
+                                <PhotoCameraIcon />
+                            </IconButton>
                             <IconButton type="submit" sx={{ p: '10px' }} aria-label="search" onClick={sendSearch}>
                                 <SearchIcon />
                             </IconButton>
                         </Paper>
                         <ToggleButtonGroup className='toggle-buttons'>
-                            <ToggleButton value={display} onClick={toggleDisplay}>
+                            <ToggleButton value={display} onClick={() => setDisplay(true)}>
                                 <GridViewIcon />
                             </ToggleButton>
                             
-                            <ToggleButton value={!display} onClick={toggleDisplay}>
+                            <ToggleButton value={!display} onClick={() => setDisplay(false)}>
                                 <ListIcon />
                             </ToggleButton>                
                         </ToggleButtonGroup>
                         </div>
-                        <div className='pagination-items'>
-                            <p> {pagination.items} results </p>
-                        </div>
+                        { results.length === 1 ?
+                            <div className='pagination-items'>
+                                <p> {results.length} result </p>
+                            </div>
+                        :
+                            <div className='pagination-items'>
+                                <p> {results.length} results </p>
+                            </div>
+                        }
+                        <center>
+                            { scanner &&
+                                <BarcodeScannerComponent
+                                    width={500}
+                                    height={500}
+                                    onUpdate={(err, result) => {
+                                        if (result) setSearch(result.text);
+                                    }}
+                                />
+                            }
+                        </center>
                     </div>
                 </>
                 }
@@ -283,7 +325,12 @@ function Browse(){
                         })}
                     </section>
                     }
-                    { pagination.page === 1 && 
+                    { pagination.page  === 1 && pagination.pages ===1 &&
+                    <center>
+                        <p>Page {pagination.page} out of {pagination.pages}</p>
+                    </center>
+                    }
+                    { pagination.page === 1 && pagination.pages > 1 &&
                     <center>
                         <IconButton url={pagination.urls.next} onClick={nextPage}>
                             <ArrowForwardIosIcon />
@@ -302,7 +349,7 @@ function Browse(){
                         <p>Page {pagination.page} out of {pagination.pages}</p>
                     </center>
                     }
-                    { pagination.page === pagination.pages && 
+                    { pagination.page === pagination.pages && pagination.page != 1 &&
                     <center>
                         <IconButton url={pagination.urls.prev} onClick={nextPage}>
                             <ArrowBackIosNewIcon/>
