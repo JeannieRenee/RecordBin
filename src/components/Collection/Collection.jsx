@@ -64,10 +64,10 @@ function Collection (){
                 <ToggleButtonGroup className='toggle-buttons-collection-wishlist'>
                     <ToggleButton value={display} onClick={() => setDisplay(true)} 
                         style={{
-                        backgroundColor: "#eaeaea",
+                        backgroundColor: "#f5f5f5",
                         }}
                     >
-                        <GridViewIcon />
+                        <GridViewIcon style={{ color: '#d67753' }}/>
                     </ToggleButton>
                     
                     <ToggleButton value={!display} onClick={() => setDisplay(false)}>
@@ -82,10 +82,10 @@ function Collection (){
                     
                     <ToggleButton value={!display} onClick={() => setDisplay(false)}
                         style={{
-                            backgroundColor: "#eaeaea",
+                            backgroundColor: "#f5f5f5",
                         }}
                     >
-                        <ListIcon />
+                        <ListIcon style={{ color: '#d67753' }}/>
                     </ToggleButton>                
                 </ToggleButtonGroup>
             }
