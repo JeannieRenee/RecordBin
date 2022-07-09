@@ -2,6 +2,7 @@ import * as React from 'react';
 import {useHistory} from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -27,15 +28,21 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 
 const drawerWidth = 230;
+const useStyles = makeStyles((theme) => ({
+  appBar: {
+    zIndex: theme.zIndex.drawer + 1, // add this line to increate appBar z-index
+  },
+}));
 
 function ResponsiveDrawer(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const classes = useStyles();
+  const theme = useTheme();
 
   const user = useSelector((store) => store.user);
   const history = useHistory()
   const dispatch = useDispatch();
-
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -66,6 +73,7 @@ function ResponsiveDrawer(props) {
     setMobileOpen(!mobileOpen);
     dispatch({ type: 'LOGOUT' });
   }
+  
   const drawer = (
       <div>
         <Toolbar /> 
@@ -136,6 +144,7 @@ function ResponsiveDrawer(props) {
       <CssBaseline />
       <AppBar
         position="fixed"
+        className={classes.appBar}        
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },

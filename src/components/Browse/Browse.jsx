@@ -210,13 +210,13 @@ function Browse(){
                                 </ToggleButtonGroup>
                             }
                         </div>
-                        { results.length === 1 ?
+                        { pagination.items === 1 ?
                             <div className='pagination-items'>
-                                <p> {results.length} result </p>
+                                <p> {pagination.items} result </p>
                             </div>
                         :
                             <div className='pagination-items'>
-                                <p> {results.length} results </p>
+                                <p> {pagination.items} results </p>
                             </div>
                         }
                         <center>
