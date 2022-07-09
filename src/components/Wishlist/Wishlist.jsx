@@ -29,9 +29,6 @@ function Wishlist (){
 
     // to toggle the view
     const [display, setDisplay] = useState(true);
-    const toggleDisplay = () => {
-        setDisplay(!display);
-    }
 
     // push to detailed page on cover click
     const detailedView = event => {
@@ -72,15 +69,35 @@ function Wishlist (){
                 justifyContent="flex-end"
                 alignItems="flex-end"
             >
+            { display ? 
                 <ToggleButtonGroup className='toggle-buttons-collection-wishlist'>
-                    <ToggleButton value={display} onClick={toggleDisplay}>
+                    <ToggleButton value={display} onClick={() => setDisplay(true)} 
+                        style={{
+                            backgroundColor: "#eaeaea",
+                        }}
+                    >
                         <GridViewIcon />
                     </ToggleButton>
                     
-                    <ToggleButton value={!display} onClick={toggleDisplay}>
+                    <ToggleButton value={!display} onClick={() => setDisplay(false)}>
+                        <ListIcon />
+                    </ToggleButton>                
+                </ToggleButtonGroup>                        
+            :
+                <ToggleButtonGroup className='toggle-buttons-collection-wishlist'>
+                    <ToggleButton value={display} onClick={() => setDisplay(true)}>
+                        <GridViewIcon />
+                    </ToggleButton>
+                    
+                    <ToggleButton value={!display} onClick={() => setDisplay(false)}
+                        style={{
+                            backgroundColor: "#eaeaea",
+                        }}
+                    >
                         <ListIcon />
                     </ToggleButton>                
                 </ToggleButtonGroup>
+            }
             </Box>
             </div>
             { display ?

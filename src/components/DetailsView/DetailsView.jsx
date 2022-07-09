@@ -24,7 +24,7 @@ function DetailsView(){
 
     return (
         <div className='detailed-view'>
-            <IconButton onClick={history.goBack}>
+            <IconButton onClick={history.goBack} style={{ color: '#d67753' }}>
                 <ArrowBackIosIcon />
                 <ArrowBackIosIcon />
                 <ArrowBackIosIcon />

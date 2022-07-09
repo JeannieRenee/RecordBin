@@ -179,15 +179,36 @@ function Browse(){
                                 <SearchIcon />
                             </IconButton>
                         </Paper>
-                        <ToggleButtonGroup className='toggle-buttons'>
-                            <ToggleButton value={display} onClick={() => setDisplay(true)}>
-                                <GridViewIcon />
-                            </ToggleButton>
-                            
-                            <ToggleButton value={!display} onClick={() => setDisplay(false)}>
-                                <ListIcon />
-                            </ToggleButton>                
-                        </ToggleButtonGroup>
+                        { display ? 
+                            <ToggleButtonGroup className='toggle-buttons'>
+                                <ToggleButton value={display} onClick={() => setDisplay(true)} 
+                                    style={{
+                                        backgroundColor: "#eaeaea",
+                                    }}
+                                >
+                                    <GridViewIcon />
+                                </ToggleButton>
+                                
+                                <ToggleButton value={!display} onClick={() => setDisplay(false)}>
+                                    <ListIcon />
+                                </ToggleButton>                
+                            </ToggleButtonGroup>                        
+                        :
+                            <ToggleButtonGroup className='toggle-buttons'>
+                                <ToggleButton value={display} onClick={() => setDisplay(true)}>
+                                    <GridViewIcon />
+                                </ToggleButton>
+                                
+                                <ToggleButton value={!display} onClick={() => setDisplay(false)}
+                                    style={{
+                                        backgroundColor: "#eaeaea",
+                                    }}
+                                >
+                                    <ListIcon />
+                                </ToggleButton>                
+                            </ToggleButtonGroup>
+                        }
+
                         </div>
                         { results.length === 1 ?
                             <div className='pagination-items'>
@@ -333,7 +354,7 @@ function Browse(){
                     { pagination.page === 1 && pagination.pages > 1 &&
                     <center>
                         <IconButton url={pagination.urls.next} onClick={nextPage}>
-                            <ArrowForwardIosIcon />
+                            <ArrowForwardIosIcon style={{ color: '#d67753' }} />
                         </IconButton>
                         <p>Page {pagination.page} out of {pagination.pages}</p>
                     </center>
@@ -341,10 +362,10 @@ function Browse(){
                     { pagination.page < pagination.pages && pagination.page > 1 &&
                     <center>
                         <IconButton url={pagination.urls.prev} onClick={nextPage}>
-                            <ArrowBackIosNewIcon/>
+                            <ArrowBackIosNewIcon style={{ color: '#d67753' }}/>
                         </IconButton>
                         <IconButton url={pagination.urls.next} onClick={nextPage}>
-                            <ArrowForwardIosIcon />
+                            <ArrowForwardIosIcon style={{ color: '#d67753' }} />
                         </IconButton>
                         <p>Page {pagination.page} out of {pagination.pages}</p>
                     </center>
@@ -352,7 +373,7 @@ function Browse(){
                     { pagination.page === pagination.pages && pagination.page != 1 &&
                     <center>
                         <IconButton url={pagination.urls.prev} onClick={nextPage}>
-                            <ArrowBackIosNewIcon/>
+                            <ArrowBackIosNewIcon style={{ color: '#d67753' }}/>
                         </IconButton>
                         <p>Page {pagination.page} out of {pagination.pages}</p>
                     </center>

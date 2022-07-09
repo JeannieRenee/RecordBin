@@ -110,7 +110,7 @@ function ResponsiveDrawer(props) {
               <ListItem key='LogOut' disablePadding onClick={logout}>
                 <ListItemButton>
                   <ListItemIcon>
-                    <LogoutIcon /> 
+                    <LogoutIcon style={{ color: '#d67753' }}/> 
                   </ListItemIcon>
                   <ListItemText primary="LogOut" />
                 </ListItemButton>
