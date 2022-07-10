@@ -14,17 +14,18 @@ import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
+// mui
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import SearchIcon from '@mui/icons-material/Search';
 import LogoutIcon from '@mui/icons-material/Logout';
 import InfoIcon from '@mui/icons-material/Info';
 import MenuIcon from '@mui/icons-material/Menu';
+import ListItemIcon from '@mui/material/ListItemIcon';
 
 
 const drawerWidth = 230;
@@ -51,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
 function ResponsiveDrawer(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const container = window !== undefined ? () => window().document.body : undefined;
   const classes = useStyles();
   const theme = useTheme();
 
@@ -83,7 +85,7 @@ function ResponsiveDrawer(props) {
     dispatch({ type: 'LOGOUT' });
   }
   const drawer = (
-      <div>
+      <>
         <Toolbar /> 
           <Divider />
           <br/>
@@ -143,17 +145,14 @@ function ResponsiveDrawer(props) {
           </Box>
           </div>
         </List>
-      </div>
+      </>
     );
-
-  const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
     <>
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar
-        position="fixed"
         className={classes.appBar}        
         sx={{
           width: { sm: `calc(100%)` },
@@ -186,9 +185,6 @@ function ResponsiveDrawer(props) {
           variant="temporary"
           open={mobileOpen}
           onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
           sx={{
             display: { xs: 'block', sm: 'none' },
             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
@@ -196,22 +192,11 @@ function ResponsiveDrawer(props) {
         >
             <>{drawer}</>
         </Drawer>
-
-        <Drawer
-          variant="permanent"
-          sx={{
-            display: { xs: 'none', sm: 'block' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-          }}
-          open
-        >
-            <>{drawer}</>
-        </Drawer>
         
       </Box>
       <Box
         component="main"
-        sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
+        sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100%)` } }}
       >
         <Toolbar />
         

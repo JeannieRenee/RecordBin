@@ -133,7 +133,7 @@ function Browse(){
                         <br/>
                         <Paper
                             component="form"
-                            sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 300 }}
+                            sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: '75%' }}
                         >
                         <InputBase
                             sx={{ ml: 1, flex: 1 }}
@@ -150,8 +150,8 @@ function Browse(){
                         </Paper>
                         { scanner &&
                             <BarcodeScannerComponent
-                                width={500}
-                                height={500}
+                                width={300}
+                                height={300}
                                 onUpdate={(err, result) => {
                                     if (result) setSearch(result.text);
                                 }}
