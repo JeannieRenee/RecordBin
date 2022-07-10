@@ -90,7 +90,7 @@ function ResponsiveDrawer(props) {
           <Divider />
           <br/>
           <Typography variant="subtitle1" color="text.primary" className={classes.welcome}>
-            Howdy, {user.username}
+            Howdy, {user.username}!
           </Typography>
         <List >
           <div className='sidebar'>
@@ -122,7 +122,7 @@ function ResponsiveDrawer(props) {
             </ListItem>
         </div>
         </List>
-        <List>
+        <List style={{ position: "absolute", bottom: "0" }}>
         <div className="sidebar-bottom">
           <Box>
             <ListItem key='About' disablePadding onClick={info}>

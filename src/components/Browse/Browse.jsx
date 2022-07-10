@@ -123,6 +123,7 @@ function Browse(){
         <div>
             <div>
                 { !results &&
+
                     <div className='search-primary'>
                         <Typography 
                             component="div" 
@@ -133,10 +134,10 @@ function Browse(){
                         <br/>
                         <Paper
                             component="form"
-                            sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: '75%' }}
+                            sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: '75%', maxWidth: 600}}
                         >
                         <InputBase
-                            sx={{ ml: 1, flex: 1 }}
+                            sx={{ ml: 1, flex: 1}}
                             placeholder="Search artists, albums or scan barcode..."
                             value= {search} 
                             onChange={(evt) => setSearch(evt.target.value)}
@@ -158,6 +159,7 @@ function Browse(){
                             />
                         }
                     </div>
+
                 }
                 { results &&
                 <>
@@ -165,7 +167,7 @@ function Browse(){
                         <div className='search-secondary-top'>
                             <Paper
                                 component="form"
-                                sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 300 }}
+                                sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: '60%' }}
                             >
                                 <InputBase
                                     sx={{ ml: 1, flex: 1 }}

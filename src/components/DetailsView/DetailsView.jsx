@@ -26,197 +26,201 @@ function DetailsView(){
     }, []);
 
     return (
-        <div className='detailed-view'>
-            <IconButton onClick={history.goBack} >
-                <ArrowBackIosIcon style={{ color: '#d67753' }}/>
-                Back
-            </IconButton>
-            <br/>
-            <br/>
-            <div className='detailed-view-image'>
-                <img src={require('./placeholder.png')} width="300" height="300"/>
+        <>
+            <div className='detailed-view-back-button'>
+                <IconButton onClick={history.goBack} >
+                    <ArrowBackIosIcon style={{ color: '#d67753' }}/>
+                    Back
+                </IconButton>
             </div>
-
-            <div className='detailed-view-text'>
-            <Typography variant="h5"> 
-                {record.title && <>{record.title}</>}
-            </Typography>
-            <Typography variant="h6"> 
-                {record.artists_sort && <>{record.artists_sort}</>}
-            </Typography>
-            <br/>
-            <Typography variant="subtitle1" color="text.secondary" >
-                {record.community && 
-                    <>
-                        {/* .5 star */}
-                        { record.community.rating.average < .5 &&
-                            <>
-                                <StarBorderIcon style={{ color: '#d67753' }}/>
-                                <StarBorderIcon style={{ color: '#d67753' }}/>
-                                <StarBorderIcon style={{ color: '#d67753' }}/>
-                                <StarBorderIcon style={{ color: '#d67753' }}/>
-                                <StarBorderIcon style={{ color: '#d67753' }}/>
-                            </>
-                        }
-                        {/* 1 star */}
-                        { record.community.rating.average < 1 && record.community.rating.average >= .50 &&
-                            <>
-                                <StarIcon style={{ color: '#d67753' }}/>
-                                <StarBorderIcon style={{ color: '#d67753' }}/>
-                                <StarBorderIcon style={{ color: '#d67753' }}/>
-                                <StarBorderIcon style={{ color: '#d67753' }}/>
-                                <StarBorderIcon style={{ color: '#d67753' }}/>
-                            </>
-                        }
-                        {/* 1.5 star */}
-                        { record.community.rating.average < 1.50 && record.community.rating.average >= 1 &&
-                            <>
-                                <StarIcon style={{ color: '#d67753' }}/>
-                                <StarHalfIcon style={{ color: '#d67753' }}/>
-                                <StarBorderIcon style={{ color: '#d67753' }}/>
-                                <StarBorderIcon style={{ color: '#d67753' }}/>
-                                <StarBorderIcon style={{ color: '#d67753' }}/>
-                            </>
-                        }
-                        {/* 2 star */}
-                        { record.community.rating.average < 2 && record.community.rating.average >= 1.50 &&
-                            <>
-                                <StarIcon style={{ color: '#d67753' }}/>
-                                <StarIcon style={{ color: '#d67753' }}/>
-                                <StarBorderIcon style={{ color: '#d67753' }}/>
-                                <StarBorderIcon style={{ color: '#d67753' }}/>
-                                <StarBorderIcon style={{ color: '#d67753' }}/>
-                            </>
-                        }
-                        {/* 2.5 star */}
-                        { record.community.rating.average < 2.50 && record.community.rating.average >= 2 &&
-                             <>
-                                <StarIcon style={{ color: '#d67753' }}/>
-                                <StarIcon style={{ color: '#d67753' }}/>
-                                <StarHalfIcon style={{ color: '#d67753' }}/>
-                                <StarBorderIcon style={{ color: '#d67753' }}/>
-                                <StarBorderIcon style={{ color: '#d67753' }}/>
-                            </>
-                        }
-                        {/* 3 star */}
-                        { record.community.rating.average < 3 && record.community.rating.average >= 2.50 &&
-                            <>
-                                <StarIcon style={{ color: '#d67753' }}/>
-                                <StarIcon style={{ color: '#d67753' }}/>
-                                <StarIcon style={{ color: '#d67753' }}/>
-                                <StarBorderIcon style={{ color: '#d67753' }}/>
-                                <StarBorderIcon style={{ color: '#d67753' }}/>
-                            </>
-                        }
-                        {/* 3.5 star */}
-                        { record.community.rating.average < 3.50 && record.community.rating.average >= 3 &&
-                            <>
-                                <StarIcon style={{ color: '#d67753' }}/>
-                                <StarIcon style={{ color: '#d67753' }}/>
-                                <StarIcon style={{ color: '#d67753' }}/>
-                                <StarHalfIcon style={{ color: '#d67753' }}/>
-                                <StarBorderIcon style={{ color: '#d67753' }}/>
-                            </>
-                        }
-                        {/* 4 star */}
-                        { record.community.rating.average < 4 && record.community.rating.average >= 3.50 &&
-                            <>
-                                <StarIcon style={{ color: '#d67753' }}/>
-                                <StarIcon style={{ color: '#d67753' }}/>
-                                <StarIcon style={{ color: '#d67753' }}/>
-                                <StarIcon style={{ color: '#d67753' }}/>
-                                <StarBorderIcon style={{ color: '#d67753' }}/>
-                            </>
-                        }
-                        {/* 4.5 star */}
-                        { record.community.rating.average < 4.50 && record.community.rating.average >= 4 &&
-                            <>
-                                <StarIcon style={{ color: '#d67753' }}/>
-                                <StarIcon style={{ color: '#d67753' }}/>
-                                <StarIcon style={{ color: '#d67753' }}/>
-                                <StarIcon style={{ color: '#d67753' }}/>
-                                <StarHalfIcon style={{ color: '#d67753' }}/>
-                            </>
-                        }
-                        {/* 5 star */}
-                        { record.community.rating.average <= 5 && record.community.rating.average >= 4.50 &&
-                            <>
-                                <StarIcon style={{ color: '#d67753' }}/>
-                                <StarIcon style={{ color: '#d67753' }}/>
-                                <StarIcon style={{ color: '#d67753' }}/>
-                                <StarIcon style={{ color: '#d67753' }}/>
-                                <StarIcon style={{ color: '#d67753' }}/>
-                            </>
-                        }
-                        <br/>
-                        <> Rating: {record.community.rating.average} out of {record.community.rating.count} votes </>
-                        <br/>
-                    </>
-                }
-            </Typography>
-            <Typography variant="subtitle1" color="text.secondary" >
-                { record.genres && 
-                    <>
-                        Genres:
-                            {record.genres.map(genre => {
-                                return (
-                                <> {genre} </>
-                                )
-                            })}
-                     
-                    </>
-                }
                 <br/>
-                { record.styles && 
-                    <>
-                        SubGenres:
-                            {record.styles.map(style => {
-                                return (
-                                <> {style} </>
-                                )
-                            })}
-                    </>
-                }
-            </Typography>
-            <br/>
-            
-            <Typography variant="text" color="text.secondary" >    
-                { record.tracklist &&
-                    <>
-                        <>Tracks:</>
-                        <ul>
-                            {record.tracklist.map(track => {
-                                return (
-                                <li>{track.position} - {track.title}</li>
-                                )
-                            })}
-                        </ul> 
-                    </>
-                }
-            </Typography>
-
-            <Typography variant="text" color="text.secondary">
-                { record.notes && <>Notes: {record.notes}</> }
-            </Typography>
-
-
-            <Typography variant="text" color="text.secondary" >
+                <br/>        
+            <div className='detailed-view'>
+                <div className='detailed-view-image'>
+                    <img src={require('./placeholder.png')} width="300" height="300"/>
+                </div>
                 <br/>
-                {record.country && <>{record.country} version released in {record.year} </>}
+                <div className='detailed-view-text'>
+                <Typography variant="h5"> 
+                    {record.title && <>{record.title}</>}
+                </Typography>
+                <Typography variant="h6"> 
+                    {record.artists_sort && <>{record.artists_sort}</>}
+                </Typography>
                 <br/>
-                { record.labels && 
-                    <>
-                        <>Labels:</>
-                            {record.labels.map(label => {
-                                return (
-                                <> {label.name} </>
-                                )
-                            })} 
-                    </>
-                }
-            </Typography>
+                <Typography variant="subtitle1" color="text.secondary" >
+                    {record.community && 
+                        <>
+                            {/* .5 star */}
+                            { record.community.rating.average < .75 &&
+                                <>
+                                    <StarBorderIcon style={{ color: '#d67753' }}/>
+                                    <StarBorderIcon style={{ color: '#d67753' }}/>
+                                    <StarBorderIcon style={{ color: '#d67753' }}/>
+                                    <StarBorderIcon style={{ color: '#d67753' }}/>
+                                    <StarBorderIcon style={{ color: '#d67753' }}/>
+                                </>
+                            }
+                            {/* 1 star */}
+                            { record.community.rating.average < 1.25 && record.community.rating.average >= .75 &&
+                                <>
+                                    <StarIcon style={{ color: '#d67753' }}/>
+                                    <StarBorderIcon style={{ color: '#d67753' }}/>
+                                    <StarBorderIcon style={{ color: '#d67753' }}/>
+                                    <StarBorderIcon style={{ color: '#d67753' }}/>
+                                    <StarBorderIcon style={{ color: '#d67753' }}/>
+                                </>
+                            }
+                            {/* 1.5 star */}
+                            { record.community.rating.average < 1.75 && record.community.rating.average >= 1.25 &&
+                                <>
+                                    <StarIcon style={{ color: '#d67753' }}/>
+                                    <StarHalfIcon style={{ color: '#d67753' }}/>
+                                    <StarBorderIcon style={{ color: '#d67753' }}/>
+                                    <StarBorderIcon style={{ color: '#d67753' }}/>
+                                    <StarBorderIcon style={{ color: '#d67753' }}/>
+                                </>
+                            }
+                            {/* 2 star */}
+                            { record.community.rating.average < 2.25 && record.community.rating.average >= 1.75 &&
+                                <>
+                                    <StarIcon style={{ color: '#d67753' }}/>
+                                    <StarIcon style={{ color: '#d67753' }}/>
+                                    <StarBorderIcon style={{ color: '#d67753' }}/>
+                                    <StarBorderIcon style={{ color: '#d67753' }}/>
+                                    <StarBorderIcon style={{ color: '#d67753' }}/>
+                                </>
+                            }
+                            {/* 2.5 star */}
+                            { record.community.rating.average < 2.75 && record.community.rating.average >= 2.25 &&
+                                <>
+                                    <StarIcon style={{ color: '#d67753' }}/>
+                                    <StarIcon style={{ color: '#d67753' }}/>
+                                    <StarHalfIcon style={{ color: '#d67753' }}/>
+                                    <StarBorderIcon style={{ color: '#d67753' }}/>
+                                    <StarBorderIcon style={{ color: '#d67753' }}/>
+                                </>
+                            }
+                            {/* 3 star */}
+                            { record.community.rating.average < 3.25 && record.community.rating.average >= 2.75 &&
+                                <>
+                                    <StarIcon style={{ color: '#d67753' }}/>
+                                    <StarIcon style={{ color: '#d67753' }}/>
+                                    <StarIcon style={{ color: '#d67753' }}/>
+                                    <StarBorderIcon style={{ color: '#d67753' }}/>
+                                    <StarBorderIcon style={{ color: '#d67753' }}/>
+                                </>
+                            }
+                            {/* 3.5 star */}
+                            { record.community.rating.average < 3.75 && record.community.rating.average >= 3.25 &&
+                                <>
+                                    <StarIcon style={{ color: '#d67753' }}/>
+                                    <StarIcon style={{ color: '#d67753' }}/>
+                                    <StarIcon style={{ color: '#d67753' }}/>
+                                    <StarHalfIcon style={{ color: '#d67753' }}/>
+                                    <StarBorderIcon style={{ color: '#d67753' }}/>
+                                </>
+                            }
+                            {/* 4 star */}
+                            { record.community.rating.average < 4.25 && record.community.rating.average >= 3.75 &&
+                                <>
+                                    <StarIcon style={{ color: '#d67753' }}/>
+                                    <StarIcon style={{ color: '#d67753' }}/>
+                                    <StarIcon style={{ color: '#d67753' }}/>
+                                    <StarIcon style={{ color: '#d67753' }}/>
+                                    <StarBorderIcon style={{ color: '#d67753' }}/>
+                                </>
+                            }
+                            {/* 4.5 star */}
+                            { record.community.rating.average < 4.75 && record.community.rating.average >= 4.25 &&
+                                <>
+                                    <StarIcon style={{ color: '#d67753' }}/>
+                                    <StarIcon style={{ color: '#d67753' }}/>
+                                    <StarIcon style={{ color: '#d67753' }}/>
+                                    <StarIcon style={{ color: '#d67753' }}/>
+                                    <StarHalfIcon style={{ color: '#d67753' }}/>
+                                </>
+                            }
+                            {/* 5 star */}
+                            { record.community.rating.average <= 5 && record.community.rating.average >= 4.75 &&
+                                <>
+                                    <StarIcon style={{ color: '#d67753' }}/>
+                                    <StarIcon style={{ color: '#d67753' }}/>
+                                    <StarIcon style={{ color: '#d67753' }}/>
+                                    <StarIcon style={{ color: '#d67753' }}/>
+                                    <StarIcon style={{ color: '#d67753' }}/>
+                                </>
+                            }
+                            <br/>
+                                <> Rating: {record.community.rating.average} out of {record.community.rating.count} votes </>
+                            <br/>
+                        </>
+                    }
+                </Typography>
+                <Typography variant="subtitle1" color="text.secondary" >
+                    { record.genres && 
+                        <>
+                            Genres:
+                                {record.genres.map(genre => {
+                                    return (
+                                    <> {genre} </>
+                                    )
+                                })}
+                        
+                        </>
+                    }
+                    <br/>
+                    { record.styles && 
+                        <>
+                            SubGenres:
+                                {record.styles.map(style => {
+                                    return (
+                                    <> {style} </>
+                                    )
+                                })}
+                        </>
+                    }
+                </Typography>
+                <br/>
+                
+                <Typography variant="text" color="text.secondary" >    
+                    { record.tracklist &&
+                        <>
+                            <b>Tracks:</b>
+                            <ul>
+                                {record.tracklist.map(track => {
+                                    return (
+                                    <li>{track.position} - {track.title}</li>
+                                    )
+                                })}
+                            </ul> 
+                        </>
+                    }
+                </Typography>
+
+                <Typography variant="text" color="text.secondary">
+                    { record.notes && <><b>Notes:</b> {record.notes}</> }
+                </Typography>
+
+
+                <Typography variant="text" color="text.secondary" >
+                    <br/>
+                    {record.country && <>{record.country} version released in {record.year} </>}
+                    <br/>
+                    { record.labels && 
+                        <>
+                            <>Labels:</>
+                                {record.labels.map(label => {
+                                    return (
+                                    <> {label.name} </>
+                                    )
+                                })} 
+                        </>
+                    }
+                </Typography>
+                </div>
             </div>
-        </div>
+        </>
     )
 }
 

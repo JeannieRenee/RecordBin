@@ -137,6 +137,8 @@ Shared Components
   flex-wrap: wrap;
   justify-content: center;
   gap: 2em;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 .flex-container-list {
@@ -144,8 +146,8 @@ Shared Components
   flex-direction: column;
   justify-content: center;
   gap: 2em;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 /* --------------------------------------------------------------------------------
@@ -153,7 +155,7 @@ Browse Containers
 -------------------------------------------------------------------------------- */
 
 .search-primary{
-  padding-top: 80px;
+  padding-top: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -166,30 +168,39 @@ Browse Containers
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: flex-start;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 5%;
+  padding-right: 5%;
   gap: 2em;
 }
 
 .pagination-items {
   font-size: small;
-  padding-left: 20px;
+  padding-left: 6%;
+}
+
+.toggle-buttons {
+  padding-left: 5%;
 }
 
 /* --------------------------------------------------------------------------------
 Details Page
 -------------------------------------------------------------------------------- */
-.detailed-view {
+.detailed-view-back-button {
   padding-top: 80px;
+  padding-left: 5%;
 }
 
-.detailed-view-image {
+.detailed-view {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
-.detailed-view-text {
-  padding-left: 40px;
-  padding-right: 40px;
 
+.detailed-view-text {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  max-width: 500px;
+  padding: 6%;
 }
