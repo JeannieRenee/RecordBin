@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
+//mui imports
+import { alpha, styled } from '@mui/material/styles';
+import InputBase from '@mui/material/InputBase';
+import FormControl from '@mui/material/FormControl';
 
 function RegisterForm() {
   const [username, setUsername] = useState('');
@@ -22,41 +26,75 @@ function RegisterForm() {
     });
   }; // end registerUser
 
+  const Input = styled(InputBase)(({ theme }) => ({
+    'label + &': {
+      marginTop: theme.spacing(3),
+    },
+    '& .MuiInputBase-input': {
+      borderRadius: 4,
+      position: 'relative',
+      backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2b2b2b',
+      border: '1px solid #ced4da',
+      fontSize: 16,
+      width: 200,
+      padding: '10px 12px',
+      transition: theme.transitions.create([
+        'border-color',
+        'background-color',
+        'box-shadow',
+      ]),
+      '&:focus': {
+        boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 0.2rem`,
+      },
+    },
+  }));
+
   return (
     <form className="formPanel" onSubmit={registerUser}>
-      <h2>Register User</h2>
-
       {errors.registrationMessage && (
         <h3 className="alert" role="alert">
           {errors.registrationMessage}
         </h3>
       )}
       <center>
-        <label htmlFor="username">
-          Username:
-          <input
+          <Input 
+            inputProps={{
+              autoComplete: 'new-password',
+              form: {
+                autoComplete: 'off',
+              },
+            }}          
+            variant="filled"
             type="text"
             name="username"
             value={username}
             required
+            placeholder="username"
             onChange={(event) => setUsername(event.target.value)}
           />
-        </label>
       </center>
+        <br/>
       <center>
-        <label htmlFor="password">
-          Password:
-          <input
+          <Input
+            inputProps={{
+              autoComplete: 'new-password',
+              form: {
+                autoComplete: 'off',
+              },
+            }}          
+            variant="filled"
             type="password"
             name="password"
             value={password}
             required
+            placeholder="password"
             onChange={(event) => setPassword(event.target.value)}
           />
-        </label>
       </center>
+        <br/>
       <center>
-        <input className="btn" type="submit" name="submit" value="Register" />
+        <input className="btn btn_sizeFull" type="submit" name="submit" value="Register" />
+        <br/>
         <br/>
         <button
           type="button"

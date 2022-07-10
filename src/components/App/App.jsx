@@ -14,6 +14,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
 import LandingPage from '../LandingPage/LandingPage';
+import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import Collection from '../Collection/Collection';
 import Wishlist from '../Wishlist/Wishlist';
@@ -61,8 +62,8 @@ function App() {
               // redirect to the /user page
               <Redirect to="/collection" />
               :
-              // Otherwise, show the landing page
-              <LandingPage />
+              // Otherwise, show the login page
+              <LoginPage />
             }
           </Route>
 

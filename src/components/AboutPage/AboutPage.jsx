@@ -10,7 +10,9 @@ function AboutPage() {
   return (
     <div className="container-about">
       <div>
-
+      <div variant="text" color="text.secondary" component="div">
+            An app built around the Discogs system- giving access to bin diggers on the go.
+          </div>
         <p>
           RecordBin was built during a two week sprint using the below technologies. 
           <br/>

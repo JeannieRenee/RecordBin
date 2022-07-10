@@ -10,7 +10,6 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -31,7 +30,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 const drawerWidth = 230;
 const useStyles = makeStyles((theme) => ({
   appBar: {
-    zIndex: theme.zIndex.drawer + 1, // add this line to increate appBar z-index
+    zIndex: theme.zIndex.drawer + 1, // add this line to create appBar z-index
   },
   title: {
     flexGrow: 1, 
@@ -41,7 +40,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center" 
   },
   logo: {
-    maxWidth: 27.29,
     maxWidth: 150,
   },
   welcome: {
@@ -207,3 +205,18 @@ function ResponsiveDrawer(props) {
 }
 
 export default ResponsiveDrawer;
+
+
+{/* <img src={require('./logo-white.png')} />
+<Typography variant="h4" color="white" component="div">
+  An app built around the Discogs system- giving access to bin diggers on the go.
+</Typography>
+<br/>
+<button className="btn btn_sizeMin" onClick={onCreate}>
+  Create Account
+</button>
+<br/>
+
+<button className="btn btn_sizeMin" onClick={onLogin}>
+  Log in
+</button> */}

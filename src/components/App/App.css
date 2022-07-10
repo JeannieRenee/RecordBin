@@ -23,7 +23,7 @@ Button
 .btn {
   display: inline-block;
   padding: 10px 20px;
-  border-color: #014041;
+  border-color: #d67753;
   border-width: 1px 1px 3px;
   border-radius: 4px;
   background-color: #d67753;
@@ -45,7 +45,7 @@ Button
 
 .btn_sizeFull {
   display: block;
-  width: 100%;
+  width: 230px;
 }
 
 .btn:hover {
@@ -57,11 +57,11 @@ Button
 .btn_asLink {
   padding: 0;
   border-width: 0;
-  border-bottom: 1px solid #444;
+  border-bottom: 1px solid rgb(200, 200, 200);
   border-radius: 0;
   background: none;
   font: inherit;
-  color: #444;
+  color: rgb(200, 200, 200);
 }
 
 .btn_asLink:hover {
@@ -95,14 +95,6 @@ Form Treatment
   max-width: 100%;
   padding: 25px;
   margin: 0 auto 20px;
-  background-color: #f6f5f5;
-  border-radius: 3px;
-  box-shadow: 0 1px 2px rgb(0, 0, 0, 0.4);
-}
-
-input {
-  margin: 5px;
-  margin-bottom: 10px;
 }
 
 /* --------------------------------------------------------------------------------

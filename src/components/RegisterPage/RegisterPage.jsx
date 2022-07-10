@@ -7,7 +7,12 @@ function RegisterPage() {
 
   return (
     <div className='container'>
-      <RegisterForm />
+      <div className='landing-logo'>
+        <img src={require('./logo-white.png')} />
+      </div>
+      <div>
+        <RegisterForm />
+      </div>
     </div>
   );
 }
