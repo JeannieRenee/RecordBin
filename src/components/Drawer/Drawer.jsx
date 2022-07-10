@@ -41,8 +41,8 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center" 
   },
   logo: {
-    maxWidth: 34.57,
-    maxWidth: 190,
+    maxWidth: 27.29,
+    maxWidth: 150,
   },
   welcome: {
     margin: 15,
@@ -76,7 +76,7 @@ function ResponsiveDrawer(props) {
     setMobileOpen(!mobileOpen);
   }
   function info(){
-    history.push(`/info`);
+    history.push(`/about`);
     setMobileOpen(!mobileOpen);
   }
   function logout(){

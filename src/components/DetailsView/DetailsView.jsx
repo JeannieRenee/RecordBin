@@ -30,7 +30,7 @@ function DetailsView(){
             <div className='detailed-view-back-button'>
                 <IconButton onClick={history.goBack} >
                     <ArrowBackIosIcon style={{ color: '#d67753' }}/>
-                    Back
+                    <u>Back</u>
                 </IconButton>
             </div>
                 <br/>

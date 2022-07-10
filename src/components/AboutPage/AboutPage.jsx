@@ -8,13 +8,38 @@ import './AboutPage.css';
 
 function AboutPage() {
   return (
-    <div className="container">
+    <div className="container-about">
       <div>
+
         <p>
-          This about page is for anyone to read! 
+          RecordBin was built during a two week sprint using the below technologies. 
           <br/>
-          Make it look dope sidebar or no sidebar, OKAY?
+              * React - Redux - React Sagas * 
+          <br/>
+              * PostgreSQL - Node.js - Express.js *
+          <br/>
+              * Material UI - Discogs API * 
+          <br/>
         </p>
+        <p>
+            What's next?
+            <br/>
+            Search functionality for wishlist and collection.
+            <br/> 
+            Full Discogs profile integration.
+            <br/>
+        </p>
+        <p>
+            Special thanks to:
+            <br/>
+            Prime Digital Academy
+            <br/>
+            Gaiman Cohort
+            <br/>
+            My Friends and Family
+            <br/>
+        </p>
+
       </div>
     </div>
   );
