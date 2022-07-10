@@ -42,7 +42,10 @@ const useStyles = makeStyles((theme) => ({
   logo: {
     maxWidth: 34.57,
     maxWidth: 190,
-  }
+  },
+  welcome: {
+    margin: 15,
+  }  
 }));
 
 function ResponsiveDrawer(props) {
@@ -83,8 +86,10 @@ function ResponsiveDrawer(props) {
       <div>
         <Toolbar /> 
           <Divider />
-          {/* <h4>Hey, {user.username}</h4> */}
-
+          <br/>
+          <Typography variant="subtitle1" color="text.primary" className={classes.welcome}>
+            Howdy, {user.username}
+          </Typography>
         <List >
           <div className='sidebar'>
             <ListItem key='Collection' disablePadding onClick={collection}>
@@ -151,7 +156,7 @@ function ResponsiveDrawer(props) {
         position="fixed"
         className={classes.appBar}        
         sx={{
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
+          width: { sm: `calc(100%)` },
           ml: { sm: `${drawerWidth}px` },
         }}
         style={{ background: '#d67753' }}
@@ -171,6 +176,7 @@ function ResponsiveDrawer(props) {
             </div>
           </Toolbar>
       </AppBar>
+
       <Box
         component="nav"
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
