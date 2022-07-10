@@ -158,11 +158,11 @@ function Wishlist (){
                         <CardActionArea id={record.record_id} onClick={detailedView}>
                         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                             <CardContent sx={{ flex: '1 0 auto' }}>
-                                <Typography component="div" variant="h6">
+                                <Typography component="div" variant="subtitle1" color="text.primary">
                                     {record.title}
                                 </Typography>
                                 <Typography variant="text" color="text.secondary" component="div">
-                                    {record.year}  {record.country}
+                                    {record.year} {record.country}
                                 </Typography>
                                 <Typography variant="text" color="text.secondary" component="div">
                                     {record.genre}

@@ -6,6 +6,9 @@ import { useParams, useHistory } from 'react-router-dom';
 import IconButton from '@mui/material/IconButton';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import Typography from '@mui/material/Typography';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
+import StarIcon from '@mui/icons-material/Star';
+import StarHalfIcon from '@mui/icons-material/StarHalf';
 
 function DetailsView(){
     const record = useSelector(store => store.details);
@@ -24,86 +27,163 @@ function DetailsView(){
 
     return (
         <div className='detailed-view'>
-            <IconButton onClick={history.goBack} style={{ color: '#d67753' }}>
-                <ArrowBackIosIcon />
-                <ArrowBackIosIcon />
-                <ArrowBackIosIcon />
+            <IconButton onClick={history.goBack} >
+                <ArrowBackIosIcon style={{ color: '#d67753' }}/>
                 Back
             </IconButton>
-            <Typography variant="h6">
-                {record.title && <p>{record.title} - {record.artists_sort}</p>}
+            <br/>
+            <br/>
+            <div className='detailed-view-image'>
+                <img src={require('./placeholder.png')} width="300" height="300"/>
+            </div>
+
+            <div className='detailed-view-text'>
+            <Typography variant="h5"> 
+                {record.title && <>{record.title}</>}
             </Typography>
-            <Typography variant="text" color="text.secondary" >
-                {record.country && <p>{record.country} version released in {record.year} </p>}
+            <Typography variant="h6"> 
+                {record.artists_sort && <>{record.artists_sort}</>}
             </Typography>
-            <Typography variant="text" color="text.secondary" >
+            <br/>
+            <Typography variant="subtitle1" color="text.secondary" >
                 {record.community && 
                     <>
-                        <p> Want: {record.community.want} Have: {record.community.have} </p>  
-                        <p> Rating: {record.community.rating.average} out of {record.community.rating.count} votes </p>
+                        {/* .5 star */}
+                        { record.community.rating.average < .5 &&
+                            <>
+                                <StarBorderIcon style={{ color: '#d67753' }}/>
+                                <StarBorderIcon style={{ color: '#d67753' }}/>
+                                <StarBorderIcon style={{ color: '#d67753' }}/>
+                                <StarBorderIcon style={{ color: '#d67753' }}/>
+                                <StarBorderIcon style={{ color: '#d67753' }}/>
+                            </>
+                        }
+                        {/* 1 star */}
+                        { record.community.rating.average < 1 && record.community.rating.average >= .50 &&
+                            <>
+                                <StarIcon style={{ color: '#d67753' }}/>
+                                <StarBorderIcon style={{ color: '#d67753' }}/>
+                                <StarBorderIcon style={{ color: '#d67753' }}/>
+                                <StarBorderIcon style={{ color: '#d67753' }}/>
+                                <StarBorderIcon style={{ color: '#d67753' }}/>
+                            </>
+                        }
+                        {/* 1.5 star */}
+                        { record.community.rating.average < 1.50 && record.community.rating.average >= 1 &&
+                            <>
+                                <StarIcon style={{ color: '#d67753' }}/>
+                                <StarHalfIcon style={{ color: '#d67753' }}/>
+                                <StarBorderIcon style={{ color: '#d67753' }}/>
+                                <StarBorderIcon style={{ color: '#d67753' }}/>
+                                <StarBorderIcon style={{ color: '#d67753' }}/>
+                            </>
+                        }
+                        {/* 2 star */}
+                        { record.community.rating.average < 2 && record.community.rating.average >= 1.50 &&
+                            <>
+                                <StarIcon style={{ color: '#d67753' }}/>
+                                <StarIcon style={{ color: '#d67753' }}/>
+                                <StarBorderIcon style={{ color: '#d67753' }}/>
+                                <StarBorderIcon style={{ color: '#d67753' }}/>
+                                <StarBorderIcon style={{ color: '#d67753' }}/>
+                            </>
+                        }
+                        {/* 2.5 star */}
+                        { record.community.rating.average < 2.50 && record.community.rating.average >= 2 &&
+                             <>
+                                <StarIcon style={{ color: '#d67753' }}/>
+                                <StarIcon style={{ color: '#d67753' }}/>
+                                <StarHalfIcon style={{ color: '#d67753' }}/>
+                                <StarBorderIcon style={{ color: '#d67753' }}/>
+                                <StarBorderIcon style={{ color: '#d67753' }}/>
+                            </>
+                        }
+                        {/* 3 star */}
+                        { record.community.rating.average < 3 && record.community.rating.average >= 2.50 &&
+                            <>
+                                <StarIcon style={{ color: '#d67753' }}/>
+                                <StarIcon style={{ color: '#d67753' }}/>
+                                <StarIcon style={{ color: '#d67753' }}/>
+                                <StarBorderIcon style={{ color: '#d67753' }}/>
+                                <StarBorderIcon style={{ color: '#d67753' }}/>
+                            </>
+                        }
+                        {/* 3.5 star */}
+                        { record.community.rating.average < 3.50 && record.community.rating.average >= 3 &&
+                            <>
+                                <StarIcon style={{ color: '#d67753' }}/>
+                                <StarIcon style={{ color: '#d67753' }}/>
+                                <StarIcon style={{ color: '#d67753' }}/>
+                                <StarHalfIcon style={{ color: '#d67753' }}/>
+                                <StarBorderIcon style={{ color: '#d67753' }}/>
+                            </>
+                        }
+                        {/* 4 star */}
+                        { record.community.rating.average < 4 && record.community.rating.average >= 3.50 &&
+                            <>
+                                <StarIcon style={{ color: '#d67753' }}/>
+                                <StarIcon style={{ color: '#d67753' }}/>
+                                <StarIcon style={{ color: '#d67753' }}/>
+                                <StarIcon style={{ color: '#d67753' }}/>
+                                <StarBorderIcon style={{ color: '#d67753' }}/>
+                            </>
+                        }
+                        {/* 4.5 star */}
+                        { record.community.rating.average < 4.50 && record.community.rating.average >= 4 &&
+                            <>
+                                <StarIcon style={{ color: '#d67753' }}/>
+                                <StarIcon style={{ color: '#d67753' }}/>
+                                <StarIcon style={{ color: '#d67753' }}/>
+                                <StarIcon style={{ color: '#d67753' }}/>
+                                <StarHalfIcon style={{ color: '#d67753' }}/>
+                            </>
+                        }
+                        {/* 5 star */}
+                        { record.community.rating.average <= 5 && record.community.rating.average >= 4.50 &&
+                            <>
+                                <StarIcon style={{ color: '#d67753' }}/>
+                                <StarIcon style={{ color: '#d67753' }}/>
+                                <StarIcon style={{ color: '#d67753' }}/>
+                                <StarIcon style={{ color: '#d67753' }}/>
+                                <StarIcon style={{ color: '#d67753' }}/>
+                            </>
+                        }
+                        <br/>
+                        <> Rating: {record.community.rating.average} out of {record.community.rating.count} votes </>
+                        <br/>
                     </>
                 }
             </Typography>
-            <Typography variant="text" color="text.secondary" >
-                { record.labels && 
-                    <>
-                        <p>Labels:</p>
-                        <ul>
-                            {record.labels.map(label => {
-                                return (
-                                <li>{label.name}</li>
-                                )
-                            })}
-                        </ul> 
-                    </>
-                }
-            </Typography>
-            <Typography variant="text" color="text.secondary" >
+            <Typography variant="subtitle1" color="text.secondary" >
                 { record.genres && 
                     <>
-                        <p>Genres:</p>
-                        <ul>
+                        Genres:
                             {record.genres.map(genre => {
                                 return (
-                                <li>{genre}</li>
+                                <> {genre} </>
                                 )
                             })}
-                        </ul> 
+                     
                     </>
                 }
-            </Typography>
-            <Typography variant="text" color="text.secondary" >
+                <br/>
                 { record.styles && 
                     <>
-                        <p>Styles:</p>
-                        <ul>
+                        SubGenres:
                             {record.styles.map(style => {
                                 return (
-                                <li>{style}</li>
+                                <> {style} </>
                                 )
                             })}
-                        </ul> 
                     </>
                 }
             </Typography>
-            <Typography variant="text" color="text.secondary" >
-                { record.identifiers && 
-                    <>
-                        <p>Identifiers:</p>
-                        <ul>
-                            {record.identifiers.map(item => {
-                                return (
-                                <li>{item.value}</li>
-                                )
-                            })}
-                        </ul> 
-                    </>
-                }
-            </Typography>
+            <br/>
+            
             <Typography variant="text" color="text.secondary" >    
                 { record.tracklist &&
                     <>
-                        <p>Tracks:</p>
+                        <>Tracks:</>
                         <ul>
                             {record.tracklist.map(track => {
                                 return (
@@ -114,11 +194,31 @@ function DetailsView(){
                     </>
                 }
             </Typography>
+
             <Typography variant="text" color="text.secondary">
-                { record.notes && <p>Notes: {record.notes}</p> }
+                { record.notes && <>Notes: {record.notes}</> }
             </Typography>
+
+
+            <Typography variant="text" color="text.secondary" >
+                <br/>
+                {record.country && <>{record.country} version released in {record.year} </>}
+                <br/>
+                { record.labels && 
+                    <>
+                        <>Labels:</>
+                            {record.labels.map(label => {
+                                return (
+                                <> {label.name} </>
+                                )
+                            })} 
+                    </>
+                }
+            </Typography>
+            </div>
         </div>
     )
 }
 
 export default DetailsView 
+

@@ -183,3 +183,13 @@ Details Page
   padding-top: 80px;
 }
 
+.detailed-view-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.detailed-view-text {
+  padding-left: 40px;
+  padding-right: 40px;
+
+}

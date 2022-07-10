@@ -116,7 +116,7 @@ function Browse(){
     }
     // close the barcode scanner upon barcode capture 
     if(search !== '' && scanner == true){
-        setScanner(false)
+        setScanner(false);
     }
 
     return (
@@ -210,7 +210,7 @@ function Browse(){
                                 </ToggleButtonGroup>
                             }
                         </div>
-                        { pagination.items === 1 ?
+                        { pagination.items === 1 || results.length === 1 ?
                             <div className='pagination-items'>
                                 <p> {pagination.items} result </p>
                             </div>
@@ -222,8 +222,8 @@ function Browse(){
                         <center>
                             { scanner &&
                                 <BarcodeScannerComponent
-                                    width={500}
-                                    height={500}
+                                    width={300}
+                                    height={300}
                                     onUpdate={(err, result) => {
                                         if (result) setSearch(result.text);
                                     }}
@@ -293,7 +293,7 @@ function Browse(){
                                     <CardActionArea id={record.id} onClick={detailedView}>
                                         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                                             <CardContent sx={{ flex: '1 0 auto' }}>
-                                                <Typography component="div" variant="h6">
+                                                <Typography component="div" variant="subtitle1" color="text.primary">
                                                     {record.title}
                                                 </Typography>
                                                 <Typography variant="text" color="text.secondary" component="div">
@@ -348,7 +348,7 @@ function Browse(){
                     }
                     { pagination.page  === 1 && pagination.pages ===1 &&
                     <center>
-                        <p>Page {pagination.page} out of {pagination.pages}</p>
+                        <p>Page {pagination.page} of {pagination.pages}</p>
                     </center>
                     }
                     { pagination.page === 1 && pagination.pages > 1 &&
@@ -356,7 +356,7 @@ function Browse(){
                         <IconButton url={pagination.urls.next} onClick={nextPage}>
                             <ArrowForwardIosIcon style={{ color: '#d67753' }} />
                         </IconButton>
-                        <p>Page {pagination.page} out of {pagination.pages}</p>
+                        <p>Page {pagination.page} of {pagination.pages}</p>
                     </center>
                     }
                     { pagination.page < pagination.pages && pagination.page > 1 &&
@@ -367,7 +367,7 @@ function Browse(){
                         <IconButton url={pagination.urls.next} onClick={nextPage}>
                             <ArrowForwardIosIcon style={{ color: '#d67753' }} />
                         </IconButton>
-                        <p>Page {pagination.page} out of {pagination.pages}</p>
+                        <p>Page {pagination.page} of {pagination.pages}</p>
                     </center>
                     }
                     { pagination.page === pagination.pages && pagination.page != 1 &&
@@ -375,7 +375,7 @@ function Browse(){
                         <IconButton url={pagination.urls.prev} onClick={nextPage}>
                             <ArrowBackIosNewIcon style={{ color: '#d67753' }}/>
                         </IconButton>
-                        <p>Page {pagination.page} out of {pagination.pages}</p>
+                        <p>Page {pagination.page} of {pagination.pages}</p>
                     </center>
                     }
                 </div>)

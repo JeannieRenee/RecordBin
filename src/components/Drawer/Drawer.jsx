@@ -58,33 +58,27 @@ function ResponsiveDrawer(props) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
    };
-
   function collection(){
       history.push(`/collection`);
       setMobileOpen(!mobileOpen);
   }
-
   function wishlist(){
     history.push(`/wishlist`);
     setMobileOpen(!mobileOpen);
   }
-
   function browse(){
     history.push(`/browse`);
     setMobileOpen(!mobileOpen);
   }
-
   function info(){
     history.push(`/info`);
     setMobileOpen(!mobileOpen);
   }
-
   function logout(){
     history.push(`/home`);
     setMobileOpen(!mobileOpen);
     dispatch({ type: 'LOGOUT' });
   }
-  
   const drawer = (
       <div>
         <Toolbar /> 
@@ -163,12 +157,11 @@ function ResponsiveDrawer(props) {
         style={{ background: '#d67753' }}
       >
           <Toolbar>
-
             <IconButton
               color="inherit"
               edge="start"
               onClick={handleDrawerToggle}
-              className={classes.open}
+              className={classes.menuButton}
               sx={{ mr: 2, display: { sm: 'none' } }}
             >
               <MenuIcon />
