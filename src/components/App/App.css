@@ -107,6 +107,7 @@ Collection + Wishlist Containers
 .toggle-buttons-collection-wishlist {
   padding-top: 50px;
   padding-bottom: 30px;
+  margin-right: 5%;
 }
 
 /* --------------------------------------------------------------------------------
