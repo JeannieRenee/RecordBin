@@ -41,7 +41,6 @@ function DetailsView(){
                     :
                         <img src={require('./placeholder.png')} width="300" height="300"/>
                     }
-
                 </div>
                 <br/>
                 <div className='detailed-view'>
