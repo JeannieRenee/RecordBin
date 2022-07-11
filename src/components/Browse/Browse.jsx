@@ -127,10 +127,19 @@ function Browse(){
                     <div className='search-primary'>
                         <Typography 
                             component="div" 
-                            variant="h4"
+                            variant="h5"
                         >
                             What are you looking for?
                         </Typography>
+                        { scanner &&
+                            <BarcodeScannerComponent
+                                width={300}
+                                height={300}
+                                onUpdate={(err, result) => {
+                                    if (result) setSearch(result.text);
+                                }}
+                            />
+                        }
                         <br/>
                         <Paper
                             component="form"
@@ -138,7 +147,7 @@ function Browse(){
                         >
                         <InputBase
                             sx={{ ml: 1, flex: 1}}
-                            placeholder="Search artists, albums or scan barcode..."
+                            placeholder="Artists, albums or scan barcode..."
                             value= {search} 
                             onChange={(evt) => setSearch(evt.target.value)}
                         />
@@ -149,15 +158,6 @@ function Browse(){
                             <SearchIcon />
                         </IconButton>
                         </Paper>
-                        { scanner &&
-                            <BarcodeScannerComponent
-                                width={300}
-                                height={300}
-                                onUpdate={(err, result) => {
-                                    if (result) setSearch(result.text);
-                                }}
-                            />
-                        }
                     </div>
 
                 }
@@ -167,11 +167,11 @@ function Browse(){
                         <div className='search-secondary-top'>
                             <Paper
                                 component="form"
-                                sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: '60%' }}
+                                sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: '70%' }}
                             >
                                 <InputBase
                                     sx={{ ml: 1, flex: 1 }}
-                                    placeholder="Search artists, albums or scan barcode..."
+                                    placeholder="Artists, albums or scan barcode..."
                                     value= {search} 
                                     onChange={(evt) => setSearch(evt.target.value)}
                                 />
