@@ -82,6 +82,11 @@ function ResponsiveDrawer(props) {
     setMobileOpen(!mobileOpen);
     dispatch({ type: 'LOGOUT' });
   }
+
+  function home(){
+    history.push(`/home`);
+  }
+
   const drawer = (
       <>
         <Toolbar /> 
@@ -169,7 +174,7 @@ function ResponsiveDrawer(props) {
               <MenuIcon />
             </IconButton>
             <div className={classes.title}>
-              <img src={require('./logo.png')} className={classes.logo}/>
+              <img src={require('./logo.png')} className={classes.logo} onClick={home}/>
             </div>
           </Toolbar>
       </AppBar>
