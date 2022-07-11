@@ -31,6 +31,9 @@ const drawerWidth = 230;
 const useStyles = makeStyles((theme) => ({
   appBar: {
     zIndex: theme.zIndex.drawer + 1, // add this line to create appBar z-index
+    paddingLeft: 15,
+    paddingRight: 15,
+
   },
   title: {
     flexGrow: 1, 
@@ -38,6 +41,11 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center", 
     display: 'flex', 
     justifyContent: "center" 
+  },
+  menuButton: {
+    padding: 0,
+    marginRight: 0,
+
   },
   logo: {
     maxWidth: 150,
