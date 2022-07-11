@@ -70,7 +70,7 @@ router.post('/', (req, res) => {
     VALUES 
       ($1, $2, $3, $4, $5, $6, $7, $8)
   `;
-  const sqlParams = [ 1, album.id, album.cover_image, album.title, album.year, album.country, album.genre, album.owned ];
+  const sqlParams = [ req.user.id, album.id, album.cover_image, album.title, album.year, album.country, album.genre, album.owned ];
   pool.query(sqlQuery, sqlParams)
     .then((result) => {
       console.log(`Added album to the database`, album);
