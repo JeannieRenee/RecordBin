@@ -35,11 +35,11 @@ function DetailsView(){
             </div>
                 <br/>
                 <br/>        
-            <div className='detailed-view'>
                 <div className='detailed-view-image'>
                     <img src={require('./placeholder.png')} width="300" height="300"/>
                 </div>
                 <br/>
+                <div className='detailed-view'>
                 <div className='detailed-view-text'>
                 <Typography variant="h5"> 
                     {record.title && <>{record.title}</>}

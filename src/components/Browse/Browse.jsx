@@ -131,6 +131,7 @@ function Browse(){
                         >
                             What are you looking for?
                         </Typography>
+                        <br/>
                         { scanner &&
                             <BarcodeScannerComponent
                                 width={300}

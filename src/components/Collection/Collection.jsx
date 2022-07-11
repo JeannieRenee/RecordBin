@@ -90,7 +90,7 @@ function Collection (){
                 </ToggleButtonGroup>
             }
             </Box>
-            </div>
+        </div>
 
             { display ?
                 <section className="flex-container-grid">

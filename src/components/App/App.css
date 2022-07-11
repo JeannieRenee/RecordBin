@@ -191,6 +191,12 @@ Details Page
   flex-direction: column;
 }
 
+.detailed-view-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
 .detailed-view-text {
   display: flex;
   align-items: flex-start;
