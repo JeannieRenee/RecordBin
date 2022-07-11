@@ -12,7 +12,7 @@ const axios = require('axios');
    console.log('the records id is', id)
    axios({
      method: 'GET', 
-     url: `https://api.discogs.com/releases/${id}`,
+     url: `https://api.discogs.com/releases/${id}?&key=${process.env.DISCOGS_KEY}&secret=${process.env.DISCOGS_SECRET}`,
    }).then((response) => {
          console.log(response.data)
          res.send(response.data);

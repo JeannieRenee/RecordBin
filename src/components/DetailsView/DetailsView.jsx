@@ -36,7 +36,7 @@ function DetailsView(){
                 <br/>
                 <br/>        
                 <div className='detailed-view-image'>
-                    <img src={require('./placeholder.png')} width="300" height="300"/>
+                    <img src={record.images[0].resource_url} width="300" height="300"/>
                 </div>
                 <br/>
                 <div className='detailed-view'>

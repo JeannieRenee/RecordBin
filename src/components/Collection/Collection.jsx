@@ -33,7 +33,6 @@ function Collection (){
     // push to detailed page on cover click
     const detailedView = event => {
         const id = event.currentTarget.id;
-        console.log('The id is',id);
         dispatch({
             type: "FETCH_DETAILED_RESULTS",
             payload: id
@@ -43,7 +42,6 @@ function Collection (){
 
     const removeRecord = event => {
         const id = event.currentTarget.id;
-        console.log('id', id)
         dispatch({ 
             type: 'DELETE_RECORD', 
             payload: id 
