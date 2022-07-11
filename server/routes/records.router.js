@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
     const query = `
       SELECT * FROM records
       WHERE USER_ID = $1
-      ORDER BY "title" ASC;
+      ORDER BY "artist" ASC;
     `
     pool.query(query, [req.user.id])
       .then( result => {
