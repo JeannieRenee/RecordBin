@@ -4,17 +4,12 @@ import LoginForm from '../LoginForm/LoginForm';
 import './LandingPage.css';
 
 function LandingPage() {
-  const history = useHistory();
 
-
-  const onLogin = (event) => {
-    history.push('/login');
-  };
 
   return (
     <div className="container">
       <div className='landing-logo'>
-        <img src={require('./logo-white.png')} />
+        <img src={require('./logo-white.png')} className='main-logo'/>
       </div>
       <div>
           <LoginForm /> 
