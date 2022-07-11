@@ -132,16 +132,6 @@ function Browse(){
                             What are you looking for?
                         </Typography>
                         <br/>
-                        { scanner &&
-                            <BarcodeScannerComponent
-                                width={300}
-                                height={300}
-                                onUpdate={(err, result) => {
-                                    if (result) setSearch(result.text);
-                                }}
-                            />
-                        }
-                        <br/>
                         <Paper
                             component="form"
                             sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: '75%', maxWidth: 600}}
@@ -159,6 +149,17 @@ function Browse(){
                             <SearchIcon />
                         </IconButton>
                         </Paper>
+                        <br/>
+                        { scanner &&
+                            <BarcodeScannerComponent
+                                width={300}
+                                height={300}
+                                onUpdate={(err, result) => {
+                                    if (result) setSearch(result.text);
+                                }}
+                            />
+                        }
+                        <br/>
                     </div>
 
                 }
