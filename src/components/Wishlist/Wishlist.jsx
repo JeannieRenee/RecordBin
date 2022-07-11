@@ -129,7 +129,7 @@ function Wishlist (){
                                 /> 
                                 </CardActionArea>
                             </Card>
-                            <div className='record-title'>{record.title}</div>
+                            <div className='record-title'>{record.artist} - {record.title}</div>
                             </div>
                     ) 
                 })}
@@ -162,6 +162,9 @@ function Wishlist (){
                                 <Typography component="div" variant="subtitle1" color="text.primary">
                                     {record.title}
                                 </Typography>
+                                <Typography component="div" variant="subtitle1" color="text.primary">
+                                    {record.artist}
+                                </Typography>
                                 <Typography variant="text" color="text.secondary" component="div">
                                     {record.year} {record.country}
                                 </Typography>
@@ -179,6 +182,7 @@ function Wishlist (){
                             alignItems="flex-end"
                         >
                             <Button size="small" id= {record.id} onClick={removeRecord}>delete</Button>
+                            <Button size="small" id= {record.id} onClick={addCollection}>+collection</Button>
                         </Box>
                         </Card>
                     </div>

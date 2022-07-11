@@ -118,7 +118,7 @@ function Collection (){
                             /> 
                             </CardActionArea>
                         </Card>
-                        <div className='record-title'>{record.title}</div>
+                        <div className='record-title'>{record.artist} - {record.title}</div>
                         </div>
                     ) 
                 })}
@@ -150,6 +150,9 @@ function Collection (){
                             <CardContent sx={{ flex: '1 0 auto' }}>
                                 <Typography component="div" variant="subtitle1" color="text.primary">
                                     {record.title}
+                                </Typography>
+                                <Typography component="div" variant="subtitle1" color="text.primary">
+                                    {record.artist}
                                 </Typography>
                                 <Typography variant="text" color="text.secondary" component="div">
                                     {record.year} {record.country}
