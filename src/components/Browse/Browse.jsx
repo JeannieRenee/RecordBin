@@ -308,42 +308,7 @@ function Browse(){
                                                 </Typography>
                                             </CardContent>
                                         </Box>
-                                    </CardActionArea>
-                                    <Box
-                                        m={1}
-                                        margin
-                                        display="flex"
-                                        justifyContent="flex-end"
-                                        alignItems="flex-end"
-                                    >
-                                        <Button 
-                                            size="small" 
-                                            id= {record.id}
-                                            title= {record.title}
-                                            cover_image= {record.cover_image}
-                                            country= {record.country} 
-                                            year= {record.year} 
-                                            genre= {record.genre} 
-                                            owned= "false"
-                                            onClick= {addWishlist}
-                                        >
-                                            +wishlist
-                                        </Button>
-
-                                        <Button 
-                                            size="small" 
-                                            id= {record.id}
-                                            title= {record.title}
-                                            cover_image= {record.cover_image}
-                                            country= {record.country} 
-                                            year= {record.year} 
-                                            genre= {record.genre} 
-                                            owned= "true"
-                                            onClick= {addCollection}
-                                        >
-                                            +collection
-                                        </Button>
-                                    </Box>   
+                                    </CardActionArea>  
                                     </Card>
                                 </div>
                             ) 

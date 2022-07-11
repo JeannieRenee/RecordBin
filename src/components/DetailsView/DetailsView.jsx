@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 
+import Button from '@mui/material/Button';
+
 //mui icons
 import IconButton from '@mui/material/IconButton';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
@@ -24,7 +26,57 @@ function DetailsView(){
             payload: id
         });
     }, []);
+    // add to wishlist dispatch 
+    const addWishlist = event => {
+        const id = event.target.id;
+        const artist = event.target.getAttribute('artist');
+        const title = event.target.title;
+        const cover_image = event.target.getAttribute('cover_image');
+        const country = event.target.getAttribute('country');
+        const year = event.target.getAttribute('year');
+        const genre = event.target.getAttribute('genre');
+        const owned = event.target.getAttribute('owned');
 
+        dispatch({ 
+            type: 'SAVE_RECORD', 
+            payload: {   
+                id,
+                artist,
+                title,
+                cover_image,
+                country,
+                year,
+                genre,
+                owned
+            }
+        });
+    }
+
+    // add to collection dispatch
+    const addCollection = event => {
+        const id = event.target.id;
+        const artist = event.target.getAttribute('artist');
+        const title = event.target.title;
+        const cover_image = event.target.getAttribute('cover_image');
+        const country = event.target.getAttribute('country');
+        const year = event.target.getAttribute('year');
+        const genre = event.target.getAttribute('genre');
+        const owned = event.target.getAttribute('owned');
+
+        dispatch({ 
+            type: 'SAVE_RECORD', 
+            payload: {   
+                id,
+                artist,
+                title,
+                cover_image,
+                country,
+                year,
+                genre,
+                owned
+            }
+        });
+    }
     return (
         <>
             <div className='detailed-view-back-button'>
@@ -222,6 +274,34 @@ function DetailsView(){
                         </>
                     }
                 </Typography>
+                <br/>
+                <Button 
+                    id= {record.id}
+                    artist= {record.artists_sort}
+                    title= {record.title}
+                    cover_image= {record.images[0].uri}
+                    country= {record.country} 
+                    year= {record.year} 
+                    genre= {record.genre} 
+                    owned= "false"
+                    onClick= {addWishlist}
+                >
+                    +wishlist
+                </Button>
+
+                <Button 
+                    id= {record.id}
+                    artist= {record.artists_sort}
+                    title= {record.title}
+                    cover_image= {record.images[0].uri}
+                    country= {record.country} 
+                    year= {record.year} 
+                    genre= {record.genre} 
+                    owned= "true"
+                    onClick= {addCollection}
+                >
+                    +collection
+                </Button>
                 </div>
             </div>
         </>

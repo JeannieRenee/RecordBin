@@ -66,11 +66,11 @@ router.post('/', (req, res) => {
   const album = req.body;
   let sqlQuery = `
     INSERT INTO "records" 
-      ("user_id", "record_id", "cover", "title", "year", "country", "genre", "owned")
+      ("user_id", "record_id", "cover", "title", "year", "country", "genre", "owned", "artist")
     VALUES 
-      ($1, $2, $3, $4, $5, $6, $7, $8)
+      ($1, $2, $3, $4, $5, $6, $7, $8, $9)
   `;
-  const sqlParams = [ req.user.id, album.id, album.cover_image, album.title, album.year, album.country, album.genre, album.owned ];
+  const sqlParams = [ req.user.id, album.id, album.cover_image, album.title, album.year, album.country, album.genre, album.owned, album.artist ];
   pool.query(sqlQuery, sqlParams)
     .then((result) => {
       console.log(`Added album to the database`, album);
