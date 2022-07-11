@@ -96,6 +96,9 @@ Form Treatment
   padding: 25px;
   margin: 0 auto 20px;
 }
+/* input:focus::placeholder {
+  color: transparent;
+} */
 
 /* --------------------------------------------------------------------------------
 Collection + Wishlist Containers
@@ -175,6 +178,10 @@ Browse Containers
 
 .toggle-buttons {
   padding-left: 5%;
+}
+
+.pagination-nav {
+  padding-top: 50px;
 }
 
 /* --------------------------------------------------------------------------------

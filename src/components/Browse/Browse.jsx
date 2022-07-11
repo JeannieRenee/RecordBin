@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import BarcodeScannerComponent from "react-qr-barcode-scanner";
 
 // mui imports
@@ -27,6 +27,12 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import CropFreeIcon from '@mui/icons-material/CropFree';
 
+const delayExecution = (mls) => {
+    return new Promise((resolve) => {
+      setTimeout(() => resolve("ok"), mls);
+    });
+  };
+
 function Browse(){
     // store imports
     const results = useSelector(store => store.browseBasic.results);
@@ -42,6 +48,7 @@ function Browse(){
     const [search, setSearch]= useState('');
     // to toggle the camera mode
     const [scanner, setScanner]= useState(false);
+
 
     //send search term to api
     const sendSearch = (evt) => {
@@ -119,6 +126,26 @@ function Browse(){
         setScanner(false);
     }
 
+    // placeholders 
+    const [index, setIndex] = useState(0);
+    const placeholderText = ["Artist", "Album", "Scan Barcode"]
+
+    useEffect(() => {
+      const timer = () => {
+        setIndex(prevIndex => {
+          if(prevIndex === placeholderText.length - 1){
+            return 0;
+          } 
+          return prevIndex + 1;
+        })
+      };
+      setInterval(timer, 2000);
+      
+      //cleanup function in order clear the interval timer
+      //when the component unmounts
+      return () => { clearInterval(timer); }
+    }, []);
+
     return (
         <div>
             <div>
@@ -138,7 +165,7 @@ function Browse(){
                         >
                         <InputBase
                             sx={{ ml: 1, flex: 1}}
-                            placeholder="Artists, albums or scan barcode..."
+                            placeholder={placeholderText[index]}
                             value= {search} 
                             onChange={(evt) => setSearch(evt.target.value)}
                         />
@@ -173,7 +200,7 @@ function Browse(){
                             >
                                 <InputBase
                                     sx={{ ml: 1, flex: 1 }}
-                                    placeholder="Artists, albums or scan barcode..."
+                                    placeholder={placeholderText[index]}
                                     value= {search} 
                                     onChange={(evt) => setSearch(evt.target.value)}
                                 />
@@ -316,12 +343,12 @@ function Browse(){
                     </section>
                     }
                     { pagination.page  === 1 && pagination.pages ===1 &&
-                    <center>
+                    <center className='pagination-nav'>
                         <p>Page {pagination.page} of {pagination.pages}</p>
                     </center>
                     }
                     { pagination.page === 1 && pagination.pages > 1 &&
-                    <center>
+                    <center className='pagination-nav'>
                         <IconButton url={pagination.urls.next} onClick={nextPage}>
                             <ArrowForwardIosIcon style={{ color: '#d67753' }} />
                         </IconButton>
@@ -329,7 +356,7 @@ function Browse(){
                     </center>
                     }
                     { pagination.page < pagination.pages && pagination.page > 1 &&
-                    <center>
+                    <center className='pagination-nav'>
                         <IconButton url={pagination.urls.prev} onClick={nextPage}>
                             <ArrowBackIosNewIcon style={{ color: '#d67753' }}/>
                         </IconButton>
@@ -340,7 +367,7 @@ function Browse(){
                     </center>
                     }
                     { pagination.page === pagination.pages && pagination.page != 1 &&
-                    <center>
+                    <center className='pagination-nav'>
                         <IconButton url={pagination.urls.prev} onClick={nextPage}>
                             <ArrowBackIosNewIcon style={{ color: '#d67753' }}/>
                         </IconButton>
