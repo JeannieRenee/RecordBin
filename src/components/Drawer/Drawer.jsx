@@ -169,7 +169,7 @@ function ResponsiveDrawer(props) {
               edge="start"
               onClick={handleDrawerToggle}
               className={classes.menuButton}
-              sx={{ mr: 2, display: { sm: 'none' } }}
+              sx={{ mr: 2}}
             >
               <MenuIcon />
             </IconButton>
@@ -194,34 +194,30 @@ function ResponsiveDrawer(props) {
           }}
         >
             <>{drawer}</>
+        </Drawer> 
+        <Drawer
+          variant="temporary"
+          sx={{
+            display: { xs: 'none', sm: 'block' },
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+          }}
+          open={mobileOpen}
+        >
+          {drawer}
         </Drawer>
         
       </Box>
+
       <Box
         component="main"
         sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100%)` } }}
       >
         <Toolbar />
-        
       </Box>
+
     </Box>
     </>
   );
 }
 
 export default ResponsiveDrawer;
-
-
-{/* <img src={require('./logo-white.png')} />
-<Typography variant="h4" color="white" component="div">
-  An app built around the Discogs system- giving access to bin diggers on the go.
-</Typography>
-<br/>
-<button className="btn btn_sizeMin" onClick={onCreate}>
-  Create Account
-</button>
-<br/>
-
-<button className="btn btn_sizeMin" onClick={onLogin}>
-  Log in
-</button> */}
