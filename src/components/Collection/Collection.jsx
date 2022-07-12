@@ -40,14 +40,6 @@ function Collection (){
         history.push(`/details/${id}`);
     }
 
-    const removeRecord = event => {
-        const id = event.currentTarget.id;
-        dispatch({ 
-            type: 'DELETE_RECORD', 
-            payload: id 
-        });
-    }
-
     return (
         <>
         <div className='collection-container'>
@@ -159,15 +151,6 @@ function Collection (){
                             </CardContent>
                         </Box>
                         </CardActionArea >
-                        {/* <Box
-                            m={1}
-                            //margin
-                            display="flex"
-                            justifyContent="flex-end"
-                            alignItems="flex-end"
-                        >
-                            <Button size="small" id= {record.id} onClick={removeRecord}>delete</Button>
-                        </Box>    */}
                         </Card>
                     </div>
                 ) 

@@ -20,6 +20,9 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 
 function DetailsView(){
     const record = useSelector(store => store.details);
+    const collection = useSelector(store => store.records.map(record => {return record.record_id}));
+    const user = useSelector(store => store.user);
+
     const history = useHistory()
     const dispatch = useDispatch();
     // grab id from params
@@ -27,6 +30,10 @@ function DetailsView(){
 
     // page load get the record data
     useEffect(() => {
+        console.log(collection)
+        console.log(id)
+        console.log(Number(id))
+        console.log(collection.indexOf(id))
         dispatch({
             type: "FETCH_DETAILED_RESULTS",
             payload: id
@@ -87,6 +94,14 @@ function DetailsView(){
         setOpenCollection(true);
     }
 
+    //remove record
+    const removeRecord = event => {
+        const id = event.currentTarget.id;
+        dispatch({ 
+            type: 'DELETE_RECORD', 
+            payload: id 
+        });
+    }
     // snackbar stuff :) 
     const [openWishlist, setOpenWishlist] = React.useState(false );
     const [openCollection, setOpenCollection] = React.useState(false);
@@ -337,6 +352,10 @@ function DetailsView(){
                         <LibraryMusicIcon style={{ color: '#d67753' }}/>
                         + collection
                     </IconButton>
+                
+                    {collection.indexOf(Number(id)) >= 0 &&
+                        <button id= {record.id} onClick={removeRecord}> button </button>
+                    }     
                 </div>
                 :
                 <div className="add-buttons">
@@ -369,8 +388,11 @@ function DetailsView(){
                         <LibraryMusicIcon style={{ color: '#d67753' }}/>
                         + collection
                     </IconButton>
+                    {collection.indexOf(Number(id)) >= 0 &&
+                    <button id= {record.id} onClick={removeRecord}> button </button>
+                    }    
                 </div>
-                }
+                }  
                 </div>
             </div>
             <Snackbar
