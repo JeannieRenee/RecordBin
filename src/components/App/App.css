@@ -104,14 +104,18 @@ Form Treatment
 Collection + Wishlist Containers
 -------------------------------------------------------------------------------- */
 .collection-container, .wishlist-container {
-  margin-top: 30px;
+  padding-top: 80px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around; 
+  align-items: flex-end;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 10%;
+  gap: 3em;
 }
 
-.toggle-buttons-collection-wishlist {
-  padding-top: 50px;
-  padding-bottom: 30px;
-  margin-right: 5%;
-}
+
 
 /* --------------------------------------------------------------------------------
 Shared Components
@@ -174,6 +178,7 @@ Browse Containers
 .pagination-items {
   font-size: small;
   padding-left: 6%;
+  padding-bottom: 5%;
 }
 
 .toggle-buttons {

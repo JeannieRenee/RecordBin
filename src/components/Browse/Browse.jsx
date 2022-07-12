@@ -49,7 +49,6 @@ function Browse(){
     // to toggle the camera mode
     const [scanner, setScanner]= useState(false);
 
-
     //send search term to api
     const sendSearch = (evt) => {
         evt.preventDefault();
@@ -128,7 +127,10 @@ function Browse(){
 
     // placeholders 
     const [index, setIndex] = useState(0);
-    const placeholderText = ["Artist", "Album", "Scan Barcode"]
+    // const placeholderText = ["Search artist", "Search album", "Scan Barcode"]
+    // const placeholderText = ["Search", "Search by", "Search by Artist","Search", "Search by", "Search by Album","Scan","Scan the","Scan the Barcode"]
+    const placeholderText = ["Search by Artist", "Search by Album", "Scan Barcode"]
+
 
     useEffect(() => {
       const timer = () => {
@@ -139,7 +141,7 @@ function Browse(){
           return prevIndex + 1;
         })
       };
-      setInterval(timer, 2000);
+      setInterval(timer, 1000);
       
       //cleanup function in order clear the interval timer
       //when the component unmounts
@@ -150,7 +152,6 @@ function Browse(){
         <div>
             <div>
                 { !results &&
-
                     <div className='search-primary'>
                         <Typography 
                             component="div" 
@@ -200,7 +201,6 @@ function Browse(){
                             >
                                 <InputBase
                                     sx={{ ml: 1, flex: 1 }}
-                                    placeholder={placeholderText[index]}
                                     value= {search} 
                                     onChange={(evt) => setSearch(evt.target.value)}
                                 />

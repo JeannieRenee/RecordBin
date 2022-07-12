@@ -114,12 +114,12 @@ function ResponsiveDrawer(props) {
               </ListItemButton>
             </ListItem>
   
-            <ListItem key='WantList' disablePadding onClick={wishlist}>
+            <ListItem key='Wishlist' disablePadding onClick={wishlist}>
               <ListItemButton>
                 <ListItemIcon>
                   <FavoriteIcon /> 
                 </ListItemIcon>
-                <ListItemText primary="WantList" />
+                <ListItemText primary="Wishlist" />
               </ListItemButton>
             </ListItem>
   

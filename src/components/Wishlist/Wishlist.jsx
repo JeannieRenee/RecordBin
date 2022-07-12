@@ -63,15 +63,11 @@ function Wishlist (){
     return (
         <>
         <div className='wishlist-container'>
-            <Box
-                m={1}
-                //margin
-                display="flex"
-                justifyContent="flex-end"
-                alignItems="flex-end"
-            >
+            <Typography component="div" variant="h4" color="text.primary">
+                Wishlist
+            </Typography>
             { display ? 
-                <ToggleButtonGroup className='toggle-buttons-collection-wishlist'>
+                <ToggleButtonGroup className='toggle-buttons'>
                     <ToggleButton value={display} onClick={() => setDisplay(true)} 
                         style={{
                             backgroundColor: "#f5f5f5",
@@ -85,7 +81,7 @@ function Wishlist (){
                     </ToggleButton>                
                 </ToggleButtonGroup>                        
             :
-                <ToggleButtonGroup className='toggle-buttons-collection-wishlist'>
+                <ToggleButtonGroup className='toggle-buttons'>
                     <ToggleButton value={display} onClick={() => setDisplay(true)}>
                         <GridViewIcon />
                     </ToggleButton>
@@ -99,8 +95,7 @@ function Wishlist (){
                     </ToggleButton>                
                 </ToggleButtonGroup>
             }
-            </Box>
-            </div>
+        </div>
             { display ?
                 <section className="flex-container-grid">
                 {records.map(record => {

@@ -51,18 +51,14 @@ function Collection (){
     return (
         <>
         <div className='collection-container'>
-            <Box
-                m={1}
-                //margin
-                display="flex"
-                justifyContent="flex-end"
-                alignItems="flex-end"
-            >
+            <Typography component="div" variant="h4" color="text.primary">
+                Collection
+            </Typography>
             { display ? 
-                <ToggleButtonGroup className='toggle-buttons-collection-wishlist'>
+                <ToggleButtonGroup className='toggle-buttons'>
                     <ToggleButton value={display} onClick={() => setDisplay(true)} 
                         style={{
-                        backgroundColor: "#f5f5f5",
+                            backgroundColor: "#f5f5f5",
                         }}
                     >
                         <GridViewIcon style={{ color: '#d67753' }}/>
@@ -73,7 +69,7 @@ function Collection (){
                     </ToggleButton>                
                 </ToggleButtonGroup>                        
             :
-                <ToggleButtonGroup className='toggle-buttons-collection-wishlist'>
+                <ToggleButtonGroup className='toggle-buttons'>
                     <ToggleButton value={display} onClick={() => setDisplay(true)}>
                         <GridViewIcon />
                     </ToggleButton>
@@ -87,7 +83,6 @@ function Collection (){
                     </ToggleButton>                
                 </ToggleButtonGroup>
             }
-            </Box>
         </div>
 
             { display ?
