@@ -31,7 +31,7 @@ const drawerWidth = 230;
 const useStyles = makeStyles((theme) => ({
   appBar: {
     zIndex: theme.zIndex.drawer + 1, // add this line to create appBar z-index
-    paddingLeft: 10,
+    paddingLeft: 15,
     paddingRight: 15,
 
   },
@@ -48,6 +48,7 @@ const useStyles = makeStyles((theme) => ({
   },
   logo: {
     maxWidth: 150,
+    marginRight: 15,
   },
   welcome: {
     margin: 15,

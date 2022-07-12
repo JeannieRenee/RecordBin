@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 
 import IconButton from '@mui/material/IconButton';
+import Button from '@mui/material/Button';
 import Snackbar from '@mui/material/Snackbar';
 import CloseIcon from '@mui/icons-material/Close';
 import Box from '@mui/material/Box';
@@ -114,7 +115,9 @@ function DetailsView(){
             <div className='detailed-view-back-button'>
                 <IconButton onClick={history.goBack} >
                     <ArrowBackIosIcon style={{ color: '#d67753' }}/>
-                    <u>Back</u>
+                    <Typography variant="subtitle1" color="text.primary" style={{ fontSize: 20, }}>
+                        <u>Back</u>
+                    </Typography>
                 </IconButton>
             </div>
             <br/>
@@ -338,15 +341,15 @@ function DetailsView(){
                 :
                 <div className="add-buttons">
                     <IconButton 
-                    id= {record.id}
-                    artist= {record.artists_sort}
-                    title= {record.title}
-                    cover_image= 'https://www.nomadfoods.com/wp-content/uploads/2018/08/placeholder-1-e1533569576673-960x960.png'
-                    country= {record.country} 
-                    year= {record.year} 
-                    genre= {record.genres} 
-                    owned= "false"
-                    onClick= {addWishlist}
+                        id= {record.id}
+                        artist= {record.artists_sort}
+                        title= {record.title}
+                        cover_image= 'https://www.nomadfoods.com/wp-content/uploads/2018/08/placeholder-1-e1533569576673-960x960.png'
+                        country= {record.country} 
+                        year= {record.year} 
+                        genre= {record.genres} 
+                        owned= "false"
+                        onClick= {addWishlist}
                     >
                         <FavoriteIcon style={{ color: '#d67753' }}/>
                         + wishlist
