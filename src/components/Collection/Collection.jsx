@@ -54,6 +54,7 @@ function Collection (){
             <Typography component="div" variant="h4" color="text.secondary" style={{ fontWeight: 600 }}>
                 Collection
             </Typography>
+
             { display ? 
                 <ToggleButtonGroup className='toggle-buttons'>
                     <ToggleButton value={display} onClick={() => setDisplay(true)} 
