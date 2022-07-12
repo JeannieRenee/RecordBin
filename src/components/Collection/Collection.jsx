@@ -144,10 +144,10 @@ function Collection (){
                         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                             <CardContent sx={{ flex: '1 0 auto' }}>
                                 <Typography component="div" variant="subtitle1" color="text.primary">
-                                    {record.title}
+                                    {record.artist}
                                 </Typography>
                                 <Typography component="div" variant="subtitle1" color="text.primary">
-                                    {record.artist}
+                                    {record.title}
                                 </Typography>
                                 <Typography variant="text" color="text.secondary" component="div">
                                     {record.year} {record.country}
@@ -158,7 +158,7 @@ function Collection (){
                             </CardContent>
                         </Box>
                         </CardActionArea >
-                        <Box
+                        {/* <Box
                             m={1}
                             //margin
                             display="flex"
@@ -166,7 +166,7 @@ function Collection (){
                             alignItems="flex-end"
                         >
                             <Button size="small" id= {record.id} onClick={removeRecord}>delete</Button>
-                        </Box>   
+                        </Box>    */}
                         </Card>
                     </div>
                 ) 

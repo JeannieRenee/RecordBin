@@ -73,53 +73,6 @@ function Browse(){
         });
     }
 
-    // add to wishlist dispatch 
-    const addWishlist = event => {
-        const id = event.target.id;
-        const title = event.target.title;
-        const cover_image = event.target.getAttribute('cover_image');
-        const country = event.target.getAttribute('country');
-        const year = event.target.getAttribute('year');
-        const genre = event.target.getAttribute('genre');
-        const owned = event.target.getAttribute('owned');
-
-        dispatch({ 
-            type: 'SAVE_RECORD', 
-            payload: {   
-                id,
-                title,
-                cover_image,
-                country,
-                year,
-                genre,
-                owned
-            }
-        });
-    }
-
-    // add to collection dispatch
-    const addCollection = event => {
-        const id = event.target.id;
-        const title = event.target.title;
-        const cover_image = event.target.getAttribute('cover_image');
-        const country = event.target.getAttribute('country');
-        const year = event.target.getAttribute('year');
-        const genre = event.target.getAttribute('genre');
-        const owned = event.target.getAttribute('owned');
-
-        dispatch({ 
-            type: 'SAVE_RECORD', 
-            payload: {   
-                id,
-                title,
-                cover_image,
-                country,
-                year,
-                genre,
-                owned
-            }
-        });
-    }
     // close the barcode scanner upon barcode capture 
     if(search !== '' && scanner == true){
         setScanner(false);
@@ -145,7 +98,8 @@ function Browse(){
       
       //cleanup function in order clear the interval timer
       //when the component unmounts
-      return () => { clearInterval(timer); }
+      return () => { clearInterval(timer); };
+
     }, []);
 
     return (
