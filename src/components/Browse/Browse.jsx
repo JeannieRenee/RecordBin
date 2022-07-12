@@ -109,7 +109,8 @@ function Browse(){
                     <div className='search-primary'>
                         <Typography 
                             component="div" 
-                            variant="h5"
+                            variant="h4"
+                            style={{ fontSize: 30, }}
                         >
                             What are you looking for?
                         </Typography>

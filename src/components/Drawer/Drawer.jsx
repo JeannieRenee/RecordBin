@@ -31,7 +31,7 @@ const drawerWidth = 230;
 const useStyles = makeStyles((theme) => ({
   appBar: {
     zIndex: theme.zIndex.drawer + 1, // add this line to create appBar z-index
-    paddingLeft: 15,
+    paddingLeft: 10,
     paddingRight: 15,
 
   },
@@ -45,7 +45,6 @@ const useStyles = makeStyles((theme) => ({
   menuButton: {
     padding: 0,
     marginRight: 0,
-
   },
   logo: {
     maxWidth: 150,
@@ -100,7 +99,7 @@ function ResponsiveDrawer(props) {
         <Toolbar /> 
           <Divider />
           <br/>
-          <Typography variant="subtitle1" color="text.primary" className={classes.welcome}>
+          <Typography variant="subtitle1" color="text.primary" className={classes.welcome} style={{ fontSize: 20, }}>
             Howdy, {user.username}!
           </Typography>
         <List >
