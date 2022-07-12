@@ -2,15 +2,20 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 
-import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
+import IconButton from '@mui/material/IconButton';
+import Button from '@mui/material/ButtonGroup';
+import Snackbar from '@mui/material/Snackbar';
+import CloseIcon from '@mui/icons-material/Close';
 
 //mui icons
-import IconButton from '@mui/material/IconButton';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import Typography from '@mui/material/Typography';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import StarIcon from '@mui/icons-material/Star';
 import StarHalfIcon from '@mui/icons-material/StarHalf';
+import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 function DetailsView(){
     const record = useSelector(store => store.details);
@@ -50,6 +55,7 @@ function DetailsView(){
                 owned
             }
         });
+        setOpenWishlist(true);
     }
 
     // add to collection dispatch
@@ -76,7 +82,34 @@ function DetailsView(){
                 owned
             }
         });
+        setOpenCollection(true);
     }
+
+    // snackbar stuff :) 
+    const [openWishlist, setOpenWishlist] = React.useState(false );
+    const [openCollection, setOpenCollection] = React.useState(false);
+  
+    const handleClose = (event, reason) => {
+      if (reason === 'clickaway') {
+        return;
+      }
+      setOpenWishlist(false);
+      setOpenCollection(false);
+    };
+
+    const action = (
+        <React.Fragment>
+          <IconButton
+            size="small"
+            aria-label="close"
+            color="inherit"
+            onClick={handleClose}
+          >
+            <CloseIcon fontSize="small" />
+          </IconButton>
+        </React.Fragment>
+      );
+    
     return (
         <>
             <div className='detailed-view-back-button'>
@@ -270,9 +303,10 @@ function DetailsView(){
                                 </>
                             }
                         </Typography>
+                        <br/>
                         {record.images ?
-                    <>
-                        <Button 
+                    <div className="add-buttons">
+                        <IconButton 
                             id= {record.id}
                             artist= {record.artists_sort}
                             title= {record.title}
@@ -283,10 +317,11 @@ function DetailsView(){
                             owned= "false"
                             onClick= {addWishlist}
                         >
-                            +wishlist
-                        </Button>
+                            <FavoriteIcon style={{ color: '#d67753' }}/>
+                            + wishlist
+                        </IconButton>
 
-                        <Button 
+                        <IconButton 
                             id= {record.id}
                             artist= {record.artists_sort}
                             title= {record.title}
@@ -297,12 +332,13 @@ function DetailsView(){
                             owned= "true"
                             onClick= {addCollection}
                         >
-                            +collection
-                        </Button>
-                    </>
+                            <LibraryMusicIcon style={{ color: '#d67753' }}/>
+                            + collection
+                        </IconButton>
+                    </div>
                     :
-                    <>
-                        <Button 
+                    <div className="add-buttons">
+                        <IconButton 
                         id= {record.id}
                         artist= {record.artists_sort}
                         title= {record.title}
@@ -313,10 +349,11 @@ function DetailsView(){
                         owned= "false"
                         onClick= {addWishlist}
                         >
-                            +wishlist
-                        </Button>
+                            <FavoriteIcon style={{ color: '#d67753' }}/>
+                            + wishlist
+                        </IconButton>
 
-                        <Button 
+                        <IconButton 
                             id= {record.id}
                             artist= {record.artists_sort}
                             title= {record.title}
@@ -327,12 +364,28 @@ function DetailsView(){
                             owned= "true"
                             onClick= {addCollection}
                         >
-                            +collection
-                        </Button>
-                    </>
+                            <LibraryMusicIcon style={{ color: '#d67753' }}/>
+                            + collection
+                        </IconButton>
+                    </div>
                     }
                     </div>
                 </div>
+                <Snackbar
+                    open={openWishlist}
+                    autoHideDuration={3000}
+                    onClose={handleClose}
+                    message="record added to wishlist"
+                    action={action}
+                />
+
+                <Snackbar
+                    open={openCollection}
+                    autoHideDuration={3000}
+                    onClose={handleClose}
+                    message="record added to collection"
+                    action={action}
+                />
         </>
     )
 }

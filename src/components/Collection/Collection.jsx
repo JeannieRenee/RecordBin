@@ -51,7 +51,7 @@ function Collection (){
     return (
         <>
         <div className='collection-container'>
-            <Typography component="div" variant="h4" color="text.primary">
+            <Typography component="div" variant="h4" color="text.secondary" style={{ fontWeight: 600 }}>
                 Collection
             </Typography>
             { display ? 

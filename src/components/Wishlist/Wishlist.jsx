@@ -63,7 +63,7 @@ function Wishlist (){
     return (
         <>
         <div className='wishlist-container'>
-            <Typography component="div" variant="h4" color="text.primary">
+            <Typography component="div" variant="h4" color="text.secondary" style={{ fontWeight: 600 }}>
                 Wishlist
             </Typography>
             { display ? 
@@ -177,7 +177,6 @@ function Wishlist (){
                             alignItems="flex-end"
                         >
                             <Button size="small" id= {record.id} onClick={removeRecord}>delete</Button>
-                            <Button size="small" id= {record.id} onClick={addCollection}>+collection</Button>
                         </Box>
                         </Card>
                     </div>
