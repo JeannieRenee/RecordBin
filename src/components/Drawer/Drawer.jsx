@@ -135,7 +135,7 @@ function ResponsiveDrawer(props) {
         </List>
         <List style={{ position: "absolute", bottom: "0" }}>
         <div className="sidebar-bottom">
-          <Box>
+          <Box minWidth={230}>
             <ListItem key='About' disablePadding onClick={info}>
               <ListItemButton>
                 <ListItemIcon>

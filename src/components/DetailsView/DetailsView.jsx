@@ -7,8 +7,6 @@ import Snackbar from '@mui/material/Snackbar';
 import CloseIcon from '@mui/icons-material/Close';
 import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
-import AddIcon from '@mui/icons-material/Add';
-
 
 //mui icons
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
@@ -305,82 +303,71 @@ function DetailsView(){
                         }
                     </Typography>
                     <br/>
-            {record.images ?
-            <div className="add-buttons">
-                <Box sx={{ '& > :not(style)': { m: 1 } }}>
-                <Fab 
-                    color="primary" 
-                    style={{ backgroundColor: '#d67753' }} 
-                    sx={{ mr: 1 }}                     
-                    id= {record.id}
-                    artist= {record.artists_sort}
-                    title= {record.title}
-                    cover_image= {record.images[0].uri}
-                    country= {record.country} 
-                    year= {record.year} 
-                    genre= {record.genres} 
-                    owned= "false"
-                    onClick= {addWishlist}>
-                        <FavoriteIcon />
-                </Fab>
-                <Fab 
-                    variant="extended" 
-                    color="secondary" 
-                    style={{ backgroundColor: '#d67753' }}    
-                    id= {record.id}
-                    artist= {record.artists_sort}
-                    title= {record.title}
-                    cover_image= {record.images[0].uri}
-                    country= {record.country} 
-                    year= {record.year} 
-                    genre= {record.genres} 
-                    owned= "true"
-                    onClick= {addCollection}>
-                        <LibraryMusicIcon sx={{ mr: 1 }}/>
-                    collection
-                </Fab>
-                </Box>
-            </div>
-                :
-            <div className="add-buttons">
-                <Box sx={{ '& > :not(style)': { m: 1 } }}>
-                <Fab 
-                    color="primary" 
-                    style={{ backgroundColor: '#d67753' }} 
-                    sx={{ mr: 1 }}                     
-                    id= {record.id}
-                    artist= {record.artists_sort}
-                    title= {record.title}
-                    cover_image= 'https://www.nomadfoods.com/wp-content/uploads/2018/08/placeholder-1-e1533569576673-960x960.png'
-                    country= {record.country} 
-                    year= {record.year} 
-                    genre= {record.genres} 
-                    owned= "false"
-                    onClick= {addWishlist}>
-                        <FavoriteIcon />
-                </Fab>
-                <Fab 
-                    variant="extended" 
-                    color="secondary" 
-                    style={{ backgroundColor: '#d67753' }}    
-                    id= {record.id}
-                    artist= {record.artists_sort}
-                    title= {record.title}
-                    cover_image= 'https://www.nomadfoods.com/wp-content/uploads/2018/08/placeholder-1-e1533569576673-960x960.png'
-                    country= {record.country} 
-                    year= {record.year} 
-                    genre= {record.genres} 
-                    owned= "true"
-                    onClick= {addCollection}>
-                        <LibraryMusicIcon sx={{ mr: 1 }}/>
-                    collection
-                </Fab>
-                </Box>
-                </div>
-            }
-                </div>
-            </div>
+                {record.images ?
+                <div className="add-buttons">
+                    <IconButton 
+                        id= {record.id}
+                        artist= {record.artists_sort}
+                        title= {record.title}
+                        cover_image= {record.images[0].uri}
+                        country= {record.country} 
+                        year= {record.year} 
+                        genre= {record.genres} 
+                        owned= "false"
+                        onClick= {addWishlist}
+                    >
+                        <FavoriteIcon style={{ color: '#d67753' }}/>
+                    </IconButton>
 
+                    <IconButton 
+                        id= {record.id}
+                        artist= {record.artists_sort}
+                        title= {record.title}
+                        cover_image= {record.images[0].uri}
+                        country= {record.country} 
+                        year= {record.year} 
+                        genre= {record.genres} 
+                        owned= "true"
+                        onClick= {addCollection}
+                    >
+                        <LibraryMusicIcon style={{ color: '#d67753' }}/>
+                        + collection
+                    </IconButton>
+                </div>
+                :
+                <div className="add-buttons">
+                    <IconButton 
+                        id= {record.id}
+                        artist= {record.artists_sort}
+                        title= {record.title}
+                        cover_image= 'https://www.nomadfoods.com/wp-content/uploads/2018/08/placeholder-1-e1533569576673-960x960.png'
+                        country= {record.country} 
+                        year= {record.year} 
+                        genre= {record.genres} 
+                        owned= "false"
+                        onClick= {addWishlist}
+                    >
+                        <FavoriteIcon style={{ color: '#d67753' }}/>
+                    </IconButton>
+
+                    <IconButton 
+                        id= {record.id}
+                        artist= {record.artists_sort}
+                        title= {record.title}
+                        cover_image= 'https://www.nomadfoods.com/wp-content/uploads/2018/08/placeholder-1-e1533569576673-960x960.png'
+                        country= {record.country} 
+                        year= {record.year} 
+                        genre= {record.genres} 
+                        owned= "true"
+                        onClick= {addCollection}
+                    >
+                        <LibraryMusicIcon style={{ color: '#d67753' }}/>
+                        + collection
+                    </IconButton>
+                </div>
+                }
+                </div>
+            </div>
             <Snackbar
                 open={openWishlist}
                 autoHideDuration={3000}
@@ -395,13 +382,90 @@ function DetailsView(){
                 message="record added to collection"
                 action={action}
             />
+
+        
+
+            {/* These buttons break the entire app for whatvere reason? 
+            {record.images ?
+            <div className="add-buttons">
+                <Box sx={{ '& > :not(style)': { m: 1 } }}>
+                <Fab 
+                    color="primary" 
+                    style={{ backgroundColor: '#d67753' }} 
+                    sx={{ mr: 1 }}
+                    id= {record.id}
+                    artist= {record.artists_sort}
+                    title= {record.title}
+                    cover_image= {record.images[0].uri}
+                    country= {record.country} 
+                    year= {record.year} 
+                    genre= {record.genres} 
+                    owned= "false"
+                    onClick= {addWishlist}
+                >
+                    <FavoriteIcon />
+                </Fab>
+                <Fab 
+                    variant="extended" 
+                    color="secondary" 
+                    style={{ backgroundColor: '#d67753' }}
+                    id= {record.id}
+                    artist= {record.artists_sort}
+                    title= {record.title}
+                    cover_image= {record.images[0].uri}
+                    country= {record.country} 
+                    year= {record.year} 
+                    genre= {record.genres} 
+                    owned= "true"
+                    onClick= {addCollection}
+                >
+                    <LibraryMusicIcon sx={{ mr: 1 }}/>
+                    collection
+                </Fab>
+                </Box>
+            </div>
+            :
+            <div className="add-buttons">
+                <Box sx={{ '& > :not(style)': { m: 1 } }}>
+                <Fab 
+                    color="primary" 
+                    style={{ backgroundColor: '#d67753' }} 
+                    sx={{ mr: 1 }}
+                    id= {record.id}
+                    artist= {record.artists_sort}
+                    title= {record.title}
+                    cover_image= 'https://www.nomadfoods.com/wp-content/uploads/2018/08/placeholder-1-e1533569576673-960x960.png'
+                    country= {record.country} 
+                    year= {record.year} 
+                    genre= {record.genres} 
+                    owned= "false"
+                    onClick= {addWishlist}
+                >
+                    <FavoriteIcon />
+                </Fab>
+                <Fab   
+                    variant="extended" 
+                    color="secondary" 
+                    style={{ backgroundColor: '#d67753' }}
+                    id= {record.id}
+                    artist= {record.artists_sort}
+                    title= {record.title}
+                    cover_image= 'https://www.nomadfoods.com/wp-content/uploads/2018/08/placeholder-1-e1533569576673-960x960.png'
+                    country= {record.country} 
+                    year= {record.year} 
+                    genre= {record.genres} 
+                    owned= "true"
+                    onClick= {addCollection}
+                >
+                    <LibraryMusicIcon sx={{ mr: 1 }}/>
+                    collection
+                </Fab>
+                </Box>
+            </div>
+            } */}
         </>
     )
 }
 
 export default DetailsView 
-
-
-
-
 
