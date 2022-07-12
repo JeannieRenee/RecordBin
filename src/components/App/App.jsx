@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
+import ScrollToTop from "react-scroll-to-top";
 
 import Drawer from '../Drawer/Drawer';
 
@@ -22,6 +23,7 @@ import Browse from '../Browse/Browse';
 import Details from '../DetailsView/DetailsView';
 
 import './App.css';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
 function App() {
   const dispatch = useDispatch();
@@ -35,6 +37,7 @@ function App() {
   return (
     <Router>
       <div>
+      <ScrollToTop component={<KeyboardArrowUpIcon style={{ color: '#d67753' }}/>}/>
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
           <Redirect exact from="/" to="/home" />
