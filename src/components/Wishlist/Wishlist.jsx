@@ -51,15 +51,6 @@ function Wishlist (){
         });
     }
 
-    const removeRecord = event => {
-        const id = event.currentTarget.id;
-        console.log('id', id)
-        dispatch({ 
-            type: 'DELETE_RECORD', 
-            payload: id 
-        });
-    }
-
     return (
         <>
         <div className='wishlist-container'>
@@ -170,6 +161,7 @@ function Wishlist (){
                         </Box>
                         </CardActionArea>
                         </Card>
+                        <Button onClick={addCollection} id= {record.id}>move to collection</Button>
                     </div>
                 ) 
             })}
