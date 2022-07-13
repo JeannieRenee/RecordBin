@@ -6,7 +6,7 @@ function RegisterPage() {
   const history = useHistory();
 
   return (
-    <div className='container'>
+    <div className='landing.container'>
       <div className='landing-logo'>
         <img src={require('./logo-white.png')} />
       </div>

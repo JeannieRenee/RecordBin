@@ -4,7 +4,7 @@ html {
   background-repeat: no-repeat;
 }
 
-.container {
+.landing-container {
   padding-top: 80px;
   display: flex;
   align-items: center;
