@@ -45,7 +45,7 @@ router.delete('/:id', (req, res) => {
   console.log('Delete request for id', recordId);
   let sqlQuery = `
     DELETE FROM "records" 
-    WHERE "id" = $1;
+    WHERE "record_id" = $1;
   `;
   const sqlParams = [
     recordId,             

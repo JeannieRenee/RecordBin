@@ -21,7 +21,6 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 function DetailsView(){
     const record = useSelector(store => store.details);
     const collection = useSelector(store => store.records.map(record => {return record.record_id}));
-    const user = useSelector(store => store.user);
 
     const history = useHistory()
     const dispatch = useDispatch();
@@ -31,7 +30,6 @@ function DetailsView(){
     // page load get the record data
     useEffect(() => {
         console.log(collection)
-        console.log(id)
         console.log(Number(id))
         console.log(collection.indexOf(id))
         dispatch({
@@ -321,7 +319,7 @@ function DetailsView(){
                         }
                     </Typography>
                     <br/>
-                {record.images ?
+                {collection.indexOf(Number(id)) < 0 ?
                 <div className="add-buttons">
                     <IconButton 
                         id= {record.id}
@@ -351,48 +349,17 @@ function DetailsView(){
                     >
                         <LibraryMusicIcon style={{ color: '#d67753' }}/>
                         + collection
-                    </IconButton>
-                
-                    {collection.indexOf(Number(id)) >= 0 &&
-                        <button id= {record.id} onClick={removeRecord}> button </button>
-                    }     
+                    </IconButton>    
                 </div>
                 :
-                <div className="add-buttons">
-                    <IconButton 
-                        id= {record.id}
-                        artist= {record.artists_sort}
-                        title= {record.title}
-                        cover_image= 'https://www.nomadfoods.com/wp-content/uploads/2018/08/placeholder-1-e1533569576673-960x960.png'
-                        country= {record.country} 
-                        year= {record.year} 
-                        genre= {record.genres} 
-                        owned= "false"
-                        onClick= {addWishlist}
-                    >
-                        <FavoriteIcon style={{ color: '#d67753' }}/>
-                        + wishlist
-                    </IconButton>
-
-                    <IconButton 
-                        id= {record.id}
-                        artist= {record.artists_sort}
-                        title= {record.title}
-                        cover_image= 'https://www.nomadfoods.com/wp-content/uploads/2018/08/placeholder-1-e1533569576673-960x960.png'
-                        country= {record.country} 
-                        year= {record.year} 
-                        genre= {record.genres} 
-                        owned= "true"
-                        onClick= {addCollection}
-                    >
-                        <LibraryMusicIcon style={{ color: '#d67753' }}/>
-                        + collection
-                    </IconButton>
-                    {collection.indexOf(Number(id)) >= 0 &&
-                    <button id= {record.id} onClick={removeRecord}> button </button>
-                    }    
-                </div>
-                }  
+                <IconButton 
+                    id= {record.id}
+                    onClick= {removeRecord}
+                >
+                    <LibraryMusicIcon style={{ color: '#d67753' }}/>
+                    delete
+                </IconButton>    
+                }
                 </div>
             </div>
             <Snackbar
