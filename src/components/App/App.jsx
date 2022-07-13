@@ -37,7 +37,10 @@ function App() {
   return (
     <Router>
       <div>
-      <ScrollToTop component={<KeyboardArrowUpIcon style={{ color: '#d67753' }}/>}/>
+      <ScrollToTop 
+        style={{backgroundColor: '#d67753'}}
+        component={<KeyboardArrowUpIcon style={{ color: 'white', backgroundColor: '#d67753'}}/>}
+      />
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
           <Redirect exact from="/" to="/home" />

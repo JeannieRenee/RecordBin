@@ -34,11 +34,15 @@ function* deleteRecord(action) {
 function* saveRecord(action) {
     // save record
     console.log('in save record', action.payload);
-    yield axios({
+    try {
+        yield axios({
         method: 'POST',
         url: 'api/records',
         data:  action.payload 
-    })
+        })
+    } catch {
+        console.log('addedrecord wooo')
+    } yield put({ type: 'FETCH_RECORDS' })
 }
 
 function* recordsSaga() {
