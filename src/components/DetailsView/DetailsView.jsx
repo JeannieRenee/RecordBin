@@ -325,6 +325,7 @@ function DetailsView(){
                 </div>
                 {record.images && collection.indexOf(Number(id)) < 0 &&
                 <div className="add-buttons">
+                <Box sx={{ '& > :not(style)': { m: 1 } }}>
                     <Button 
                         id= {record.id}
                         artist= {record.artists_sort}
@@ -358,11 +359,13 @@ function DetailsView(){
                         startIcon={<LibraryMusicIcon />}
                     >
                         collection
-                    </Button>    
+                    </Button> 
+                </Box>   
                 </div>
                 }
                 {!record.images && collection.indexOf(Number(id)) < 0 &&
                 <div className="add-buttons">
+                <Box sx={{ '& > :not(style)': { m: 1 } }}>
                     <Button 
                         id= {record.id}
                         artist= {record.artists_sort}
@@ -396,10 +399,12 @@ function DetailsView(){
                     >
                         collection
                     </Button>
+                </Box>
                 </div>
                 }
                 {collection.indexOf(Number(id)) >= 0 &&
                 <div className="add-buttons">
+                <Box sx={{ '& > :not(style)': { m: 1 } }}>
                     <Button 
                         variant="contained" 
                         style={{ backgroundColor: '#d67753' }}
@@ -409,6 +414,7 @@ function DetailsView(){
                     >
                         remove
                     </Button>
+                </Box>
                 </div>
                 }
             </div>
@@ -432,9 +438,9 @@ function DetailsView(){
 
 export default DetailsView 
 
-// These kill the app. we dont knowwhy 
 
-<div className="add-buttons">
+
+{/* <div className="add-buttons">
     <Box sx={{ '& > :not(style)': { m: 1 } }}>
         <Fab 
             color="primary" 
@@ -470,4 +476,4 @@ export default DetailsView
             collection
         </Fab>
     </Box>
-</div> 
+</div>  */}

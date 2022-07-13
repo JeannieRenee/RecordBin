@@ -41,7 +41,7 @@ function* saveRecord(action) {
         data:  action.payload 
         })
     } catch {
-        console.log('addedrecord wooo')
+        console.log('add record error')
     } yield put({ type: 'FETCH_RECORDS' })
 }
 
