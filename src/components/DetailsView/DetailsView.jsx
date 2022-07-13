@@ -17,6 +17,8 @@ import StarIcon from '@mui/icons-material/Star';
 import StarHalfIcon from '@mui/icons-material/StarHalf';
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import DeleteIcon from '@mui/icons-material/Delete';
+
 
 function DetailsView(){
     const record = useSelector(store => store.details);
@@ -320,9 +322,10 @@ function DetailsView(){
                         }
                     </Typography>
                     <br/>
+                </div>
                 {record.images && collection.indexOf(Number(id)) < 0 &&
                 <div className="add-buttons">
-                    <IconButton 
+                    <Button 
                         id= {record.id}
                         artist= {record.artists_sort}
                         title= {record.title}
@@ -332,12 +335,15 @@ function DetailsView(){
                         genre= {record.genres} 
                         owned= "false"
                         onClick= {addWishlist}
+                        variant="contained" 
+                        style={{ backgroundColor: '#d67753' }}
+                        startIcon={<FavoriteIcon />}
+                        
                     >
-                        <FavoriteIcon style={{ color: '#d67753' }}/>
-                        + wishlist
-                    </IconButton>
+                        wishlist
+                    </Button>
 
-                    <IconButton 
+                    <Button 
                         id= {record.id}
                         artist= {record.artists_sort}
                         title= {record.title}
@@ -347,15 +353,17 @@ function DetailsView(){
                         genre= {record.genres} 
                         owned= "true"
                         onClick= {addCollection}
+                        variant="contained" 
+                        style={{ backgroundColor: '#d67753' }}
+                        startIcon={<LibraryMusicIcon />}
                     >
-                        <LibraryMusicIcon style={{ color: '#d67753' }}/>
-                        + collection
-                    </IconButton>    
+                        collection
+                    </Button>    
                 </div>
                 }
                 {!record.images && collection.indexOf(Number(id)) < 0 &&
                 <div className="add-buttons">
-                    <IconButton 
+                    <Button 
                         id= {record.id}
                         artist= {record.artists_sort}
                         title= {record.title}
@@ -365,12 +373,14 @@ function DetailsView(){
                         genre= {record.genres} 
                         owned= "false"
                         onClick= {addWishlist}
+                        variant="contained" 
+                        style={{ backgroundColor: '#d67753' }}
+                        startIcon={<FavoriteIcon />}
                     >
-                        <FavoriteIcon style={{ color: '#d67753' }}/>
-                        + wishlist
-                    </IconButton>
+                        wishlist
+                    </Button>
 
-                    <IconButton 
+                    <Button 
                         id= {record.id}
                         artist= {record.artists_sort}
                         title= {record.title}
@@ -380,24 +390,27 @@ function DetailsView(){
                         genre= {record.genres} 
                         owned= "true"
                         onClick= {addCollection}
+                        variant="contained" 
+                        style={{ backgroundColor: '#d67753' }}
+                        startIcon={<LibraryMusicIcon />}
                     >
-                        <LibraryMusicIcon style={{ color: '#d67753' }}/>
-                        + collection
-                    </IconButton>
+                        collection
+                    </Button>
                 </div>
                 }
-                </div>
-            {collection.indexOf(Number(id)) >= 0 &&
+                {collection.indexOf(Number(id)) >= 0 &&
                 <div className="add-buttons">
-                    <IconButton 
+                    <Button 
+                        variant="contained" 
+                        style={{ backgroundColor: '#d67753' }}
+                        startIcon={<DeleteIcon />}
                         id= {record.id}
                         onClick= {removeRecord}
                     >
-                    <LibraryMusicIcon style={{ color: '#d67753' }}/>
-                    delete
-                </IconButton>
+                        remove
+                    </Button>
                 </div>
-            }
+                }
             </div>
             <Snackbar
                 open={openWishlist}
@@ -421,14 +434,40 @@ export default DetailsView
 
 // These kill the app. we dont knowwhy 
 
-{/* <div className="add-buttons">
-<Box sx={{ '& > :not(style)': { m: 1 } }}>
-<Fab color="primary" style={{ backgroundColor: '#d67753' }} sx={{ mr: 1 }}>
-    <FavoriteIcon />
-</Fab>
-<Fab variant="extended" color="secondary" style={{ backgroundColor: '#d67753' }}>
-    <LibraryMusicIcon sx={{ mr: 1 }}/>
-    collection
-</Fab>
-</Box>
-</div> */}
+<div className="add-buttons">
+    <Box sx={{ '& > :not(style)': { m: 1 } }}>
+        <Fab 
+            color="primary" 
+            style={{ backgroundColor: '#d67753' }} 
+            sx={{ mr: 1 }}
+            id= {record.id}
+            artist= {record.artists_sort}
+            title= {record.title}
+            cover_image= {record.images[0].uri}
+            country= {record.country} 
+            year= {record.year} 
+            genre= {record.genres} 
+            owned= "false"
+            onClick= {addWishlist}
+        >
+            <FavoriteIcon />
+        </Fab>
+        <Fab 
+            variant="extended" 
+            color="secondary" 
+            style={{ backgroundColor: '#d67753' }}
+            id= {record.id}
+            artist= {record.artists_sort}
+            title= {record.title}
+            cover_image= {record.images[0].uri}
+            country= {record.country} 
+            year= {record.year} 
+            genre= {record.genres} 
+            owned= "true"
+            onClick= {addCollection}
+        >
+            <LibraryMusicIcon sx={{ mr: 1 }}/>
+            collection
+        </Fab>
+    </Box>
+</div> 

@@ -70,12 +70,6 @@ Button
   color: #d67753;
 }
 
-.scroll-button {
-  color: #d67753;
-  background-color: #e01616;
-  border: green;
-}
-
 
 /* --------------------------------------------------------------------------------
 Alert
@@ -122,8 +116,6 @@ Collection + Wishlist Containers
   gap: 3em;
 }
 
-
-
 /* --------------------------------------------------------------------------------
 Shared Components
 -------------------------------------------------------------------------------- */
@@ -155,10 +147,6 @@ Shared Components
   gap: 2em;
   margin-left: 5%;
   margin-right: 5%;
-}
-
-.add-buttons {
-  padding-left: 4%;
 }
 
 /* --------------------------------------------------------------------------------
@@ -221,6 +209,7 @@ Details Page
   justify-content: center;
   flex-direction: column;
 }
+
 .detailed-view-text {
   display: flex;
   align-items: flex-start;
