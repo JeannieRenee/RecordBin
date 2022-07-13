@@ -23,7 +23,6 @@ import DeleteIcon from '@mui/icons-material/Delete';
 function DetailsView(){
     const record = useSelector(store => store.details);
     const collection = useSelector(store => store.records.map(record => {return record.record_id}));
-    const collectionID = useSelector(store => store.records.map(record => {return record.id}));
 
     const history = useHistory()
     const dispatch = useDispatch();
@@ -102,16 +101,20 @@ function DetailsView(){
             type: 'DELETE_RECORD', 
             payload: id 
         });
+        setOpenRemove(true);
     }
     // snackbar stuff :) 
     const [openWishlist, setOpenWishlist] = React.useState(false );
     const [openCollection, setOpenCollection] = React.useState(false);
+    const [openRemove, setOpenRemove] = React.useState(false);
+
     const handleClose = (event, reason) => {
       if (reason === 'clickaway') {
         return;
       }
       setOpenWishlist(false);
       setOpenCollection(false);
+      setOpenRemove(false);
     };
     const action = (
         <React.Fragment>
@@ -417,6 +420,13 @@ function DetailsView(){
                 }
             </div>
             <Snackbar
+                open={openCollection}
+                autoHideDuration={3000}
+                onClose={handleClose}
+                message="record added to collection"
+                action={action}
+            />
+            <Snackbar
                 open={openWishlist}
                 autoHideDuration={3000}
                 onClose={handleClose}
@@ -424,10 +434,10 @@ function DetailsView(){
                 action={action}
             />
             <Snackbar
-                open={openCollection}
+                open={openRemove}
                 autoHideDuration={3000}
                 onClose={handleClose}
-                message="record added to collection"
+                message="record removed"
                 action={action}
             />
         </>
@@ -435,43 +445,3 @@ function DetailsView(){
 }
 
 export default DetailsView 
-
-
-
-{/* <div className="add-buttons">
-    <Box sx={{ '& > :not(style)': { m: 1 } }}>
-        <Fab 
-            color="primary" 
-            style={{ backgroundColor: '#d67753' }} 
-            sx={{ mr: 1 }}
-            id= {record.id}
-            artist= {record.artists_sort}
-            title= {record.title}
-            cover_image= {record.images[0].uri}
-            country= {record.country} 
-            year= {record.year} 
-            genre= {record.genres} 
-            owned= "false"
-            onClick= {addWishlist}
-        >
-            <FavoriteIcon />
-        </Fab>
-        <Fab 
-            variant="extended" 
-            color="secondary" 
-            style={{ backgroundColor: '#d67753' }}
-            id= {record.id}
-            artist= {record.artists_sort}
-            title= {record.title}
-            cover_image= {record.images[0].uri}
-            country= {record.country} 
-            year= {record.year} 
-            genre= {record.genres} 
-            owned= "true"
-            onClick= {addCollection}
-        >
-            <LibraryMusicIcon sx={{ mr: 1 }}/>
-            collection
-        </Fab>
-    </Box>
-</div>  */}

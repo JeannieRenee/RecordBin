@@ -280,13 +280,13 @@ function Browse(){
                                     <CardActionArea id={record.id} onClick={detailedView}>
                                         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                                             <CardContent sx={{ flex: '1 0 auto' }}>
-                                                <Typography component="div" variant="subtitle1" color="text.primary">
+                                                <Typography component="div" variant="subtitle1" color="text.primary" className='results-record-title'>
                                                     {record.title}
                                                 </Typography>
-                                                <Typography variant="text" color="text.secondary" component="div">
+                                                <Typography variant="text" color="text.secondary" component="div" className='results-record-year-country'>
                                                     {record.year} {record.country}
                                                 </Typography>
-                                                <Typography variant="text" color="text.secondary" component="div">
+                                                <Typography variant="text" color="text.secondary" component="div" className='results-record-genre'>
                                                     {record.genre}
                                                 </Typography>
                                             </CardContent>
