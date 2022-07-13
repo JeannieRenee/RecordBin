@@ -6,6 +6,8 @@ import { useHistory } from 'react-router-dom';
 import { alpha, styled } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import FormControl from '@mui/material/FormControl';
+import Typography from '@mui/material/Typography';
+
 
 function RegisterForm() {
   const [username, setUsername] = useState('');
@@ -57,6 +59,7 @@ function RegisterForm() {
         </h3>
       )}
       <center>
+      <Typography component="div" variant="h4" color="white">Lets make an account</Typography>
           <Input 
             inputProps={{
               autoComplete: 'new-password',

@@ -7,6 +7,8 @@ import { useHistory } from 'react-router-dom';
 import { alpha, styled } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import FormControl from '@mui/material/FormControl';
+import Typography from '@mui/material/Typography';
+
 
 function LoginForm() {
   const [username, setUsername] = useState('');
@@ -64,12 +66,6 @@ function LoginForm() {
       <center>
       <FormControl variant="standard">
         <Input
-          // inputProps={{
-          //   autoComplete: 'new-password',
-          //   form: {
-          //     autoComplete: 'off',
-          //   },
-          // }}  
           variant="filled"
           type="text"
           name="username"
@@ -83,12 +79,6 @@ function LoginForm() {
         <br/>
       <center>
       <Input 
-        // inputProps={{
-        //   autoComplete: 'new-password',
-        //   form: {
-        //     autoComplete: 'off',
-        //   },
-        // }}  
         variant="filled"
         type="password"
         name="password"
@@ -103,6 +93,7 @@ function LoginForm() {
         <input className="btn btn_sizeFull" type="submit" name="submit" value="Log In" />
         <br/>
         <br/>
+        <Typography component="div" variant="h4" color="white">New here?</Typography>
         <button
           type="button"
           className="btn btn_asLink"
