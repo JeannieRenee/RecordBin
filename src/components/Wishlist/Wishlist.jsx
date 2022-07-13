@@ -17,6 +17,8 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 // mui icons 
 import ListIcon from '@mui/icons-material/List';
 import GridViewIcon from '@mui/icons-material/GridView';
+import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
+
 
 function Wishlist (){
     const dispatch = useDispatch();
@@ -161,7 +163,18 @@ function Wishlist (){
                         </Box>
                         </CardActionArea>
                         </Card>
-                        <Button onClick={addCollection} id= {record.id}>move to collection</Button>
+                        <Box sx={{ '& > :not(style)': { m: 1 } }}>
+                        <Button 
+                            onClick={addCollection} 
+                            id= {record.id}
+                            variant="contained" 
+                            style={{ backgroundColor: '#d67753' }}
+                            startIcon={<LibraryMusicIcon />}
+                        
+                        >
+                            move to collection
+                        </Button>
+                        </Box>
                     </div>
                 ) 
             })}
