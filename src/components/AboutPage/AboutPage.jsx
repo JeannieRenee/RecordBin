@@ -10,17 +10,19 @@ function AboutPage() {
     <div className="container-about">
       <div>
       <div variant="text" color="text.secondary" component="div">
-            RecondBin is app built around the Discogs system- giving access to bin diggers on the go.
-          </div>
+        RecondBin is an app built around the Discogs system- giving access to bin diggers on the go.
+      </div>
         <p>
-          RecordBin was built during a two week sprint using the below technologies. 
+          RecordBin was built during a two week sprint using the below technologies and libraries. 
           <br/>
-              * React - Redux - React Sagas * 
+              React - Redux - React Sagas
           <br/>
-              * PostgreSQL - Node.js - Express.js *
+              PostgreSQL - Node.js - Express.js
           <br/>
-              * Material UI - Discogs API * 
+              Material UI - Discogs API  
           <br/>
+            {/* react-qr-barcode-scanner - react-scroll-to-top
+          <br/> */}
         </p>
         <p>
             What's next?

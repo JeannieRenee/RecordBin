@@ -32,9 +32,9 @@ function DetailsView(){
 
     // page load get the record data
     useEffect(() => {
-        console.log(collection)
-        console.log(Number(id))
-        console.log(collection.indexOf(id))
+        dispatch({
+            type: "CLEAR_DETAILS",
+        });
         dispatch({
             type: "FETCH_DETAILED_RESULTS",
             payload: id
@@ -139,10 +139,8 @@ function DetailsView(){
             <br/>
             <br/>        
             <div className='detailed-view-image'>
-                {record.images ? 
+                {record.images && 
                     <img src={record.images[0].uri} width="300" height="300"/>
-                :
-                    <img src={require('./placeholder.png')} width="300" height="300"/>
                 }
             </div>
             <br/>
