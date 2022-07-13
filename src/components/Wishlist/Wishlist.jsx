@@ -31,7 +31,7 @@ function Wishlist (){
     }, []);
 
     // to toggle the view
-    const [display, setDisplay] = useState(true);
+    const [display, setDisplay] = useState(false);
 
     // push to detailed page on cover click
     const detailedView = event => {

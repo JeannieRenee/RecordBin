@@ -43,7 +43,7 @@ function Browse(){
 
     //local states
     // to toggle the view
-    const [display, setDisplay] = useState(true);
+    const [display, setDisplay] = useState(false);
     // to set search term
     const [search, setSearch]= useState('');
     // to toggle the camera mode
