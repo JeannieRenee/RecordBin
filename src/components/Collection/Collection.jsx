@@ -136,10 +136,10 @@ function Collection (){
                         <CardActionArea id={record.record_id} onClick={detailedView}>
                         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                             <CardContent sx={{ flex: '1 0 auto' }}>
-                                <Typography component="div" variant="subtitle1" color="text.primary">
+                                <Typography component="div" variant="subtitle1" color="text.primary"  className='artist'>
                                     {record.artist}
                                 </Typography>
-                                <Typography component="div" variant="subtitle1" color="text.primary">
+                                <Typography component="div" variant="subtitle1" color="text.primary" className='artist'>
                                     {record.title}
                                 </Typography>
                                 <Typography variant="text" color="text.secondary" component="div">
