@@ -58,8 +58,9 @@ function RegisterForm() {
         </h3>
       )}
       <center>
-      <Typography component="div" variant="h6" color="white">Create an Account</Typography>
-      <Typography component="div" variant="subtitle2" color="white">Choose a username and password</Typography>
+        <div className='form-head'>
+          <Typography component="div" variant="h6" color="white" className='form-head-main'>Create an Account</Typography>
+        </div>
           <Input 
             inputProps={{
               autoComplete: 'new-password',

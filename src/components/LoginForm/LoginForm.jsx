@@ -63,10 +63,9 @@ function LoginForm() {
         </h3>
       )}
       <center>
-      <FormControl variant="standard">
-      <Typography component="div" variant="h6" color="white">
-        Welcome Back!
-      </Typography>
+        <div>
+          <Typography component="div" variant="h6" color="white" className='form-head form-head-main'> Welcome Back! </Typography>
+        </div>
         <Input
           variant="filled"
           type="text"
@@ -76,7 +75,6 @@ function LoginForm() {
           placeholder="username"
           onChange={(event) => setUsername(event.target.value)}
         />
-      </FormControl> 
       </center>
         <br/>
       <center>

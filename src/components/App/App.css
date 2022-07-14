@@ -62,6 +62,7 @@ Button
   background: none;
   font: inherit;
   color: #f8f8f8;
+  font-size: small;
 }
 
 .btn_asLink:hover {
