@@ -5,8 +5,6 @@ _Duration: 2 Week Sprint_
 
 As an avid record collector- I identified a need for the ability to access your record collection on the go, or just without flipping through your collection manually. I created a fully functional, full-stack CRUD web application RecordBin, to catalog and manage your vinyl collection using Discogs API. The user is able to browse records by search or barcode scanner, save to wishlist and add to their personal collection.
 
-To see the fully functional site, please visit: [DEPLOYED VERSION OF APP](www.heroku.com)
-
 ## Demo
 
 <!-- ![Alt Text](sagas.gif)
