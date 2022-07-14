@@ -25,7 +25,6 @@ To see the fully functional site, click [here](link). -->
 -postgreSQL
 -Passport
 <br/>
--react-qr-barcode-scanner
 -react-qr-barcode-scanner 
 -react-scroll-to-top
 
