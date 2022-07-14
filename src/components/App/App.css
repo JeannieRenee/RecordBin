@@ -24,7 +24,7 @@ Button
   display: inline-block;
   padding: 10px 20px;
   border-color: #d67753;
-  border-width: 1px 1px 3px;
+  border-width: 1px;
   border-radius: 4px;
   background-color: #d67753;
   color: #f8f8f8;
@@ -57,11 +57,11 @@ Button
 .btn_asLink {
   padding: 0;
   border-width: 0;
-  border-bottom: 1px solid rgb(200, 200, 200);
+  border-bottom: 1px solid #f8f8f8;
   border-radius: 0;
   background: none;
   font: inherit;
-  color: rgb(200, 200, 200);
+  color: #f8f8f8;
 }
 
 .btn_asLink:hover {
