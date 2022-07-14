@@ -15,6 +15,7 @@ To see the fully functional site, click [here](link). -->
 ## Built With
 
 -React.js
+<br/>
 -MaterialUI
 -React-Redux
 -React-Sagas  
