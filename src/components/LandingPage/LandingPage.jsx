@@ -9,7 +9,7 @@ function LandingPage() {
       <div className='landing-logo'>
         <img src={require('./logo-white.png')}
           style={{    
-          maxWidth: 300,
+          maxWidth: 250,
           paddingTop: 50,
           paddingBottom: 30,
           }}
