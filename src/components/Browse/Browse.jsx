@@ -46,6 +46,7 @@ function Browse(){
     const [display, setDisplay] = useState(false);
     // to set search term
     const [search, setSearch]= useState('');
+    const [searchTerm, setSearchTerm]= useState('');
     // to toggle the camera mode
     const [scanner, setScanner]= useState(false);
 
@@ -56,6 +57,8 @@ function Browse(){
             type: "FETCH_BASIC_RESULTS",
             payload: search
         });
+        setSearchTerm(search)
+        setSearch('');
     }
 
     // push to detailed page on cover click
@@ -199,11 +202,11 @@ function Browse(){
                         </div>
                         { pagination.items === 1 || results.length === 1 ?
                             <div className='pagination-items'>
-                                <p> {pagination.items} result </p>
+                                <p> {pagination.items} result for {searchTerm}</p>
                             </div>
                         :
                             <div className='pagination-items'>
-                                <p> {pagination.items} results </p>
+                                <p> {pagination.items} results for {searchTerm}</p>
                             </div>
                         }
                         <center>
