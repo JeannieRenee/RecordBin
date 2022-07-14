@@ -15,15 +15,17 @@ To see the fully functional site, click [here](link). -->
 ## Built With
 
 -React.js
-<br/>
 -MaterialUI
 -React-Redux
--React-Sagas  
--CSS  
--Node.js 
+<br/>
+-React-Sagas
+-CSS
+-Node.js
+<br/>
 -postgreSQL
 -Passport
--react-qr-barcode-scanner 
+<br/>
+-react-qr-barcode-scanner
 -react-scroll-to-top
 
 ## Acknowledgement
