@@ -150,7 +150,7 @@ function ResponsiveDrawer(props) {
                 <ListItemIcon>
                   <LogoutIcon style={{ color: '#d67753' }}/> 
                 </ListItemIcon>
-                <ListItemText primary="LogOut" />
+                <ListItemText primary="Sign Out" />
               </ListItemButton>
             </ListItem>
           </Box>
@@ -164,7 +164,6 @@ function ResponsiveDrawer(props) {
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar
-        position="absolute"
         className={classes.appBar}        
         sx={{
           width: { sm: `calc(100%)` },
