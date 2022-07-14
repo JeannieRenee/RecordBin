@@ -64,8 +64,6 @@ function LoginForm() {
         </h3>
       )}
       <center>
-      <Typography component="div" variant="h6" color="white">Welcome Back!</Typography>
-      <br/>
       <FormControl variant="standard">
         <Input
           variant="filled"
@@ -94,6 +92,8 @@ function LoginForm() {
       <center>
         <input className="btn btn_sizeFull" type="submit" name="submit" value="Log In" />
         <br/>
+        <br/>
+        <Typography component="div" variant="h4" color="white">New here?</Typography>
         <button
           type="button"
           className="btn btn_asLink"
@@ -101,7 +101,7 @@ function LoginForm() {
             history.push('/registration');
           }}
         >
-          <b>Create Account</b>
+          Create Account
         </button>
         </center>
     </form>

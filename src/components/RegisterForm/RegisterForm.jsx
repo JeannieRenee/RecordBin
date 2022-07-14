@@ -59,9 +59,7 @@ function RegisterForm() {
         </h3>
       )}
       <center>
-      <Typography component="div" variant="h6" color="white">Create an Account</Typography>
-      <Typography component="div" variant="subtitle2" color="white">Choose a username and password</Typography>
-      <br/>
+      <Typography component="div" variant="h4" color="white">Lets make an account</Typography>
           <Input 
             inputProps={{
               autoComplete: 'new-password',
@@ -100,6 +98,7 @@ function RegisterForm() {
       <center>
         <input className="btn btn_sizeFull" type="submit" name="submit" value="Register" />
         <br/>
+        <br/>
         <button
           type="button"
           className="btn btn_asLink"
@@ -107,7 +106,7 @@ function RegisterForm() {
             history.push('/home');
           }}
         >
-          <b>I already have an account</b>
+          Back
         </button>
       </center>
     </form>

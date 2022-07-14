@@ -164,6 +164,7 @@ function ResponsiveDrawer(props) {
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar
+        position="absolute"
         className={classes.appBar}        
         sx={{
           width: { sm: `calc(100%)` },

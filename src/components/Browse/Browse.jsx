@@ -15,6 +15,8 @@ import { CardActionArea } from '@mui/material';
 import Box from '@mui/material/Box';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
+
+//mui toggle
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 // mui icons 
@@ -22,7 +24,14 @@ import ListIcon from '@mui/icons-material/List';
 import GridViewIcon from '@mui/icons-material/GridView';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import CropFreeIcon from '@mui/icons-material/CropFree';
+
+const delayExecution = (mls) => {
+    return new Promise((resolve) => {
+      setTimeout(() => resolve("ok"), mls);
+    });
+  };
 
 function Browse(){
     // store imports
