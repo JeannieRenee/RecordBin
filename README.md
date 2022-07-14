@@ -7,10 +7,10 @@ As an avid record collector- I identified a need for the ability to access your 
 
 ## Demo
 
-<!-- ![Alt Text](sagas.gif)
+![Alt Text](recordbin.gif)
 
 </br>
-To see the fully functional site, click [here](link). -->
+To see the fully functional site, click [here](link).
 
 ## Built With
 
