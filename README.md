@@ -22,6 +22,8 @@ To see the fully functional site, click [here](link). -->
 -Node.js 
 -postgreSQL
 -Passport
+-react-qr-barcode-scanner 
+-react-scroll-to-top
 
 ## Acknowledgement
 Thanks to [Prime Digital Academy](www.primeacademy.io) who equipped and helped me to make this application a reality. Huge thanks to my peers in the Gaiman cohort for their unwavering support- I couldn't have done it without them. Hugs and love to my friends and family for being patient with me while I immersed myself in the software world and had little time for anything else. 
