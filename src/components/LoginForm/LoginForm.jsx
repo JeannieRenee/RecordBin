@@ -65,6 +65,9 @@ function LoginForm() {
       )}
       <center>
       <FormControl variant="standard">
+      <Typography component="div" variant="h6" color="white">
+        Welcome Back!
+      </Typography>
         <Input
           variant="filled"
           type="text"
@@ -99,7 +102,7 @@ function LoginForm() {
             history.push('/registration');
           }}
         >
-          Create Account
+          <b>Create Account</b>
         </button>
         </center>
     </form>
