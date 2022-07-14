@@ -21,8 +21,6 @@ function AboutPage() {
           <br/>
               Material UI - Discogs API  
           <br/>
-            {/* react-qr-barcode-scanner - react-scroll-to-top
-          <br/> */}
         </p>
         <p>
             What's next?
