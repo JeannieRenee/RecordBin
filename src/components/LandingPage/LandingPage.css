@@ -5,13 +5,14 @@ html {
 }
 
 .landing-container {
-  padding-top: 80px;
   display: flex;
   align-items: center;
   flex-direction: column;
 }
 
 .landing-logo {
+  padding-top: 50px;
+  padding-bottom: 50px;
   justify-content: center;
 }
 
