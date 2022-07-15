@@ -18,6 +18,9 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import ListIcon from '@mui/icons-material/List';
 import GridViewIcon from '@mui/icons-material/GridView';
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
+import IconButton from '@mui/material/IconButton';
+import Snackbar from '@mui/material/Snackbar';
+import CloseIcon from '@mui/icons-material/Close';
 
 
 function Wishlist (){
@@ -51,7 +54,30 @@ function Wishlist (){
             type: 'UPDATE_RECORDS', 
             payload: id 
         });
+        setOpenCollection(true);
     }
+
+        // snackbar stuff :) 
+        const [openCollection, setOpenCollection] = React.useState(false);
+    
+        const handleClose = (event, reason) => {
+          if (reason === 'clickaway') {
+            return;
+          }
+          setOpenCollection(false);
+        };
+        const action = (
+            <React.Fragment>
+              <IconButton
+                size="small"
+                aria-label="close"
+                color="inherit"
+                onClick={handleClose}
+              >
+                <CloseIcon fontSize="small" />
+              </IconButton>
+            </React.Fragment>
+        );
 
     return (
         <>
@@ -175,6 +201,14 @@ function Wishlist (){
                             move to collection
                         </Button>
                         </Box>
+
+                        <Snackbar
+                            open={openCollection}
+                            autoHideDuration={3000}
+                            onClose={handleClose}
+                            message="Record moved to Collection"
+                            action={action}
+                        />
                     </div>
                 ) 
             })}

@@ -423,21 +423,21 @@ function DetailsView(){
                 open={openCollection}
                 autoHideDuration={3000}
                 onClose={handleClose}
-                message="record added to collection"
+                message="Record added to Collection"
                 action={action}
             />
             <Snackbar
                 open={openWishlist}
                 autoHideDuration={3000}
                 onClose={handleClose}
-                message="record added to wishlist"
+                message="Record added to Wishlist"
                 action={action}
             />
             <Snackbar
                 open={openRemove}
                 autoHideDuration={3000}
                 onClose={handleClose}
-                message="record removed"
+                message="Record removed"
                 action={action}
             />
         </>
