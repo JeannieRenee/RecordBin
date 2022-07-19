@@ -97,7 +97,7 @@ function Browse(){
           return prevIndex + 1;
         })
       };
-      setInterval(timer, 1000);
+      setInterval(timer, 2000);
       
       //cleanup function in order clear the interval timer
       //when the component unmounts
