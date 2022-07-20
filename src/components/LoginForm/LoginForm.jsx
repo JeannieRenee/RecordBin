@@ -75,6 +75,7 @@ function LoginForm() {
           placeholder="username"
           onChange={(event) => setUsername(event.target.value)}
           key="username-login"
+          autoFocus
         />
       </center>
         <br/>
@@ -88,6 +89,7 @@ function LoginForm() {
         placeholder="password"
         onChange={(event) => setPassword(event.target.value)}
         key="password-login"
+        autoFocus
       />
       </center>
         <br/>
