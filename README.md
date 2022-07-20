@@ -8,9 +8,11 @@ As an avid record collector- I identified a need for the ability to access your 
 ## Demo
 
 ![Alt Text](recordbin.gif)
+</br>
+To see the fully functional site, click [here](https://desolate-spire-23251.herokuapp.com/#/).
 
 </br>
-To see the fully functional site, click [here](link).
+The app does take around 30 seconds to load.  
 
 ## Built With
 
