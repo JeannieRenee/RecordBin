@@ -75,6 +75,7 @@ function RegisterForm() {
             required
             placeholder="username"
             onChange={(event) => setUsername(event.target.value)}
+            key="username-register"
           />
       </center>
         <br/>
@@ -93,6 +94,7 @@ function RegisterForm() {
             required
             placeholder="password"
             onChange={(event) => setPassword(event.target.value)}
+            key="password-register"
           />
       </center>
         <br/>

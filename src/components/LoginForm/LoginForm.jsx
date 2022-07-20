@@ -74,6 +74,7 @@ function LoginForm() {
           value={username}
           placeholder="username"
           onChange={(event) => setUsername(event.target.value)}
+          key="username-login"
         />
       </center>
         <br/>
@@ -86,6 +87,7 @@ function LoginForm() {
         value={password}
         placeholder="password"
         onChange={(event) => setPassword(event.target.value)}
+        key="password-login"
       />
       </center>
         <br/>
