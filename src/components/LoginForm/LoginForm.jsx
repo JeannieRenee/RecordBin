@@ -56,7 +56,7 @@ function LoginForm() {
   }));
 
   return (
-    <form className="formPanel" onSubmit={login} key="login-form">
+    <form className="formPanel" onSubmit={login} >
       {errors.loginMessage && (
         <h3 className="alert" role="alert">
           {errors.loginMessage}
@@ -74,8 +74,6 @@ function LoginForm() {
           value={username}
           placeholder="username"
           onChange={(event) => setUsername(event.target.value)}
-          key="username-login"
-          autoFocus
         />
       </center>
         <br/>
@@ -88,8 +86,6 @@ function LoginForm() {
         value={password}
         placeholder="password"
         onChange={(event) => setPassword(event.target.value)}
-        key="password-login"
-        autoFocus
       />
       </center>
         <br/>

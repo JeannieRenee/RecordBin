@@ -51,7 +51,7 @@ function RegisterForm() {
   }));
 
   return (
-    <form className="formPanel" onSubmit={registerUser} key="register-form">
+    <form className="formPanel" onSubmit={registerUser} >
       {errors.registrationMessage && (
         <h3 className="alert" role="alert">
           {errors.registrationMessage}
@@ -75,7 +75,6 @@ function RegisterForm() {
             required
             placeholder="username"
             onChange={(event) => setUsername(event.target.value)}
-            key="username-register"
           />
       </center>
         <br/>
@@ -94,7 +93,6 @@ function RegisterForm() {
             required
             placeholder="password"
             onChange={(event) => setPassword(event.target.value)}
-            key="password-register"
           />
       </center>
         <br/>
