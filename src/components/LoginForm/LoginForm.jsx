@@ -56,7 +56,7 @@ function LoginForm() {
   }));
 
   return (
-    <form className="formPanel" onSubmit={login}>
+    <form className="formPanel" onSubmit={login} key="login-form">
       {errors.loginMessage && (
         <h3 className="alert" role="alert">
           {errors.loginMessage}
