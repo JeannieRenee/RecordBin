@@ -35,4 +35,7 @@ The app does take around 30 seconds to load.
 Thanks to [Prime Digital Academy](www.primeacademy.io) who equipped and helped me to make this application a reality. Huge thanks to my peers in the Gaiman cohort for their unwavering support- I couldn't have done it without them. Hugs and love to my friends and family for being patient with me while I immersed myself in the software world and had little time for anything else. 
 
 ## Support
-If you have suggestions or issues, please email me at jmbranstrator@gmail.com
+If you have suggestions or issues (or compliments 😉), please get in touch. 
+[![Jeannie](https://img.shields.io/badge/-jeannie.dev-yellowgreen?style=for-the-badge)](https://www.jeannie.dev) 
+[![LinkedIn](https://img.shields.io/badge/-LinkedIn-blue?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/JeannieBranstrator) 
+[![Email](https://img.shields.io/badge/-gmail-orange?style=for-the-badge&logo=gmail)](mailto:jmbranstrator@gmail.com) 
