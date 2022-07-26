@@ -28,7 +28,7 @@ Keep in mind, the app does take around 30 seconds to load.
 [![Redux](https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white)]
 
 -Redux-Sagas
-[![Redux](link)]
+[![Redux](https://img.shields.io/badge/Redux--Sagas-20232A?style=for-the-badge&logo=reduxsaga&logoColor=61DAFB)]
 
 -Heroku
 [![Heroku](https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white)]
@@ -49,7 +49,7 @@ Keep in mind, the app does take around 30 seconds to load.
 [![postgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)]
 
 -Passport
-[![Passport](link)]
+[![Passport](https://img.shields.io/badge/Passport.js-20232A?style=for-the-badge)]
 
 -jQuery
 [![jQuery](https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white)]
