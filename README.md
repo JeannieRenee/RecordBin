@@ -39,8 +39,6 @@ Keep in mind, the app does take around 30 seconds to load.
 
 [![Passport](https://img.shields.io/badge/Passport.js-20232A?style=for-the-badge)]()
 
-[![jQuery](https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white)]()
-
 [![Express](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)]()
 
 ## Acknowledgement
