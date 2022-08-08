@@ -28,6 +28,8 @@ Keep in mind, the app does take around 30 seconds to load.
 [![postgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)]()
 [![Passport](https://img.shields.io/badge/Passport.js-20232A?style=for-the-badge)]()
 [![Express](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)]()
+[![AWS](https://img.shields.io/badge/AWS-404D59?style=for-the-badge)]()
+
 
 ## Acknowledgement
 Thanks to [Prime Digital Academy](www.primeacademy.io) who equipped and helped me to make this application a reality. Huge thanks to my peers in the Gaiman cohort for their unwavering support- I couldn't have done it without them. Hugs and love to my friends and family for being patient with me while I immersed myself in the software world and had little time for anything else. 
